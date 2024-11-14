@@ -102,11 +102,11 @@ const PortfolioOneSheet = () => {
 
   return (
     <div
-      className={`min-h-screen flex flex-col items-center justify-center p-8 transition-colors duration-300 ${
+      className={`min-h-screen flex flex-col items-center p-8 transition-colors duration-300 ${
         isDarkMode ? "bg-gray-900 text-white" : "bg-white text-gray-900"
       }`}
     >
-      <div className="max-w-3xl w-full">
+      <div className="max-w-6xl w-full">
         <div className="mb-8 flex justify-end">
           <button
             className={`px-4 py-2 rounded-md transition-colors duration-300 ${
