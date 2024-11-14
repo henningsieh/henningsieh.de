@@ -13,13 +13,19 @@ import {
   Server,
   Sun,
 } from "lucide-react";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card";
-import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
-import { Button } from "./ui/button";
-import { Tabs, TabsContent, TabsList } from "./ui/tabs";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
+import { Tabs, TabsContent, TabsList } from "@/components/ui/tabs";
 import { TabsTrigger } from "@/components/ui/tabs";
-import { Badge } from "./ui/badge";
-import { ScrollArea } from "./ui/scroll-area";
+import { Badge } from "@/components/ui/badge";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 const experiences = [
   { year: "2023", company: "Diverse KMU und Vereine", role: "Entwicklung und Betrieb" },
@@ -102,7 +108,7 @@ const PortfolioOneSheet = () => {
 
   return (
     <div
-      className={`min-h-screen flex flex-col items-center p-8 transition-colors duration-300 ${
+      className={`min-h-screen flex flex-col items-center p-4 sm:p-8 transition-colors duration-300 ${
         isDarkMode ? "bg-gray-900 text-white" : "bg-white text-gray-900"
       }`}
     >
@@ -119,11 +125,11 @@ const PortfolioOneSheet = () => {
             {isDarkMode ? <Moon className="w-5 h-5" /> : <Sun className="w-5 h-5" />}
           </button>
         </div>
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8">
-          <Card className="portfolio-card max-w-4xl mx-auto">
+        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-4 sm:p-8">
+          <Card className="portfolio-card mx-auto">
             <CardHeader className="text-center">
               <div className="flex justify-center mb-4">
-                <Avatar className="w-32 h-32 border-4 border-primary">
+                <Avatar className="w-28 h-28 sm:w-32 sm:h-32 border-4 border-primary">
                   <AvatarImage
                     src="/face.png"
                     className="object-cover"
@@ -132,22 +138,24 @@ const PortfolioOneSheet = () => {
                   <AvatarFallback>HS</AvatarFallback>
                 </Avatar>
               </div>
-              <CardTitle className="portfolio-title">Henning Sieh</CardTitle>
+              <CardTitle className="portfolio-title">
+                <h1>Henning Sieh</h1>
+              </CardTitle>
               <CardDescription className="portfolio-description">
                 Senior IT Consultant & Full-Stack Developer
               </CardDescription>
-              <div className="flex justify-center space-x-4 mt-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-4 mx-auto ">
                 <Button variant="outline" size="sm" className="portfolio-button">
-                  <Phone className="mr-2 h-4 w-4" /> +49 170 2786754
+                  <Phone className="mr-2 h-4 w-full" /> +49 170 2786754
                 </Button>
                 <Button variant="outline" size="sm" className="portfolio-button">
-                  <Mail className="mr-2 h-4 w-4" /> kontakt@henningsieh.de
+                  <Mail className="mr-2 h-4 w-full" /> kontakt@henningsieh.de
                 </Button>
               </div>
             </CardHeader>
             <CardContent>
               <Tabs defaultValue="about" className="mt-6">
-                <TabsList className="grid w-full grid-cols-4 portfolio-tabs-list">
+                <TabsList className="grid w-full grid-cols-1 sm:grid-cols-2 md:grid-cols-4 portfolio-tabs-list h-fit">
                   <TabsTrigger value="about" className="portfolio-tab">
                     Über mich
                   </TabsTrigger>
@@ -184,13 +192,13 @@ const PortfolioOneSheet = () => {
                 <TabsContent value="skills">
                   <Card>
                     <CardHeader>
-                      <CardTitle className="text-primary">Fähigkeiten</CardTitle>
+                      <CardTitle className="text-primary text-lg">Fähigkeiten</CardTitle>
                     </CardHeader>
                     <CardContent>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         {Object.entries(skills).map(([category, skillList]) => (
                           <div key={category} className="space-y-2">
-                            <h3 className="portfolio-section-title">
+                            <h4 className="portfolio-section-title">
                               {category === "Programmierung" && <Code className="mr-2" />}
                               {category === "DevOps & Tools" && <Server className="mr-2" />}
                               {category === "Architektur & Design" && (
@@ -200,7 +208,7 @@ const PortfolioOneSheet = () => {
                                 <GitBranch className="mr-2" />
                               )}
                               {category}
-                            </h3>
+                            </h4>
                             <div className="flex flex-wrap gap-2">
                               {skillList.map((skill, index) => (
                                 <Badge
@@ -286,6 +294,21 @@ const PortfolioOneSheet = () => {
               </Tabs>
             </CardContent>
           </Card>
+        </div>
+        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-4 sm:p-8 mt-8">
+          <div className="flex flex-col sm:flex-row justify-between items-center">
+            <div className="text-muted-foreground">
+              &copy; 2019 Henning Sieh. All rights reserved.
+            </div>
+            <div className="flex space-x-4 mt-4 sm:mt-0">
+              <Button variant="outline" size="sm" className="portfolio-button">
+                <Mail className="mr-2 h-4 w-4" /> Kontakt
+              </Button>
+              <Button variant="outline" size="sm" className="portfolio-button">
+                Impressum
+              </Button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
