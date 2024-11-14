@@ -103,7 +103,7 @@ export default function Portfolio() {
       <CardHeader className="text-center">
         <div className="flex justify-center mb-4">
           <Avatar className="w-32 h-32 border-4 border-primary">
-            <AvatarImage src="/placeholder.svg" alt="Henning Sieh" />
+            <AvatarImage src="/face.png" className="object-cover" alt="Henning Sieh" />
             <AvatarFallback>HS</AvatarFallback>
           </Avatar>
         </div>
@@ -143,13 +143,13 @@ export default function Portfolio() {
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground">
-                  Als erfahrener Full-Stack Entwickler und IT Consultant bringe ich
+                  Als erfahrener IT Consultant und Full-Stack Entwickler bringe ich
                   tiefgreifendes technisches Know-how und praktische Erfahrung in der
                   Softwareentwicklung mit. Mein Fokus liegt auf der Implementierung moderner
                   Webtechnologien und der Entwicklung skalierbarer, effizienter Lösungen.
                   Mit meinem Hintergrund in Requirements Engineering und Softwarearchitektur
                   kann ich komplexe Projekte von der Konzeption bis zur Umsetzung
-                  erfolgreich steuern und dabei stets die Balance zwischen technischer
+                  erfolgreich begleiten und dabei stets die Balance zwischen technischer
                   Exzellenz und geschäftlichen Anforderungen wahren.
                 </p>
               </CardContent>
