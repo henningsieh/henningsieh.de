@@ -69,31 +69,4 @@
 }
 
 @layer components {
-  .portfolio-gradient {
-    @apply bg-gradient-to-br from-orange-100 via-white to-orange-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900;
-  }
-  .portfolio-card {
-    @apply border-t-4 border-primary shadow-lg;
-  }
-  .portfolio-title {
-    @apply text-4xl font-bold text-primary;
-  }
-  .portfolio-description {
-    @apply text-xl mt-2 text-muted-foreground;
-  }
-  .portfolio-button {
-    @apply text-primary border-primary;
-  }
-  .portfolio-section-title {
-    @apply text-sm font-semibold text-primary flex items-center;
-  }
-  .portfolio-skill-badge {
-    @apply bg-orange-100 text-primary dark:bg-orange-900 dark:text-orange-200;
-  }
-  .portfolio-tab {
-    @apply data-[state=active]:bg-background;
-  }
-  .portfolio-tabs-list {
-    @apply bg-orange-100 dark:bg-gray-800;
-  }
 }
