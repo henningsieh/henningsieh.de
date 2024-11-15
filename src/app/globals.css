@@ -12,16 +12,16 @@
     --card: 0 0% 100%;
     --card-foreground: 224 71% 4%;
 
-    /* Cool primary palette */
-    --primary: 222 47% 45%;
+    /* Vibrant primary - Royal Purple */
+    --primary: 267 83% 47%;
     --primary-foreground: 210 40% 98%;
 
-    /* Azure secondary */
-    --secondary: 199 89% 48%;
+    /* Deep secondary - Teal */
+    --secondary: 42 90% 42%;
     --secondary-foreground: 222 47% 1%;
 
-    /* Elegant accent */
-    --accent: 217 91% 60%;
+    /* Dynamic accent - Coral */
+    --accent: 190 70% 42%;
     --accent-foreground: 222 47% 1%;
 
     /* Subtle muted tones */
@@ -33,12 +33,11 @@
     --popover-foreground: 224 71% 4%;
     --border: 220 13% 91%;
     --input: 220 13% 91%;
-    --ring: 222 47% 45%;
+    --ring: 267 83% 47%;
 
     /* Alerts */
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
-
     --radius: 0.5rem;
   }
 
@@ -51,16 +50,16 @@
     --card: 224 71% 4%;
     --card-foreground: 210 40% 98%;
 
-    /* Rich primary */
-    --primary: 217 91% 60%;
-    --primary-foreground: 222 47% 1%;
+    /* Vibrant primary - Electric Purple */
+    --primary: 267 83% 60%;
+    --primary-foreground: 210 40% 98%;
 
-    /* Deep secondary */
-    --secondary: 199 89% 48%;
+    /* Rich secondary - Bright Teal */
+    --secondary: 42 90% 60%;
     --secondary-foreground: 210 40% 98%;
 
-    /* Vibrant accent */
-    --accent: 238 82% 67%;
+    /* Dynamic accent - Vivid Coral */
+    --accent: 190 90% 70%;
     --accent-foreground: 210 40% 98%;
 
     /* Subtle dark tones */
@@ -72,10 +71,10 @@
     --popover-foreground: 210 40% 98%;
     --border: 215 27.9% 16.9%;
     --input: 215 27.9% 16.9%;
-    --ring: 217 91% 60%;
+    --ring: 267 83% 60%;
 
     /* Alerts */
-    --destructive: 0 62.8% 30.6%;
+    --destructive: 0 62.8% 50.6%;
     --destructive-foreground: 210 40% 98%;
   }
 }
@@ -93,16 +92,16 @@
   .gradient-bg {
     @apply bg-gradient-to-br from-primary via-secondary to-accent opacity-90 backdrop-blur-sm;
   }
-
   .card-hover {
     @apply transition-all duration-300 hover:shadow-lg hover:shadow-primary/10 hover:-translate-y-1;
   }
-
   .nav-link {
     @apply transition-colors duration-200 hover:text-primary;
   }
-
   .section-title {
-    @apply text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent;
+    @apply text-4xl md:text-6xl lg:text-8xl font-bold pb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent 
+           leading-relaxed /* Increase line height */
+           py-1 /* Add vertical padding */
+           my-[-0.25em] /* Compensate for the padding to maintain original spacing */;
   }
 }
