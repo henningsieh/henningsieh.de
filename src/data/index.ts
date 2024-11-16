@@ -73,7 +73,7 @@ export const skillsData: SkillCategory[] = [
     ],
   },
   {
-    title: "Anforderungsmanagement",
+    title: "Requirements Engineering",
     icon: FileText,
     color: "secondary",
     skills: [
@@ -85,7 +85,7 @@ export const skillsData: SkillCategory[] = [
     ],
   },
   {
-    title: "Architektur & Design",
+    title: "Architectur & Design",
     icon: Database,
     color: "primary",
     skills: [
@@ -99,7 +99,7 @@ export const skillsData: SkillCategory[] = [
     ],
   },
   {
-    title: "Programmierung",
+    title: "Software Development",
     icon: Code,
     color: "accent",
     skills: [
@@ -172,7 +172,7 @@ export const basicData = {
   url: "https://henningsieh.de",
   telephone: "+49 170 2786754",
   email: "kontakt@henningsieh.de",
-  websiteTitle: "Henning Sieh - IT Consulting",
+  websiteTitle: "Henning Sieh - IT Beratung",
   occupationalCategory: "IT Consulting",
 }
 
