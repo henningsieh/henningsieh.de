@@ -1,6 +1,8 @@
 // src/data/index.ts:
 
+import { getAllSkills } from "@/lib/utils"
 import { SkillCategory } from "@/types"
+import { getDescription } from "@/utils"
 import {
   Code,
   Database,
@@ -128,5 +130,62 @@ export const skillsData: SkillCategory[] = [
     icon: GitBranch,
     color: "primary",
     skills: ["IREB", "PRINCE2", "ITIL", "Agile", "Scrum", "TDD", "PMI"],
+  },
+]
+
+export const getKeywords = () => {
+  const skills = getAllSkills()
+  const roles = experiences.map((exp) => exp.role)
+  const baseKeywords = [
+    "IT Consulting",
+    "Full-Stack Development",
+    "Software Architecture",
+    "IT Berater",
+    "Deutschland",
+    "German IT Consultant",
+  ]
+
+  return [...new Set([...baseKeywords, ...skills, ...roles])]
+}
+
+export const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "@id": "https://henningsieh.de/#person",
+    name: "Henning Sieh",
+    jobTitle: "Senior IT Consultant & Full-Stack Developer",
+    description: getDescription(),
+    image: "https://henningsieh.de/avatar_Henning-Sieh_315x315.jpg",
+    url: "https://henningsieh.de",
+    telephone: "+49 170 2786754",
+    email: "kontakt@henningsieh.de",
+    address: {
+      "@type": "PostalAddress",
+      addressCountry: "DE",
+    },
+    knowsAbout: getAllSkills(),
+    knowsLanguage: ["de", "en"],
+    hasOccupation: {
+      "@type": "Occupation",
+      name: "IT Consultant",
+      occupationalCategory: "Software Developer and IT Consultant",
+      skills: getAllSkills(),
+    },
+    workExperience: experiences.map((exp) => ({
+      "@type": "WorkPosition",
+      name: exp.role,
+      organization: { "@type": "Organization", name: exp.company },
+      startDate: exp.year.split("-")[0],
+    })),
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": "https://henningsieh.de/#website",
+    url: "https://henningsieh.de",
+    name: "Henning Sieh IT Consulting",
+    description: getDescription(),
+    publisher: { "@id": "https://henningsieh.de/#person" },
   },
 ]
