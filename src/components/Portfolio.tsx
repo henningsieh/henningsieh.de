@@ -16,6 +16,7 @@ import {
   Server,
   Users,
   X,
+  LucideIcon,
 } from "lucide-react"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
@@ -203,173 +204,9 @@ export default function Component() {
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-              <Card className="card-hover">
-                <CardHeader>
-                  <CardTitle className="flex items-center text-xl text-primary">
-                    <Code className="mr-2" /> Programmierung
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex flex-wrap gap-2">
-                    {[
-                      "TypeScript",
-                      "Next.js",
-                      "React",
-                      "RESTful APIs",
-                      "Postgres",
-                      "Drizzle",
-                      "Express.js",
-                      "Java",
-                      "JavaScript",
-                    ].map((skill) => (
-                      <Badge
-                        key={skill}
-                        variant="outline"
-                        className="bg-primary/10 text-primary transition-colors hover:bg-primary/20"
-                      >
-                        {skill}
-                      </Badge>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-              <Card className="card-hover">
-                <CardHeader>
-                  <CardTitle className="flex items-center text-xl text-secondary">
-                    <Server className="mr-2" /> DevOps & Tools
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex flex-wrap gap-2">
-                    {[
-                      "Git",
-                      "Docker",
-                      "CI/CD",
-                      "Linux",
-                      "Windows",
-                      "Oracle",
-                      "UML",
-                    ].map((skill) => (
-                      <Badge
-                        key={skill}
-                        variant="outline"
-                        className="bg-secondary/10 text-secondary transition-colors hover:bg-secondary/20"
-                      >
-                        {skill}
-                      </Badge>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-              <Card className="card-hover">
-                <CardHeader>
-                  <CardTitle className="flex items-center text-xl text-accent">
-                    <Database className="mr-2" /> Architektur & Design
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex flex-wrap gap-2">
-                    {[
-                      "Microservices",
-                      "Serverless",
-                      "DDD",
-                      "SOLID",
-                      "System Design",
-                      "Process Reengineering",
-                      "Change Management",
-                    ].map((skill) => (
-                      <Badge
-                        key={skill}
-                        variant="outline"
-                        className="bg-accent/10 text-accent transition-colors hover:bg-accent/20"
-                      >
-                        {skill}
-                      </Badge>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-              <Card className="card-hover">
-                <CardHeader>
-                  <CardTitle className="flex items-center text-xl text-primary">
-                    <GitBranch className="mr-2" /> Methoden & Prozesse
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex flex-wrap gap-2">
-                    {[
-                      "IREB",
-                      "PRINCE2",
-                      "ITIL",
-                      "Agile",
-                      "Scrum",
-                      "TDD",
-                      "PMI",
-                    ].map((skill) => (
-                      <Badge
-                        key={skill}
-                        variant="outline"
-                        className="bg-primary/10 text-primary transition-colors hover:bg-primary/20"
-                      >
-                        {skill}
-                      </Badge>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-              <Card className="card-hover">
-                <CardHeader>
-                  <CardTitle className="flex items-center text-xl text-secondary">
-                    <FileText className="mr-2" /> Anforderungsmanagement
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex flex-wrap gap-2">
-                    {[
-                      "Anforderungsanalyse",
-                      "Spezifikationen",
-                      "Use-Case Modellierung",
-                      "Prozessmodellierung",
-                      "Funktionales Design",
-                    ].map((skill) => (
-                      <Badge
-                        key={skill}
-                        variant="outline"
-                        className="bg-secondary/10 text-secondary transition-colors hover:bg-secondary/20"
-                      >
-                        {skill}
-                      </Badge>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-              <Card className="card-hover">
-                <CardHeader>
-                  <CardTitle className="flex items-center text-xl text-accent">
-                    <Users className="mr-2" /> IT Consulting
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex flex-wrap gap-2">
-                    {[
-                      "Stakeholder Management",
-                      "Projektleitung",
-                      "Kundenberatung",
-                      "Schulungen",
-                      "Technische Konzepte",
-                      "Prozessoptimierung",
-                    ].map((skill) => (
-                      <Badge
-                        key={skill}
-                        variant="outline"
-                        className="bg-accent/10 text-accent transition-colors hover:bg-accent/20"
-                      >
-                        {skill}
-                      </Badge>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
+              {skillsData.map((category) => (
+                <SkillCard key={category.title} {...category} />
+              ))}
             </div>
           </CardContent>
         </Card>
@@ -496,3 +333,105 @@ const experiences = [
     role: "Manager E-Business (Interim-Management)",
   },
 ]
+
+type SkillCategory = {
+  title: string
+  icon: LucideIcon
+  color: string
+  skills: string[]
+}
+
+const skillsData: SkillCategory[] = [
+  {
+    title: "IT Consulting",
+    icon: Users,
+    color: "accent",
+    skills: [
+      "Stakeholder Management",
+      "Projektleitung",
+      "Kundenberatung",
+      "Schulungen",
+      "Technische Konzepte",
+      "Prozessoptimierung",
+    ],
+  },
+  {
+    title: "Anforderungsmanagement",
+    icon: FileText,
+    color: "secondary",
+    skills: [
+      "Anforderungsanalyse",
+      "Spezifikationen",
+      "Use-Case Modellierung",
+      "Prozessmodellierung",
+      "Funktionales Design",
+    ],
+  },
+  {
+    title: "Architektur & Design",
+    icon: Database,
+    color: "primary",
+    skills: [
+      "Microservices",
+      "Serverless",
+      "Domain-driven Design (DDD)",
+      "SOLID (OOD)",
+      "System Design",
+      "Process Reengineering",
+      "Change Management",
+    ],
+  },
+  {
+    title: "Programmierung",
+    icon: Code,
+    color: "accent",
+    skills: [
+      "TypeScript",
+      "JavaScript",
+      "Next.js",
+      "React",
+      "RESTful APIs",
+      "Postgres / SQL",
+      "Drizzle",
+      "Express.js",
+      "PHP (basics)",
+      "Java (basics)",
+      "C (basics)",
+    ],
+  },
+  {
+    title: "DevOps & Tools",
+    icon: Server,
+    color: "secondary",
+    skills: ["Git", "Docker", "CI/CD", "Linux", "Windows", "Oracle", "UML"],
+  },
+  {
+    title: "Methoden & Prozesse",
+    icon: GitBranch,
+    color: "primary",
+    skills: ["IREB", "PRINCE2", "ITIL", "Agile", "Scrum", "TDD", "PMI"],
+  },
+]
+
+const SkillCard = ({ title, icon: Icon, color, skills }: SkillCategory) => (
+  <Card className="card-hover">
+    <CardHeader>
+      <CardTitle className={`flex items-center text-xl text-${color}`}>
+        <Icon className="mr-2" /> {title}
+      </CardTitle>
+    </CardHeader>
+    <CardContent>
+      <div className="flex flex-wrap gap-2">
+        {skills.map((skill) => (
+          <Badge
+            key={skill}
+            variant="outline"
+            className={`bg-${color}/10 text-${color} transition-colors hover:bg-${color}/20`}
+          >
+            {skill}
+          </Badge>
+        ))}
+      </div>
+    </CardContent>
+  </Card>
+)
