@@ -5,77 +5,77 @@
 @layer base {
   :root {
     /* Light mode */
-    --background: 210 50% 98%;
-    --foreground: 224 71% 4%;
+    --background: 220 25% 97%;
+    --foreground: 220 45% 10%;
 
     /* Refined card design */
     --card: 0 0% 100%;
-    --card-foreground: 224 71% 4%;
+    --card-foreground: 220 45% 10%;
 
-    /* Vibrant primary - Royal Purple */
-    --primary: 267 83% 47%;
-    --primary-foreground: 210 40% 98%;
+    /* Vibrant primary - Electric Blue */
+    --primary: 210 100% 50%;
+    --primary-foreground: 0 0% 100%;
 
-    /* Deep secondary - Teal */
-    --secondary: 42 90% 42%;
-    --secondary-foreground: 222 47% 1%;
+    /* Rich secondary - Neon Teal */
+    --secondary: 175 100% 45%;
+    --secondary-foreground: 0 0% 100%;
 
-    /* Dynamic accent - Coral */
-    --accent: 190 70% 42%;
-    --accent-foreground: 222 47% 1%;
+    /* Dynamic accent - Vivid Magenta */
+    --accent: 320 100% 55%;
+    --accent-foreground: 0 0% 100%;
 
     /* Subtle muted tones */
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 220 15% 90%;
+    --muted-foreground: 220 20% 40%;
 
     /* Supporting colors */
     --popover: 0 0% 100%;
-    --popover-foreground: 224 71% 4%;
-    --border: 220 13% 91%;
-    --input: 220 13% 91%;
-    --ring: 267 83% 47%;
+    --popover-foreground: 220 45% 10%;
+    --border: 220 15% 85%;
+    --input: 220 15% 85%;
+    --ring: 210 100% 50%;
 
     /* Alerts */
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 100% 60%;
+    --destructive-foreground: 0 0% 100%;
     --radius: 0.5rem;
   }
 
   .dark {
     /* Dark mode - sleek and professional */
-    --background: 224 71% 4%;
-    --foreground: 210 40% 98%;
+    --background: 220 45% 10%;
+    --foreground: 0 0% 100%;
 
     /* Refined dark surfaces */
-    --card: 224 71% 4%;
-    --card-foreground: 210 40% 98%;
+    --card: 220 40% 13%;
+    --card-foreground: 0 0% 100%;
 
-    /* Vibrant primary - Electric Purple */
-    --primary: 267 83% 60%;
-    --primary-foreground: 210 40% 98%;
+    /* Vibrant primary - Electric Blue */
+    --primary: 210 100% 60%;
+    --primary-foreground: 0 0% 100%;
 
-    /* Rich secondary - Bright Teal */
-    --secondary: 42 90% 60%;
-    --secondary-foreground: 210 40% 98%;
+    /* Rich secondary - Neon Teal */
+    --secondary: 175 100% 50%;
+    --secondary-foreground: 0 0% 100%;
 
-    /* Dynamic accent - Vivid Coral */
-    --accent: 190 90% 70%;
-    --accent-foreground: 210 40% 98%;
+    /* Dynamic accent - Vivid Magenta */
+    --accent: 320 100% 65%;
+    --accent-foreground: 0 0% 100%;
 
     /* Subtle dark tones */
-    --muted: 223 47% 11%;
-    --muted-foreground: 215.4 16.3% 76.9%;
+    --muted: 220 25% 20%;
+    --muted-foreground: 220 15% 65%;
 
     /* Supporting colors */
-    --popover: 224 71% 4%;
-    --popover-foreground: 210 40% 98%;
-    --border: 215 27.9% 16.9%;
-    --input: 215 27.9% 16.9%;
-    --ring: 267 83% 60%;
+    --popover: 220 45% 10%;
+    --popover-foreground: 0 0% 100%;
+    --border: 220 25% 20%;
+    --input: 220 25% 20%;
+    --ring: 210 100% 60%;
 
     /* Alerts */
-    --destructive: 0 62.8% 50.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 100% 65%;
+    --destructive-foreground: 0 0% 100%;
   }
 }
 
@@ -93,15 +93,12 @@
     @apply bg-gradient-to-br from-primary via-secondary to-accent opacity-90 backdrop-blur-sm;
   }
   .card-hover {
-    @apply transition-all duration-300 hover:shadow-lg hover:shadow-primary/10 hover:-translate-y-1;
+    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/20;
   }
   .nav-link {
     @apply transition-colors duration-200 hover:text-primary;
   }
   .section-title {
-    @apply text-4xl md:text-6xl lg:text-8xl font-bold pb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent 
-           leading-relaxed /* Increase line height */
-           py-1 /* Add vertical padding */
-           my-[-0.25em] /* Compensate for the padding to maintain original spacing */;
+    @apply my-[-0.25em] bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text py-1 pb-4 text-4xl font-bold leading-relaxed text-transparent md:text-6xl lg:text-8xl;
   }
 }

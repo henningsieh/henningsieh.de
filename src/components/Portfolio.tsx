@@ -7,12 +7,14 @@ import {
   ChevronUp,
   Code,
   Database,
+  FileText,
   GitBranch,
   Mail,
   MapPin,
   Menu,
   Phone,
   Server,
+  Users,
   X,
 } from "lucide-react"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
@@ -20,14 +22,7 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { ModeToggle } from "./ModeToggle"
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "./ui/card"
+import { Card, CardContent, CardHeader, CardTitle } from "./ui/card"
 
 export default function Component() {
   const [showAllExperience, setShowAllExperience] = useState(false)
@@ -134,38 +129,40 @@ export default function Component() {
         id="home"
         className="gradient-bg flex min-h-screen items-center justify-center"
       >
-        <div className="text-center">
-          <Avatar className="card-hover mx-auto mb-8 h-64 w-64 border-4 border-accent">
-            <AvatarImage
-              src="/avatar_Henning-Sieh_315x315.jpg"
-              alt="Profile"
-              className="object-cover"
-            />
-            <AvatarFallback>HS</AvatarFallback>
-          </Avatar>
-          <h1 className="bg-gradient-to-r from-accent to-primary bg-clip-text pb-4 text-5xl font-bold leading-relaxed text-transparent md:text-7xl">
-            Henning Sieh
-          </h1>
-          <p className="mb-8 text-base font-bold text-white/90 md:text-4xl">
-            Senior IT Consultant & Full-Stack Developer
-          </p>
-          <div className="flex flex-col justify-center gap-2 px-2 sm:flex-row">
-            <Button
-              variant="ghost"
-              size="lg"
-              className="border-[1px] border-white bg-white/20 font-bold hover:bg-white/30"
-            >
-              <Phone className="mr-2 h-4 w-4" /> +49 170 2786754
-            </Button>
-            <Button
-              // variant="default"
-              size="lg"
-              className="border-white bg-transparent font-bold"
-            >
-              <Mail className="mr-2 h-4 w-4" /> kontakt@henningsieh.de
-            </Button>
-          </div>
-        </div>
+        <Card className="w-full max-w-3xl bg-background/80 backdrop-blur-lg">
+          <CardContent className="flex flex-col items-center p-6 text-center">
+            <Avatar className="card-hover mb-8 h-64 w-64 border-4 border-accent">
+              <AvatarImage
+                src="/avatar_Henning-Sieh_315x315.jpg"
+                alt="Profile"
+                className="object-cover"
+              />
+              <AvatarFallback>HS</AvatarFallback>
+            </Avatar>
+            <h1 className="bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text pb-4 text-5xl font-bold leading-relaxed text-transparent md:text-7xl">
+              Henning Sieh
+            </h1>
+            <p className="mb-8 text-base font-bold text-foreground md:text-4xl">
+              Senior IT Consultant & Full-Stack Developer
+            </p>
+            <div className="flex flex-col justify-center gap-2 px-2 sm:flex-row">
+              <Button
+                variant="outline"
+                size="lg"
+                className="border-primary bg-primary/10 font-bold hover:bg-primary/20"
+              >
+                <Phone className="mr-2 h-4 w-4" /> +49 170 2786754
+              </Button>
+              <Button
+                variant="outline"
+                size="lg"
+                className="border-secondary bg-secondary/10 font-bold hover:bg-secondary/20"
+              >
+                <Mail className="mr-2 h-4 w-4" /> kontakt@henningsieh.de
+              </Button>
+            </div>
+          </CardContent>
+        </Card>
       </section>
 
       {/* About Section */}
@@ -173,9 +170,11 @@ export default function Component() {
         id="about"
         className="flex min-h-screen items-center justify-center bg-secondary/5"
       >
-        <div className="mx-auto max-w-4xl px-4 py-20">
-          <h2 className="section-title mb-8">Über mich</h2>
-          <div className="card-hover rounded-lg border border-border bg-background/50 p-6 backdrop-blur-sm">
+        <Card className="mx-auto max-w-4xl shadow-lg shadow-primary/10">
+          <CardHeader>
+            <CardTitle className="section-title">Über mich</CardTitle>
+          </CardHeader>
+          <CardContent>
             <p className="text-lg leading-relaxed text-foreground">
               Als Senior IT Consultant und Full-Stack Entwickler bringe ich
               tiefgreifendes technisches Know-how und 20 Jahre praktische
@@ -189,8 +188,8 @@ export default function Component() {
               erfolgreich begleiten und dabei stets die Balance zwischen
               technischer Exzellenz und geschäftlichen Anforderungen wahren.
             </p>
-          </div>
-        </div>
+          </CardContent>
+        </Card>
       </section>
 
       {/* Skills Section */}
@@ -198,106 +197,182 @@ export default function Component() {
         id="skills"
         className="flex min-h-screen items-center justify-center bg-accent/5"
       >
-        <div className="mx-auto max-w-4xl px-4 py-20">
-          <h2 className="section-title mb-8">Fähigkeiten</h2>
-          <div className="grid grid-cols-1 gap-12 md:grid-cols-2">
-            <div className="space-y-8">
-              <Card>
+        <Card className="mx-auto max-w-4xl shadow-lg shadow-primary/10">
+          <CardHeader>
+            <CardTitle className="section-title">Fähigkeiten</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+              <Card className="card-hover">
                 <CardHeader>
-                  <CardTitle className="flex items-center text-xl">
+                  <CardTitle className="flex items-center text-xl text-primary">
                     <Code className="mr-2" /> Programmierung
                   </CardTitle>
-                  <CardDescription>You have 3 unread messages.</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <p>Card Content</p>
+                  <div className="flex flex-wrap gap-2">
+                    {[
+                      "TypeScript",
+                      "Next.js",
+                      "React",
+                      "RESTful APIs",
+                      "Postgres",
+                      "Drizzle",
+                      "Express.js",
+                      "Java",
+                      "JavaScript",
+                    ].map((skill) => (
+                      <Badge
+                        key={skill}
+                        variant="outline"
+                        className="bg-primary/10 text-primary transition-colors hover:bg-primary/20"
+                      >
+                        {skill}
+                      </Badge>
+                    ))}
+                  </div>
                 </CardContent>
-                <CardFooter>
-                  <p>Card Footer</p>
-                </CardFooter>
               </Card>
-              <div className="card-hover rounded-lg border border-border bg-background/50 p-6 backdrop-blur-sm">
-                <h3 className="mb-4 flex items-center text-xl font-semibold text-destructive">
-                  <Code className="mr-2" /> Programmierung
-                </h3>
-                <div className="flex flex-wrap gap-2">
-                  {[
-                    "TypeScript",
-                    "Next.js",
-                    "RESTful APIs",
-                    "Postgres",
-                    "Drizzle",
-                    "Express.js",
-                  ].map((skill) => (
-                    <Badge
-                      key={skill}
-                      variant="outline"
-                      className="bg-destructive/10 text-destructive transition-colors hover:bg-destructive/20"
-                    >
-                      {skill}
-                    </Badge>
-                  ))}
-                </div>
-              </div>
-              <div className="card-hover rounded-lg border border-border bg-background/50 p-6 backdrop-blur-sm">
-                <h3 className="mb-4 flex items-center text-xl font-semibold text-secondary">
-                  <Server className="mr-2" /> DevOps & Tools
-                </h3>
-                <div className="flex flex-wrap gap-2">
-                  {["Git", "Docker", "CI/CD", "Linux"].map((skill) => (
-                    <Badge
-                      key={skill}
-                      variant="outline"
-                      className="bg-secondary/10 text-secondary transition-colors hover:bg-secondary/20"
-                    >
-                      {skill}
-                    </Badge>
-                  ))}
-                </div>
-              </div>
+              <Card className="card-hover">
+                <CardHeader>
+                  <CardTitle className="flex items-center text-xl text-secondary">
+                    <Server className="mr-2" /> DevOps & Tools
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex flex-wrap gap-2">
+                    {[
+                      "Git",
+                      "Docker",
+                      "CI/CD",
+                      "Linux",
+                      "Windows",
+                      "Oracle",
+                      "UML",
+                    ].map((skill) => (
+                      <Badge
+                        key={skill}
+                        variant="outline"
+                        className="bg-secondary/10 text-secondary transition-colors hover:bg-secondary/20"
+                      >
+                        {skill}
+                      </Badge>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+              <Card className="card-hover">
+                <CardHeader>
+                  <CardTitle className="flex items-center text-xl text-accent">
+                    <Database className="mr-2" /> Architektur & Design
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex flex-wrap gap-2">
+                    {[
+                      "Microservices",
+                      "Serverless",
+                      "DDD",
+                      "SOLID",
+                      "System Design",
+                      "Process Reengineering",
+                      "Change Management",
+                    ].map((skill) => (
+                      <Badge
+                        key={skill}
+                        variant="outline"
+                        className="bg-accent/10 text-accent transition-colors hover:bg-accent/20"
+                      >
+                        {skill}
+                      </Badge>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+              <Card className="card-hover">
+                <CardHeader>
+                  <CardTitle className="flex items-center text-xl text-primary">
+                    <GitBranch className="mr-2" /> Methoden & Prozesse
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex flex-wrap gap-2">
+                    {[
+                      "IREB",
+                      "PRINCE2",
+                      "ITIL",
+                      "Agile",
+                      "Scrum",
+                      "TDD",
+                      "PMI",
+                    ].map((skill) => (
+                      <Badge
+                        key={skill}
+                        variant="outline"
+                        className="bg-primary/10 text-primary transition-colors hover:bg-primary/20"
+                      >
+                        {skill}
+                      </Badge>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+              <Card className="card-hover">
+                <CardHeader>
+                  <CardTitle className="flex items-center text-xl text-secondary">
+                    <FileText className="mr-2" /> Anforderungsmanagement
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex flex-wrap gap-2">
+                    {[
+                      "Anforderungsanalyse",
+                      "Spezifikationen",
+                      "Use-Case Modellierung",
+                      "Prozessmodellierung",
+                      "Funktionales Design",
+                    ].map((skill) => (
+                      <Badge
+                        key={skill}
+                        variant="outline"
+                        className="bg-secondary/10 text-secondary transition-colors hover:bg-secondary/20"
+                      >
+                        {skill}
+                      </Badge>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+              <Card className="card-hover">
+                <CardHeader>
+                  <CardTitle className="flex items-center text-xl text-accent">
+                    <Users className="mr-2" /> IT Consulting
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex flex-wrap gap-2">
+                    {[
+                      "Stakeholder Management",
+                      "Projektleitung",
+                      "Kundenberatung",
+                      "Schulungen",
+                      "Technische Konzepte",
+                      "Prozessoptimierung",
+                    ].map((skill) => (
+                      <Badge
+                        key={skill}
+                        variant="outline"
+                        className="bg-accent/10 text-accent transition-colors hover:bg-accent/20"
+                      >
+                        {skill}
+                      </Badge>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
             </div>
-            <div className="space-y-8">
-              <div className="card-hover rounded-lg border border-border bg-background/50 p-6 backdrop-blur-sm">
-                <h3 className="mb-4 flex items-center text-xl font-semibold text-accent">
-                  <Database className="mr-2" /> Architektur & Design
-                </h3>
-                <div className="flex flex-wrap gap-2">
-                  {[
-                    "Microservices",
-                    "Serverless",
-                    "DDD",
-                    "SOLID",
-                    "System Design",
-                  ].map((skill) => (
-                    <Badge
-                      key={skill}
-                      variant="outline"
-                      className="bg-accent/10 text-accent transition-colors hover:bg-accent/20"
-                    >
-                      {skill}
-                    </Badge>
-                  ))}
-                </div>
-              </div>
-              <div className="card-hover rounded-lg border border-border bg-background/50 p-6 backdrop-blur-sm">
-                <h3 className="mb-4 flex items-center text-xl font-semibold text-primary">
-                  <GitBranch className="mr-2" /> Methoden & Prozesse
-                </h3>
-                <div className="flex flex-wrap gap-2">
-                  {["IREB", "PRINCE2", "Agile", "ITIL", "TDD"].map((skill) => (
-                    <Badge
-                      key={skill}
-                      variant="outline"
-                      className="bg-primary/10 text-primary transition-colors hover:bg-primary/20"
-                    >
-                      {skill}
-                    </Badge>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+          </CardContent>
+        </Card>
       </section>
 
       {/* Experience Section */}
@@ -305,9 +380,11 @@ export default function Component() {
         id="experience"
         className="flex min-h-screen items-center justify-center bg-secondary/5"
       >
-        <div className="w-[896px] px-4 py-20">
-          <h2 className="section-title mb-8">Berufserfahrung</h2>
-          <div className="card-hover rounded-lg border border-border bg-background/50 p-6 backdrop-blur-sm">
+        <Card className="w-[896px] shadow-lg shadow-primary/10">
+          <CardHeader>
+            <CardTitle className="section-title">Berufserfahrung</CardTitle>
+          </CardHeader>
+          <div className="rounded-lg border border-border bg-background/50 p-6 backdrop-blur-sm">
             <ScrollArea className="h-[600px] pr-4">
               <div className="pl-48space-y-8 w-full">
                 {experiences
@@ -347,7 +424,7 @@ export default function Component() {
               </Button>
             )}
           </div>
-        </div>
+        </Card>
       </section>
 
       {/* Footer */}
