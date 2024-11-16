@@ -1,3 +1,5 @@
+// src/data/index.ts:
+
 import { SkillCategory } from "@/types"
 import {
   Code,

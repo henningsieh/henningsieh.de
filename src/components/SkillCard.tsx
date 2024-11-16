@@ -27,7 +27,7 @@ export const SkillCard = ({
           className={`flex items-center p-0 text-xl ${colorClasses[color as keyof typeof colorClasses]}`}
         >
           <Icon className="mr-2 h-5 w-5 flex-shrink-0" />
-          <span className="flex-grow">{title}</span>
+          <span className="flex-grow truncate">{title}</span>
         </CardTitle>
       </CardHeader>
       <CardContent className="px-4">
