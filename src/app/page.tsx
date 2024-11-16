@@ -1,7 +1,7 @@
 // src/app/page.tsx:
 
 import PortfolioOneSheet from "@/components/Portfolio"
-import { keywords, description, jsonLd } from "@/data"
+import { keywords, description, jsonLd, basicData } from "@/data"
 import { Metadata } from "next"
 
 export default function Home() {
@@ -13,16 +13,16 @@ export default function Home() {
 }
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://henningsieh.de"),
+  metadataBase: new URL(basicData.url),
   title: {
-    default: "Henning Sieh | Senior IT Consultant & Full-Stack Developer",
-    template: "%s | Henning Sieh",
+    default: basicData.jobTitle,
+    template: `%s | ${basicData.name}`,
   },
   description: description,
   keywords: keywords,
-  authors: [{ name: "Henning Sieh" }],
-  creator: "Henning Sieh",
-  publisher: "Henning Sieh",
+  authors: [{ name: basicData.name }],
+  creator: basicData.name,
+  publisher: basicData.name,
   formatDetection: {
     email: false,
     telephone: false,
@@ -30,27 +30,27 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "de_DE",
-    url: "https://henningsieh.de",
-    title: "Henning Sieh | Senior IT Consultant & Full-Stack Developer",
+    url: basicData.url,
+    title: basicData.jobTitle,
     description: description,
-    siteName: "Henning Sieh IT Consulting",
+    siteName: basicData.websiteTitle,
     images: [
       {
         url: "/avatar_Henning-Sieh_315x315.jpg",
         width: 315,
         height: 315,
-        alt: "Henning Sieh Profile Picture",
+        alt: `${basicData.name}'s Profile Picture`,
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Henning Sieh | Senior IT Consultant & Full-Stack Developer",
+    title: basicData.jobTitle,
     description: description,
     images: ["/avatar_Henning-Sieh_315x315.jpg"],
   },
   alternates: {
-    canonical: "https://henningsieh.de",
+    canonical: basicData.url,
   },
   robots: {
     index: true,
@@ -63,9 +63,9 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  verification: {
-    google: "YOUR_GOOGLE_VERIFICATION_CODE",
-  },
+  // verification: {
+  //   google: "YOUR_GOOGLE_VERIFICATION_CODE",
+  // },
   other: {
     "json-ld": JSON.stringify(jsonLd),
   },

@@ -166,13 +166,13 @@ const getDescription = () => {
 }
 export const description = getDescription()
 
-const basicData = {
+export const basicData = {
   name: "Henning Sieh",
   jobTitle: "Senior IT Consultant & Full-Stack Developer",
   url: "https://henningsieh.de",
   telephone: "+49 170 2786754",
   email: "kontakt@henningsieh.de",
-  webTitle: "Henning Sieh - IT Consulting",
+  websiteTitle: "Henning Sieh - IT Consulting",
   occupationalCategory: "IT Consulting",
 }
 
@@ -212,18 +212,20 @@ export const jsonLd = [
     "@type": "WebSite",
     "@id": `${basicData.url}/#about`, // Align this with your about section
     url: basicData.url,
-    name: basicData.webTitle,
+    name: basicData.websiteTitle,
     description: description,
     publisher: { "@id": `${basicData.url}/#home` }, // Refers to the person entity on #home
   },
   {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "@id": "https://henningsieh.de/#imprint",
-    url: "https://henningsieh.de/#imprint",
+    "@id": "${basicData.url}/impressum",
+    url: "${basicData.url}/impressum",
     name: "Impressum",
     description:
       "Legal disclosure in accordance with German law (Telemediengesetz §5).",
-    provider: { "@id": "https://henningsieh.de/#home" },
+    provider: {
+      "@id": "${basicData.url}/#home",
+    },
   },
 ]
