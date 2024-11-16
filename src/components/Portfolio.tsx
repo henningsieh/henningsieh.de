@@ -41,14 +41,14 @@ export default function Component() {
               <Button
                 variant="outline"
                 size="lg"
-                className="w-full border-primary bg-primary/10 font-bold hover:bg-primary/20"
+                className="w-full border-primary bg-primary/10 font-bold hover:bg-primary/30 hover:text-foreground"
               >
                 <Phone className="mr-2 h-4 w-4" /> {basicData.telephone}
               </Button>
               <Button
                 variant="outline"
                 size="lg"
-                className="w-full border-secondary bg-secondary/10 font-bold hover:bg-secondary/20"
+                className="w-full border-accent bg-accent/10 font-bold hover:bg-accent/30 hover:text-foreground"
               >
                 <Mail className="mr-2 h-4 w-4" /> {basicData.email}
               </Button>

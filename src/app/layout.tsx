@@ -68,7 +68,7 @@ export default function RootLayout({
             <nav className="fixed left-0 right-0 top-0 z-50 border-b border-border bg-background/80 backdrop-blur-md">
               <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div className="flex h-16 items-center justify-between">
-                  <div className="m-0 flex items-center p-0">
+                  <Link href="/" className="m-0 flex items-center p-0">
                     <Avatar className="h-7 w-7 border-2 border-accent md:h-10 md:w-10">
                       <AvatarImage
                         src="/avatar_Henning-Sieh_315x315.jpg"
@@ -79,7 +79,7 @@ export default function RootLayout({
                     <div className="ml-2 pb-2 text-2xl font-bold leading-relaxed text-muted-foreground md:text-5xl">
                       Henning Sieh
                     </div>
-                  </div>
+                  </Link>
                   <div className="hidden md:block">
                     <div className="ml-10 flex items-start space-x-4">
                       {navItems.map((item) => (
@@ -139,7 +139,6 @@ export default function RootLayout({
             {children}
 
             {/* Footer */}
-            <MapPinHouse className="h-44 w-44" />
             <footer className="border-t border-primary/10 bg-background px-4 py-8">
               <div className="mx-auto flex max-w-4xl flex-col items-center justify-between gap-4 sm:flex-row">
                 <div className="text-sm text-muted-foreground">
