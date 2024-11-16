@@ -1,8 +1,6 @@
 // src/data/index.ts:
 
-import { getAllSkills } from "@/lib/utils"
 import { SkillCategory } from "@/types"
-import { getDescription } from "@/utils"
 import {
   Code,
   Database,
@@ -14,7 +12,7 @@ import {
 
 export const experiences = [
   {
-    year: "2023 -2024",
+    year: "2023 - 2024",
     company: "Diverse KMU und Vereine",
     role: "Beratung, Entwicklung und Betrieb",
   },
@@ -133,19 +131,38 @@ export const skillsData: SkillCategory[] = [
   },
 ]
 
-export const getKeywords = () => {
-  const skills = getAllSkills()
-  const roles = experiences.map((exp) => exp.role)
-  const baseKeywords = [
-    "IT Consulting",
-    "Full-Stack Development",
-    "Software Architecture",
-    "IT Berater",
-    "Deutschland",
-    "German IT Consultant",
-  ]
+export const getDescription = () => {
+  const topSkills = skillsData
+    .slice(0, 3)
+    .map((category) => category.title)
+    .join(", ")
 
-  return [...new Set([...baseKeywords, ...skills, ...roles])]
+  return `Senior IT Consultant und Full-Stack Entwickler mit 20 Jahren Erfahrung in ${topSkills}. Spezialisiert auf moderne Webtechnologien, skalierbare Lösungen und technische Beratung.`
+}
+
+const commonRoles = [
+  "IT Consulting",
+  "Full-Stack Development",
+  "Software Architecture",
+  "IT Berater",
+  "Deutschland",
+  "German IT Consultant",
+]
+
+export const getKeywords = () => {
+  return [
+    ...new Set([
+      ...commonRoles,
+      ...getAllSkills(),
+      ...experiences.map((exp) => exp.role),
+    ]),
+  ]
+}
+
+export const getAllSkills = () => {
+  return skillsData.reduce((acc, category) => {
+    return [...acc, ...category.skills]
+  }, [] as string[])
 }
 
 export const jsonLd = [

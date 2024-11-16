@@ -1,8 +1,7 @@
 // src/app/page.tsx:
 
 import PortfolioOneSheet from "@/components/Portfolio"
-import { getKeywords, jsonLd } from "@/data"
-import { getDescription } from "@/utils"
+import { getDescription, getKeywords, jsonLd } from "@/data"
 import { Metadata } from "next"
 
 export default function Home() {
