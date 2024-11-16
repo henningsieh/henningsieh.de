@@ -1,29 +1,23 @@
 "use client"
 
 // src/components/Portfolio.tsx:
-import { useState, useEffect } from "react"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { Button } from "@/components/ui/button"
+import { ScrollArea } from "@/components/ui/scroll-area"
 import {
   ChevronDown,
   ChevronUp,
-  Code,
-  Database,
-  FileText,
-  GitBranch,
   Mail,
   MapPin,
   Menu,
   Phone,
-  Server,
-  Users,
   X,
-  LucideIcon,
 } from "lucide-react"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
-import { ScrollArea } from "@/components/ui/scroll-area"
+import { useEffect, useState } from "react"
 import { ModeToggle } from "./ModeToggle"
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card"
+import { experiences, skillsData } from "@/data"
+import { SkillCard } from "./SkillCard"
 
 export default function Component() {
   const [showAllExperience, setShowAllExperience] = useState(false)
@@ -128,11 +122,17 @@ export default function Component() {
       {/* Hero Section */}
       <section
         id="home"
-        className="gradient-bg flex min-h-screen items-center justify-center"
+        className="flex h-16 items-center justify-center bg-primary"
+      ></section>
+
+      {/* Hero Section */}
+      <section
+        id="fakehome"
+        className="gradient-bg flex min-h-[calc(100vh-4rem)] items-center justify-center p-2"
       >
-        <Card className="w-full max-w-3xl bg-background/80 backdrop-blur-lg">
-          <CardContent className="flex flex-col items-center p-6 text-center">
-            <Avatar className="card-hover mb-8 h-64 w-64 border-4 border-accent">
+        <Card className="w-full max-w-4xl bg-background/80 p-4 shadow-lg shadow-accent/10">
+          <CardContent className="flex flex-col items-center p-0 text-center md:p-4">
+            <Avatar className="card-hover mb-8 h-48 w-48 border-4 border-accent md:h-64 md:w-64">
               <AvatarImage
                 src="/avatar_Henning-Sieh_315x315.jpg"
                 alt="Profile"
@@ -140,24 +140,25 @@ export default function Component() {
               />
               <AvatarFallback>HS</AvatarFallback>
             </Avatar>
-            <h1 className="bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text pb-4 text-5xl font-bold leading-relaxed text-transparent md:text-7xl">
+            <h1 className="bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text pb-4 text-4xl font-bold leading-relaxed text-transparent md:text-6xl">
               Henning Sieh
             </h1>
-            <p className="mb-8 text-base font-bold text-foreground md:text-4xl">
+            <p className="mb-8 text-sm font-bold text-foreground sm:text-2xl md:text-3xl">
               Senior IT Consultant & Full-Stack Developer
             </p>
-            <div className="flex flex-col justify-center gap-2 px-2 sm:flex-row">
+
+            <div className="flex w-full flex-col justify-center gap-2 sm:flex-row">
               <Button
                 variant="outline"
                 size="lg"
-                className="border-primary bg-primary/10 font-bold hover:bg-primary/20"
+                className="w-full border-primary bg-primary/10 font-bold hover:bg-primary/20"
               >
                 <Phone className="mr-2 h-4 w-4" /> +49 170 2786754
               </Button>
               <Button
                 variant="outline"
                 size="lg"
-                className="border-secondary bg-secondary/10 font-bold hover:bg-secondary/20"
+                className="w-full border-secondary bg-secondary/10 font-bold hover:bg-secondary/20"
               >
                 <Mail className="mr-2 h-4 w-4" /> kontakt@henningsieh.de
               </Button>
@@ -169,7 +170,7 @@ export default function Component() {
       {/* About Section */}
       <section
         id="about"
-        className="flex min-h-screen items-center justify-center bg-secondary/5"
+        className="flex min-h-screen items-center justify-center bg-secondary/5 p-2"
       >
         <Card className="mx-auto max-w-4xl shadow-lg shadow-primary/10">
           <CardHeader>
@@ -196,7 +197,7 @@ export default function Component() {
       {/* Skills Section */}
       <section
         id="skills"
-        className="flex min-h-screen items-center justify-center bg-accent/5"
+        className="flex min-h-screen items-center justify-center bg-accent/5 p-2"
       >
         <Card className="mx-auto max-w-4xl shadow-lg shadow-primary/10">
           <CardHeader>
@@ -215,7 +216,7 @@ export default function Component() {
       {/* Experience Section */}
       <section
         id="experience"
-        className="flex min-h-screen items-center justify-center bg-secondary/5"
+        className="flex min-h-screen items-center justify-center bg-secondary/5 p-2"
       >
         <Card className="w-[896px] shadow-lg shadow-primary/10">
           <CardHeader>
@@ -284,154 +285,3 @@ export default function Component() {
     </div>
   )
 }
-
-const experiences = [
-  {
-    year: "2023",
-    company: "Diverse KMU und Vereine",
-    role: "Entwicklung und Betrieb",
-  },
-  {
-    year: "2022",
-    company: "LDI Rheinland-Pfalz",
-    role: "Init Projekt OZG (Onlinezugangsgesetz)",
-  },
-  {
-    year: "2021",
-    company: "Sabbatical",
-    role: "Continuing education / self studying",
-  },
-  {
-    year: "2020",
-    company: "ITZ-Bund",
-    role: "Requirements Engineer / Solution Architect",
-  },
-  { year: "2019", company: "ING DiBa", role: "Domain Architect" },
-  {
-    year: "2018",
-    company: "Vorwerk Elektrowerke GmbH Co. KG",
-    role: "Requirements Engineer (TESU)",
-  },
-  {
-    year: "2017",
-    company: "DB Cargo AG - Deutsche Bahn",
-    role: "Business Engineer / Solution Architect (IT)",
-  },
-  {
-    year: "2016",
-    company: "Adam Opel AG",
-    role: "Programmmanagement, Business Analyst, Solution Designer",
-  },
-  {
-    year: "2015",
-    company: "Capgemini Holding GmbH",
-    role: "Solution Architect IT / Requirements Engineer",
-  },
-  {
-    year: "2012 – 2014",
-    company: "TFG Transfracht GmbH",
-    role: "Manager E-Business (Interim-Management)",
-  },
-]
-
-type SkillCategory = {
-  title: string
-  icon: LucideIcon
-  color: string
-  skills: string[]
-}
-
-const skillsData: SkillCategory[] = [
-  {
-    title: "IT Consulting",
-    icon: Users,
-    color: "accent",
-    skills: [
-      "Stakeholder Management",
-      "Projektleitung",
-      "Kundenberatung",
-      "Schulungen",
-      "Technische Konzepte",
-      "Prozessoptimierung",
-    ],
-  },
-  {
-    title: "Anforderungsmanagement",
-    icon: FileText,
-    color: "secondary",
-    skills: [
-      "Anforderungsanalyse",
-      "Spezifikationen",
-      "Use-Case Modellierung",
-      "Prozessmodellierung",
-      "Funktionales Design",
-    ],
-  },
-  {
-    title: "Architektur & Design",
-    icon: Database,
-    color: "primary",
-    skills: [
-      "Microservices",
-      "Serverless",
-      "Domain-driven Design (DDD)",
-      "SOLID (OOD)",
-      "System Design",
-      "Process Reengineering",
-      "Change Management",
-    ],
-  },
-  {
-    title: "Programmierung",
-    icon: Code,
-    color: "accent",
-    skills: [
-      "TypeScript",
-      "JavaScript",
-      "Next.js",
-      "React",
-      "RESTful APIs",
-      "Postgres / SQL",
-      "Drizzle",
-      "Express.js",
-      "PHP (basics)",
-      "Java (basics)",
-      "C (basics)",
-    ],
-  },
-  {
-    title: "DevOps & Tools",
-    icon: Server,
-    color: "secondary",
-    skills: ["Git", "Docker", "CI/CD", "Linux", "Windows", "Oracle", "UML"],
-  },
-  {
-    title: "Methoden & Prozesse",
-    icon: GitBranch,
-    color: "primary",
-    skills: ["IREB", "PRINCE2", "ITIL", "Agile", "Scrum", "TDD", "PMI"],
-  },
-]
-
-const SkillCard = ({ title, icon: Icon, color, skills }: SkillCategory) => (
-  <Card className="card-hover">
-    <CardHeader>
-      <CardTitle className={`flex items-center text-xl text-${color}`}>
-        <Icon className="mr-2" /> {title}
-      </CardTitle>
-    </CardHeader>
-    <CardContent>
-      <div className="flex flex-wrap gap-2">
-        {skills.map((skill) => (
-          <Badge
-            key={skill}
-            variant="outline"
-            className={`bg-${color}/10 text-${color} transition-colors hover:bg-${color}/20`}
-          >
-            {skill}
-          </Badge>
-        ))}
-      </div>
-    </CardContent>
-  </Card>
-)
