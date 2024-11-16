@@ -15,7 +15,7 @@ export default function Home() {
 export const metadata: Metadata = {
   metadataBase: new URL(basicData.url),
   title: {
-    default: basicData.jobTitle,
+    default: basicData.websiteTitle,
     template: `%s | ${basicData.name}`,
   },
   description: description,
