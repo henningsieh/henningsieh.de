@@ -122,13 +122,7 @@ export default function Component() {
       {/* Hero Section */}
       <section
         id="home"
-        className="flex h-16 items-center justify-center bg-primary"
-      ></section>
-
-      {/* Hero Section */}
-      <section
-        id="fakehome"
-        className="gradient-bg flex min-h-[calc(100vh-4rem)] items-center justify-center p-2"
+        className="gradient-bg flex min-h-screen items-center justify-center px-2 pb-12 pt-20"
       >
         <Card className="w-full max-w-4xl bg-background/80 p-4 shadow-lg shadow-accent/10">
           <CardContent className="flex flex-col items-center p-0 text-center md:p-4">
@@ -170,7 +164,7 @@ export default function Component() {
       {/* About Section */}
       <section
         id="about"
-        className="flex min-h-screen items-center justify-center bg-secondary/5 p-2"
+        className="flex min-h-screen items-center justify-center bg-secondary/5 px-2 pb-12 pt-20"
       >
         <Card className="mx-auto max-w-4xl shadow-lg shadow-primary/10">
           <CardHeader>
@@ -197,7 +191,7 @@ export default function Component() {
       {/* Skills Section */}
       <section
         id="skills"
-        className="flex min-h-screen items-center justify-center bg-accent/5 p-2"
+        className="flex min-h-screen items-center justify-center bg-accent/5 px-2 pb-12 pt-20"
       >
         <Card className="mx-auto max-w-4xl shadow-lg shadow-primary/10">
           <CardHeader>
@@ -216,7 +210,7 @@ export default function Component() {
       {/* Experience Section */}
       <section
         id="experience"
-        className="flex min-h-screen items-center justify-center bg-secondary/5 p-2"
+        className="flex min-h-screen items-center justify-center bg-secondary/5 px-2 pb-12 pt-20"
       >
         <Card className="w-[896px] shadow-lg shadow-primary/10">
           <CardHeader>
