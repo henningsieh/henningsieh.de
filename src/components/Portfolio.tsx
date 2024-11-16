@@ -18,6 +18,7 @@ import { ModeToggle } from "./ModeToggle"
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card"
 import { experiences, skillsData } from "@/data"
 import { SkillCard } from "./SkillCard"
+import Link from "next/link"
 
 export default function Component() {
   const [showAllExperience, setShowAllExperience] = useState(false)
@@ -43,16 +44,10 @@ export default function Component() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId)
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" })
-    }
-    setMenuOpen(false)
-  }
+  const navItems = ["home", "about", "skills", "experience"]
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen scroll-smooth">
       {/* Navigation */}
       <nav className="fixed left-0 right-0 top-0 z-50 border-b border-border bg-background/80 backdrop-blur-md">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -71,24 +66,27 @@ export default function Component() {
             </div>
             <div className="hidden md:block">
               <div className="ml-10 flex items-start space-x-4">
-                {["home", "about", "skills", "experience"].map((item) => (
+                {navItems.map((item) => (
                   <Button
-                    variant={"ghost"}
+                    asChild
                     key={item}
-                    onClick={() => scrollToSection(item)}
-                    className={`nav-link rounded-md px-3 text-sm font-medium ${
+                    variant={"ghost"}
+                    className={`nav-link rounded-md px-3 text-sm font-semibold ${
                       activeSection === item
                         ? "bg-primary text-white"
                         : "text-foreground"
                     }`}
                   >
-                    {item.charAt(0).toUpperCase() + item.slice(1)}
+                    <Link href={`#${item}`}>
+                      {item.charAt(0).toUpperCase() + item.slice(1)}
+                    </Link>
                   </Button>
                 ))}
                 <ModeToggle />
               </div>
             </div>
-            <div className="md:hidden">
+            <div className="flex gap-2 md:hidden">
+              <ModeToggle />
               <Button
                 variant="ghost"
                 size="icon"
@@ -96,7 +94,6 @@ export default function Component() {
               >
                 {menuOpen ? <X /> : <Menu />}
               </Button>
-              <ModeToggle />
             </div>
           </div>
         </div>
@@ -106,14 +103,18 @@ export default function Component() {
       {menuOpen && (
         <div className="fixed inset-0 z-40 bg-background/95 backdrop-blur-sm md:hidden">
           <div className="space-y-1 px-2 pb-3 pt-20 sm:px-3">
-            {["home", "about", "skills", "experience"].map((item) => (
-              <button
+            {navItems.map((item) => (
+              <Button
+                asChild
                 key={item}
-                onClick={() => scrollToSection(item)}
-                className="nav-link block w-full rounded-md px-3 py-2 text-left text-base font-medium text-foreground hover:bg-primary/10"
+                variant={"ghost"}
+                onClick={() => setMenuOpen(false)}
+                className="nav-link bg-bg-muted block w-full px-3 py-2 text-left text-base font-semibold text-muted-foreground hover:bg-accent"
               >
-                {item.charAt(0).toUpperCase() + item.slice(1)}
-              </button>
+                <Link href={`#${item}`}>
+                  {item.charAt(0).toUpperCase() + item.slice(1)}
+                </Link>
+              </Button>
             ))}
           </div>
         </div>
@@ -191,7 +192,7 @@ export default function Component() {
       {/* Skills Section */}
       <section
         id="skills"
-        className="flex min-h-screen items-center justify-center bg-accent/5 px-2 pb-12 pt-20"
+        className="flex min-h-screen items-center justify-center bg-primary/10 px-2 pb-12 pt-20"
       >
         <Card className="mx-auto max-w-4xl shadow-lg shadow-primary/10">
           <CardHeader>
