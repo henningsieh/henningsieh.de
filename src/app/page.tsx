@@ -1,7 +1,7 @@
 // src/app/page.tsx:
 
 import PortfolioOneSheet from "@/components/Portfolio"
-import { getDescription, getKeywords, jsonLd } from "@/data"
+import { keywords, description, jsonLd } from "@/data"
 import { Metadata } from "next"
 
 export default function Home() {
@@ -18,8 +18,8 @@ export const metadata: Metadata = {
     default: "Henning Sieh | Senior IT Consultant & Full-Stack Developer",
     template: "%s | Henning Sieh",
   },
-  description: getDescription(),
-  keywords: getKeywords(),
+  description: description,
+  keywords: keywords,
   authors: [{ name: "Henning Sieh" }],
   creator: "Henning Sieh",
   publisher: "Henning Sieh",
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     locale: "de_DE",
     url: "https://henningsieh.de",
     title: "Henning Sieh | Senior IT Consultant & Full-Stack Developer",
-    description: getDescription(),
+    description: description,
     siteName: "Henning Sieh IT Consulting",
     images: [
       {
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Henning Sieh | Senior IT Consultant & Full-Stack Developer",
-    description: getDescription(),
+    description: description,
     images: ["/avatar_Henning-Sieh_315x315.jpg"],
   },
   alternates: {

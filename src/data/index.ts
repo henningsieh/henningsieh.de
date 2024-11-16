@@ -14,7 +14,7 @@ export const experiences = [
   {
     year: "2023 - 2024",
     company: "Diverse KMU und Vereine",
-    role: "Beratung, Entwicklung und Betrieb",
+    role: "Beratung, Entwicklung und Betrieb Infrastruktur",
   },
   {
     year: "2022",
@@ -23,8 +23,8 @@ export const experiences = [
   },
   {
     year: "2021",
-    company: "Sabbatical",
-    role: "Continuing education / self studying",
+    company: "[Sabbatical]",
+    role: "Continuing education / Self studying",
   },
   {
     year: "2020",
@@ -58,7 +58,6 @@ export const experiences = [
     role: "Manager E-Business (Interim-Management)",
   },
 ]
-
 export const skillsData: SkillCategory[] = [
   {
     title: "IT Consulting",
@@ -131,7 +130,33 @@ export const skillsData: SkillCategory[] = [
   },
 ]
 
-export const getDescription = () => {
+const commonKeywords = [
+  "Senior IT Consulting",
+  "Software Architecture",
+  "Full-Stack Development",
+  "Requirements Engineering",
+  "IT Berater",
+  "Maintal",
+  "Hanau",
+  "Frankfurt",
+  "Deutschland",
+  "German IT Consultant",
+]
+
+const getAllSkills = () => {
+  return skillsData.reduce((acc, category) => {
+    return [...acc, ...category.skills]
+  }, [] as string[])
+}
+export const allSkills = getAllSkills()
+
+const getKeywords = () => {
+  const roles = experiences.map((exp) => exp.role)
+  return Array.from(new Set([...commonKeywords, ...allSkills, ...roles]))
+}
+export const keywords = getKeywords()
+
+const getDescription = () => {
   const topSkills = skillsData
     .slice(0, 3)
     .map((category) => category.title)
@@ -139,55 +164,41 @@ export const getDescription = () => {
 
   return `Senior IT Consultant und Full-Stack Entwickler mit 20 Jahren Erfahrung in ${topSkills}. Spezialisiert auf moderne Webtechnologien, skalierbare Lösungen und technische Beratung.`
 }
+export const description = getDescription()
 
-const commonRoles = [
-  "IT Consulting",
-  "Full-Stack Development",
-  "Software Architecture",
-  "IT Berater",
-  "Deutschland",
-  "German IT Consultant",
-]
-
-export const getKeywords = () => {
-  return [
-    ...new Set([
-      ...commonRoles,
-      ...getAllSkills(),
-      ...experiences.map((exp) => exp.role),
-    ]),
-  ]
-}
-
-export const getAllSkills = () => {
-  return skillsData.reduce((acc, category) => {
-    return [...acc, ...category.skills]
-  }, [] as string[])
+const basicData = {
+  name: "Henning Sieh",
+  jobTitle: "Senior IT Consultant & Full-Stack Developer",
+  url: "https://henningsieh.de",
+  telephone: "+49 170 2786754",
+  email: "kontakt@henningsieh.de",
+  webTitle: "Henning Sieh - IT Consulting",
+  occupationalCategory: "IT Consulting",
 }
 
 export const jsonLd = [
   {
     "@context": "https://schema.org",
     "@type": "Person",
-    "@id": "https://henningsieh.de/#person",
-    name: "Henning Sieh",
-    jobTitle: "Senior IT Consultant & Full-Stack Developer",
-    description: getDescription(),
-    image: "https://henningsieh.de/avatar_Henning-Sieh_315x315.jpg",
-    url: "https://henningsieh.de",
-    telephone: "+49 170 2786754",
-    email: "kontakt@henningsieh.de",
+    "@id": `${basicData.url}/#home`, // Refers to the section where name, email, and phone are listed
+    name: basicData.name,
+    jobTitle: basicData.jobTitle,
+    description: description,
+    image: `${basicData.url}/avatar_Henning-Sieh_315x315.jpg`,
+    url: basicData.url,
+    telephone: basicData.telephone,
+    email: basicData.email,
     address: {
       "@type": "PostalAddress",
       addressCountry: "DE",
     },
-    knowsAbout: getAllSkills(),
+    knowsAbout: allSkills,
     knowsLanguage: ["de", "en"],
     hasOccupation: {
       "@type": "Occupation",
-      name: "IT Consultant",
-      occupationalCategory: "Software Developer and IT Consultant",
-      skills: getAllSkills(),
+      name: basicData.jobTitle,
+      occupationalCategory: basicData.occupationalCategory,
+      skills: allSkills,
     },
     workExperience: experiences.map((exp) => ({
       "@type": "WorkPosition",
@@ -199,10 +210,20 @@ export const jsonLd = [
   {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "@id": "https://henningsieh.de/#website",
-    url: "https://henningsieh.de",
-    name: "Henning Sieh IT Consulting",
-    description: getDescription(),
-    publisher: { "@id": "https://henningsieh.de/#person" },
+    "@id": `${basicData.url}/#about`, // Align this with your about section
+    url: basicData.url,
+    name: basicData.webTitle,
+    description: description,
+    publisher: { "@id": `${basicData.url}/#home` }, // Refers to the person entity on #home
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": "https://henningsieh.de/#imprint",
+    url: "https://henningsieh.de/#imprint",
+    name: "Impressum",
+    description:
+      "Legal disclosure in accordance with German law (Telemediengesetz §5).",
+    provider: { "@id": "https://henningsieh.de/#home" },
   },
 ]
