@@ -10,6 +10,36 @@ import {
   Users,
 } from "lucide-react"
 
+export const basicData = {
+  name: "Henning Sieh",
+  jobTitle: "Senior IT Consultant & Full-Stack Developer",
+  url: "https://henningsieh.de",
+  telephone: "+49 170 2786754",
+  email: "kontakt@henningsieh.de",
+  bank: {
+    name: "BUNQ",
+    bic: "BUNQDE82",
+    account: {
+      holder: "Henning Sieh",
+      iban: "DE13 3701 9000 1010 2278 09",
+    },
+  },
+  address: {
+    street: "Espenpfad 6",
+    zipCode: "63477",
+    city: "Maintal",
+    region: "Hessen",
+    country: "Deutschland",
+    country_code: "DE",
+  },
+  taxinfo: {
+    tax_number_UStId: "DE279588258",
+    tax_authority_city: "Finanzamt Hanau",
+  },
+  websiteTitle: "Henning Sieh - IT Beratung",
+  occupationalCategory: "IT Consulting",
+}
+
 export const experiences = [
   {
     year: "2023 - 2024",
@@ -166,16 +196,6 @@ const getDescription = () => {
 }
 export const description = getDescription()
 
-export const basicData = {
-  name: "Henning Sieh",
-  jobTitle: "Senior IT Consultant & Full-Stack Developer",
-  url: "https://henningsieh.de",
-  telephone: "+49 170 2786754",
-  email: "kontakt@henningsieh.de",
-  websiteTitle: "Henning Sieh - IT Beratung",
-  occupationalCategory: "IT Consulting",
-}
-
 export const jsonLd = [
   {
     "@context": "https://schema.org",
@@ -190,7 +210,11 @@ export const jsonLd = [
     email: basicData.email,
     address: {
       "@type": "PostalAddress",
-      addressCountry: "DE",
+      streetAddress: basicData.address.street,
+      addressLocality: basicData.address.city,
+      postalCode: basicData.address.zipCode,
+      addressRegion: basicData.address.region,
+      addressCountry: basicData.address.country_code,
     },
     knowsAbout: allSkills,
     knowsLanguage: ["de", "en"],

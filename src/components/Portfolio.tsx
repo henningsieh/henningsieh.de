@@ -9,6 +9,7 @@ import { ChevronDown, ChevronUp, Mail, Phone } from "lucide-react"
 import { useState } from "react"
 import { SkillCard } from "./SkillCard"
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card"
+import Link from "next/link"
 
 export default function Component() {
   const [showAllExperience, setShowAllExperience] = useState(false)
@@ -39,18 +40,27 @@ export default function Component() {
 
             <div className="flex w-full flex-col justify-center gap-2 sm:flex-row">
               <Button
+                asChild
                 variant="outline"
                 size="lg"
                 className="w-full border-primary bg-primary/10 font-bold hover:bg-primary/30 hover:text-foreground"
               >
-                <Phone className="mr-2 h-4 w-4" /> {basicData.telephone}
+                <Link href="tel:+491702786754">
+                  <Phone className="mr-2 h-4 w-4" /> {basicData.telephone}
+                </Link>
               </Button>
               <Button
+                asChild
                 variant="outline"
                 size="lg"
                 className="w-full border-accent bg-accent/10 font-bold hover:bg-accent/30 hover:text-foreground"
               >
-                <Mail className="mr-2 h-4 w-4" /> {basicData.email}
+                <Link
+                  className="flex items-center gap-2"
+                  href={`mailto:${basicData.email}?subject=Kontaktanfrage Website`}
+                >
+                  <Mail /> {basicData.email}
+                </Link>
               </Button>
             </div>
           </CardContent>

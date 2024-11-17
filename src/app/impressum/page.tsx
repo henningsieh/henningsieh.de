@@ -2,6 +2,7 @@
 
 // src/components/Portfolio.tsx:
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { basicData } from "@/data"
 import { Mail, Phone } from "lucide-react"
 
 export default function Component() {
@@ -21,21 +22,22 @@ export default function Component() {
               <div>
                 <h3 className="text-xl font-semibold text-accent">Kontakt</h3>
                 <p className="mt-2">
-                  Henning Sieh – IT Beratung
+                  {basicData.websiteTitle}
                   <br />
-                  Espenpfad 6<br />
-                  63477 Maintal
+                  {basicData.address.street}
+                  <br />
+                  {basicData.address.zipCode} {basicData.address.city}
                 </p>
               </div>
 
               <div className="space-y-1">
                 <div className="flex items-center gap-2">
                   <Phone className="h-4 w-4 text-accent" />
-                  <span>+49 170 2786754</span>
+                  <span>{basicData.telephone}</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Mail className="h-4 w-4 text-accent" />
-                  <span>kontakt@henningsieh.de</span>
+                  <span>{basicData.email}</span>
                 </div>
               </div>
 
@@ -44,11 +46,11 @@ export default function Component() {
                   Bankverbindung
                 </h3>
                 <p className="mt-2">
-                  Inhaber: Henning Sieh
+                  Inhaber: {basicData.bank.account.holder}
                   <br />
-                  IBAN: DE13 3701 9000 1010 2278 09
+                  IBAN: {basicData.bank.account.iban}
                   <br />
-                  BIC: BUNQDE82
+                  Bank (BIC): {basicData.bank.name} ({basicData.bank.bic})
                 </p>
               </div>
 
@@ -57,9 +59,9 @@ export default function Component() {
                   Steuerdaten
                 </h3>
                 <p className="mt-2">
-                  USt-Id: DE279588258
+                  USt-Id: {basicData.taxinfo.tax_number_UStId}
                   <br />
-                  Finanzamt Hanau
+                  {basicData.taxinfo.tax_authority_city}
                 </p>
               </div>
             </div>
