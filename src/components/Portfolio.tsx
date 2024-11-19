@@ -10,6 +10,7 @@ import { useState } from "react"
 import { SkillCard } from "./SkillCard"
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card"
 import Link from "next/link"
+import Image from "next/image"
 
 export default function Component() {
   const [showAllExperience, setShowAllExperience] = useState(false)
@@ -46,7 +47,7 @@ export default function Component() {
                 className="w-full border-primary bg-primary/10 font-bold hover:bg-primary/30 hover:text-foreground"
               >
                 <Link href="tel:+491702786754">
-                  <Phone className="mr-2 h-4 w-4" /> {basicData.telephone}
+                  <Phone className="mr-2 h-4 w-4" /> {basicData.mobile}
                 </Link>
               </Button>
               <Button
@@ -60,6 +61,52 @@ export default function Component() {
                   href={`mailto:${basicData.email}?subject=Kontaktanfrage Website`}
                 >
                   <Mail /> {basicData.email}
+                </Link>
+              </Button>
+            </div>
+
+            {/* Social Links */}
+            <div className="mt-4 flex justify-center space-x-4">
+              <Button
+                asChild
+                size="icon"
+                variant="outline"
+                className="border-accent bg-transparent hover:bg-accent/30"
+              >
+                <Link
+                  href="https://www.linkedin.com/in/henningsieh/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Image
+                    src="/LinkedIn-Logo.original.png"
+                    width={20}
+                    height={20}
+                    className="h-5 w-5"
+                    alt={""}
+                  />
+                  <span className="sr-only">LinkedIn Profile</span>
+                </Link>
+              </Button>
+              <Button
+                asChild
+                variant="outline"
+                size="icon"
+                className="bg-transparent"
+              >
+                <Link
+                  href="https://bsky.app/profile/henningsieh.de"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Image
+                    src="/Bluesky-Logo.original.svg"
+                    width={20}
+                    height={20}
+                    className="h-5 w-5"
+                    alt={""}
+                  />
+                  <span className="sr-only">BlueSky Profile</span>
                 </Link>
               </Button>
             </div>

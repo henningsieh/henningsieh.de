@@ -13,17 +13,9 @@ import {
 export const basicData = {
   name: "Henning Sieh",
   jobTitle: "Senior IT Consultant & Full-Stack Developer",
+  mobile: "+49 170 2786754",
   url: "https://henningsieh.de",
-  telephone: "+49 170 2786754",
   email: "kontakt@henningsieh.de",
-  bank: {
-    name: "BUNQ",
-    bic: "BUNQDE82",
-    account: {
-      holder: "Henning Sieh",
-      iban: "DE13 3701 9000 1010 2278 09",
-    },
-  },
   address: {
     street: "Espenpfad 6",
     zipCode: "63477",
@@ -31,12 +23,20 @@ export const basicData = {
     region: "Hessen",
     country: "Deutschland",
     country_code: "DE",
+    landlinePhoneNumber: "06181 4985597",
   },
-  taxinfo: {
+  tax_info: {
     tax_number_UStId: "DE279588258",
     tax_authority_city: "Finanzamt Hanau",
   },
-  websiteTitle: "Henning Sieh - IT Beratung",
+  bank_info: {
+    name: "BUNQ",
+    bic: "BUNQDE82",
+    account: {
+      holder: "Henning Sieh",
+      iban: "DE13 3701 9000 1010 2278 09",
+    },
+  },
   occupationalCategory: "IT Consulting",
 }
 
@@ -206,7 +206,7 @@ export const jsonLd = [
     description: description,
     image: `${basicData.url}/avatar_Henning-Sieh_315x315.jpg`,
     url: basicData.url,
-    telephone: basicData.telephone,
+    telephone: basicData.mobile,
     email: basicData.email,
     address: {
       "@type": "PostalAddress",
@@ -236,7 +236,7 @@ export const jsonLd = [
     "@type": "WebSite",
     "@id": `${basicData.url}/#about`, // Align this with your about section
     url: basicData.url,
-    name: basicData.websiteTitle,
+    name: `${basicData.name} - ${basicData.occupationalCategory}`,
     description: description,
     publisher: { "@id": `${basicData.url}/#home` }, // Refers to the person entity on #home
   },

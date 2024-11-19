@@ -15,7 +15,7 @@ export default function Home() {
 export const metadata: Metadata = {
   metadataBase: new URL(basicData.url),
   title: {
-    default: basicData.websiteTitle,
+    default: `${basicData.name} - ${basicData.occupationalCategory}`,
     template: `%s | ${basicData.name}`,
   },
   description: description,
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     url: basicData.url,
     title: basicData.jobTitle,
     description: description,
-    siteName: basicData.websiteTitle,
+    siteName: `${basicData.name} - ${basicData.occupationalCategory}`,
     images: [
       {
         url: "/avatar_Henning-Sieh_315x315.jpg",
