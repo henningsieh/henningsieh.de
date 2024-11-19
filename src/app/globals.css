@@ -32,7 +32,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 220 45% 10%;
     --border: 220 15% 85%;
-    --input: 220 15% 85%;
+    --input: 210 100% 50%;
     --ring: 210 100% 50%;
 
     /* Alerts */
@@ -70,7 +70,7 @@
     --popover: 220 45% 10%;
     --popover-foreground: 0 0% 100%;
     --border: 220 25% 20%;
-    --input: 220 25% 20%;
+    --input: 210 100% 60%;
     --ring: 210 100% 60%;
 
     /* Alerts */

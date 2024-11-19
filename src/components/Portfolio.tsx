@@ -71,7 +71,7 @@ export default function Component() {
                 asChild
                 size="icon"
                 variant="outline"
-                className="border-accent bg-transparent hover:bg-accent/30"
+                className="bg-transparent hover:bg-accent/70"
               >
                 <Link
                   href="https://www.linkedin.com/in/henningsieh/"
@@ -92,7 +92,7 @@ export default function Component() {
                 asChild
                 variant="outline"
                 size="icon"
-                className="bg-transparent"
+                className="bg-transparent hover:bg-accent/70"
               >
                 <Link
                   href="https://bsky.app/profile/henningsieh.de"
