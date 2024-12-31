@@ -7,6 +7,7 @@ import { Mail, MapPinHouse, Menu, X } from "lucide-react"
 
 import localFont from "next/font/local"
 import Link from "next/link"
+import Script from "next/script"
 
 import { ModeToggle } from "@/components/ModeToggle"
 import { ThemeProvider } from "@/components/ThemeProvider"
@@ -58,6 +59,8 @@ export default function RootLayout({
   return (
     <html lang="de" className="scroll-smooth" suppressHydrationWarning>
       <body className={`${geistSans.variable} ${geistMono.variable} scroll-smooth antialiased`}>
+        {/* Plausible Analytics Script */}
+        <Script src="https://cdn.sieh.org/js/script.js" data-domain="henningsieh.de" strategy="afterInteractive" />
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           <div className="min-h-screen scroll-smooth">
             {/* Navigation */}
