@@ -1,18 +1,16 @@
 "use client"
 
 // src/components/Portfolio.tsx:
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { basicData } from "@/data"
 import { Mail, Phone } from "lucide-react"
+
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 
 export default function Component() {
   return (
     <>
       {/* Imprint Section */}
-      <section
-        id="imprint"
-        className="flex min-h-screen items-center justify-center bg-primary/10 px-2 pb-12 pt-20"
-      >
+      <section id="imprint" className="flex min-h-screen items-center justify-center bg-primary/10 px-2 pb-12 pt-20">
         <Card className="w-[896px] shadow-lg shadow-primary/10">
           <CardHeader>
             <CardTitle className="section-title">
@@ -25,9 +23,7 @@ export default function Component() {
               <div className="space-y-2">
                 <div>
                   <h2 className="text-xl font-semibold text-accent">Kontakt</h2>
-                  <p className="text-muted-foreground">
-                    Angaben gemäß § 5 TMG / Redaktionell verantwortlich
-                  </p>
+                  <p className="text-muted-foreground">Angaben gemäß § 5 TMG / Redaktionell verantwortlich</p>
                   <p className="mt-2">
                     {basicData.name} - {basicData.occupationalCategory}
                     <br />
@@ -50,12 +46,9 @@ export default function Component() {
 
               {/*Umsatzsteuer-ID*/}
               <div>
-                <h2 className="text-xl font-semibold text-accent">
-                  Umsatzsteuer-ID
-                </h2>
+                <h2 className="text-xl font-semibold text-accent">Umsatzsteuer-ID</h2>
                 <p className="text-muted-foreground">
-                  Umsatzsteuer-Identifikationsnummer gemäß § 27 a
-                  Umsatzsteuergesetz
+                  Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz
                 </p>
                 <p className="mt-2">
                   USt-Id: {basicData.tax_info.tax_number_UStId}
@@ -66,16 +59,13 @@ export default function Component() {
 
               {/*Bankverbindung*/}
               <div>
-                <h3 className="text-xl font-semibold text-accent">
-                  Bankverbindung
-                </h3>
+                <h3 className="text-xl font-semibold text-accent">Bankverbindung</h3>
                 <p className="mt-2">
                   Inhaber: {basicData.bank_info.account.holder}
                   <br />
                   IBAN: {basicData.bank_info.account.iban}
                   <br />
-                  Bank (BIC): {basicData.bank_info.name} (
-                  {basicData.bank_info.bic})
+                  Bank (BIC): {basicData.bank_info.name} ({basicData.bank_info.bic})
                 </p>
               </div>
             </div>

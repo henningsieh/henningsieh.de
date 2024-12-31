@@ -1,13 +1,10 @@
-import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card"
+
+import { Badge } from "@/components/ui/badge"
+
 import { SkillCategory } from "@/types"
 
-export const SkillCard = ({
-  title,
-  icon: Icon,
-  color,
-  skills,
-}: SkillCategory) => {
+export const SkillCard = ({ title, icon: Icon, color, skills }: SkillCategory) => {
   const colorClasses = {
     primary: "text-primary",
     secondary: "text-secondary",
@@ -23,9 +20,7 @@ export const SkillCard = ({
   return (
     <Card className="card-hover">
       <CardHeader className="p-4">
-        <CardTitle
-          className={`flex items-center p-0 text-xl ${colorClasses[color as keyof typeof colorClasses]}`}
-        >
+        <CardTitle className={`flex items-center p-0 text-xl ${colorClasses[color as keyof typeof colorClasses]}`}>
           <Icon className="mr-2 h-5 w-5 flex-shrink-0" />
           <span className="flex-grow truncate">{title}</span>
         </CardTitle>

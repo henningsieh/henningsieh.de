@@ -1,14 +1,7 @@
 // src/data/index.ts:
+import { Code, Database, FileText, GitBranch, Server, Users } from "lucide-react"
 
-import { SkillCategory } from "@/types"
-import {
-  Code,
-  Database,
-  FileText,
-  GitBranch,
-  Server,
-  Users,
-} from "lucide-react"
+import type { SkillCategory } from "@/types"
 
 export const basicData = {
   name: "Henning Sieh",
@@ -246,8 +239,7 @@ export const jsonLd = [
     "@id": "${basicData.url}/impressum",
     url: "${basicData.url}/impressum",
     name: "Impressum",
-    description:
-      "Legal disclosure in accordance with German law (Telemediengesetz §5).",
+    description: "Legal disclosure in accordance with German law (Telemediengesetz §5).",
     provider: {
       "@id": "${basicData.url}/#home",
     },
