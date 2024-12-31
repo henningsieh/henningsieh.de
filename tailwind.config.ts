@@ -1,5 +1,5 @@
+import type { Config as TailwindCSSConfig } from "tailwindcss"
 import animate from "tailwindcss-animate"
-import { type Config as TailwindCSSConfig } from "tailwindcss"
 
 export default {
   darkMode: ["class"],
