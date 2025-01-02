@@ -64,7 +64,7 @@ export default function Component() {
             <div className="mt-4 flex justify-center space-x-4">
               <Button asChild size="icon" variant="outline" className="bg-transparent hover:bg-accent/70">
                 <Link href="https://www.linkedin.com/in/henningsieh/" target="_blank" rel="noopener noreferrer">
-                  <Image src="/LinkedIn-Logo.original.png" width={20} height={20} className="h-5 w-5" alt={""} />
+                  <Image src="/LinkedIn_icon.original.svg" width={20} height={20} className="h-5 w-5" alt={""} />
                   <span className="sr-only">LinkedIn Profile</span>
                 </Link>
               </Button>
