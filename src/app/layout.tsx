@@ -59,8 +59,6 @@ export default function RootLayout({
   return (
     <html lang="de" className="scroll-smooth" suppressHydrationWarning>
       <body className={`${geistSans.variable} ${geistMono.variable} scroll-smooth antialiased`}>
-        {/* Plausible Analytics Script */}
-        <Script src="https://cdn.sieh.org/js/script.js" data-domain="henningsieh.de" strategy="afterInteractive" />
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           <div className="min-h-screen scroll-smooth">
             {/* Navigation */}
@@ -149,6 +147,30 @@ export default function RootLayout({
             </footer>
           </div>
         </ThemeProvider>
+
+        {/* Plausible Analytics Script */}
+        <Script src="https://cdn.sieh.org/js/script.js" data-domain="henningsieh.de" strategy="afterInteractive" />
+
+        {/* Matomo Analytics Script */}
+        <Script
+          id="matomo"
+          dangerouslySetInnerHTML={{
+            __html: `
+              var _paq = window._paq = window._paq || [];
+              /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+              _paq.push(['trackPageView']);
+              _paq.push(['enableLinkTracking']);
+              (function() {
+                var u="https://matomo.sieh.org/";
+                _paq.push(['setTrackerUrl', u+'matomo.php']);
+                _paq.push(['setSiteId', '2']);
+                var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+                g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+              })();
+            `,
+          }}
+        />
+        {/* <!-- End Matomo Code --> */}
       </body>
     </html>
   )
