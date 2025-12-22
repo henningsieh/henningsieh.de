@@ -53,9 +53,9 @@ export const basicData = {
   },
 }
 
-// Value proposition specifically for DICOS
-export const dicosValueProposition = {
-  title: "Mehrwert für DICOS GmbH",
+// Value proposition
+export const valueProposition = {
+  title: "Value Proposition",
   points: [
     {
       icon: FileText,
@@ -96,14 +96,14 @@ export const dicosValueProposition = {
   ],
 }
 
-// Technologies aligned with DICOS stack
-export const dicosRelevantTechnologies = {
+// relevant Technologies
+export const relevantTechnologies = {
   infrastructure: [
     "Network Management",
     "IT Monitoring",
     "Infrastructure as Code",
     "Docker & Container Orchestration",
-    "Cloud Platforms (AWS, Azure)",
+    "Cloud Platforms",
   ],
   automation: [
     "Workflow Automation",
@@ -235,6 +235,7 @@ export const experiences = [
     highlights: ["Enterprise Solution Architecture", "Requirements Engineering für Großprojekte"],
   },
 ]
+
 export const skillsData: SkillCategory[] = [
   {
     title: "Requirements Engineering",
@@ -268,7 +269,7 @@ export const skillsData: SkillCategory[] = [
     color: "secondary",
     skills: [
       "Docker & Container-Orchestrierung",
-      "Cloud Deployments (AWS, Azure)",
+      "Cloud Deployments",
       "CI/CD Pipeline Design",
       "System Monitoring & Observability",
       "Network Configuration & Security",
