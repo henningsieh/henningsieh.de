@@ -1,0 +1,171 @@
+---
+
+Henning Sieh – Senior IT Consultant / Requirements Engineer / Solution Architect
+
+PERSONAL DATA
+Name: Henning Sieh
+Date of Birth: 06 June 1978
+Location: Maintal, Germany
+
+Languages:
+
+* German: native
+* English: fluent (spoken and written)
+
+PROFILE SUMMARY
+Senior IT Consultant with cross-industry experience.
+Primary focus on Requirements Engineering (IREB-oriented), Solution Architecture, and technical sub-project leadership.
+Acts as interface between management, business stakeholders, and development teams.
+Strong end-to-end understanding of IT systems including frontend, backend, middleware, cloud, and modern technologies.
+
+INDUSTRY EXPERIENCE
+
+* Public Administration
+* Telecommunications
+* Transport / Logistics / Trade
+* Automotive
+* IT Service Providers
+* Internet Agencies (Marketing / IT)
+* Financial Services / Banking
+
+CORE COMPETENCIES
+
+* Requirements Engineering and Requirements Management
+* IT Solution Design (architecture and interfaces)
+* Technical sub-project leadership
+* Business process analysis / Business Analysis
+* Quality assurance and technical documentation
+
+METHODS, TOOLS, TECHNOLOGIES
+
+* PRINCE2 Foundation
+* PMI fundamentals (“Successful Project Management”)
+* ITIL v3 Foundation
+* UML (Use Case Modeling, Refresh Trainings)
+* Domain-Driven Design, Microservice Architectures
+* Agile methodologies: Scrum, Kanban, SAFe
+* Software Development: JavaScript, TypeScript, Node.js, React, Next.js
+* Databases: SQL and NoSQL
+* Modeling: User Stories, Use Cases, Epics, BPMN, SOA
+* Enterprise systems: Reporting, Billing, DWH, CRM
+* Tools: Jira, Confluence, various PM and ticket systems
+
+PROFESSIONAL EXPERIENCE
+
+2023–2025 – SMEs and Non-Profit Organizations
+
+Hands-on Training and Further Education
+
+* Cloud deployments, CI/CD pipelines, containerization with Docker
+* Full-stack development (Node.js, TypeScript, Next.js, React)
+
+Software Development
+
+* Debugging in JavaScript, TypeScript, Node.js, and React environments
+* Development of APIs and form-based applications
+* Technical documentation
+
+Operations
+
+* Operation of email servers for multiple domains (Mailcow, open source)
+* Operation of collaboration and document management systems
+  (Nextcloud, Vaultwarden password manager, Paperless-ngx)
+* Monitoring and archiving
+
+Environment and Configuration
+
+* Docker containers, cloud servers, domains, DNS (installation and configuration)
+* Routing and security (ports, firewall, reverse proxy, SSL/TLS)
+
+2022 – LDI Rheinland-Pfalz
+Project: OZG (Online Access Act)
+Role: Requirements Engineer / Sub-Project Lead
+
+* Requirements specification and stakeholder analysis
+* Moderation and technical sub-project leadership
+* Technical documentation
+* Elicitation of user, organizational, and functional requirements
+* Preparation, execution, and evaluation of expert interviews and workshops
+
+2021 – Sabbatical
+
+Continuing education, self-study, and personal development
+
+Technology and Open Source Skill Refresh
+
+* Software development with JavaScript and TypeScript
+* Version control using Git and GitHub
+* Environments: Node.js, React, Next.js, PostgreSQL
+* CI/CD, operations, deployments (public cloud and own servers)
+* Docker container operation and orchestration
+* Operation and configuration of private Nextcloud instances
+* Operation and configuration of mail servers / MTAs using Docker
+
+2020 – ITZ-Bund
+Project: DAC6 EU Directive (Federal Central Tax Office)
+Role: Requirements Engineer / Solution Architect
+
+* Creation of requirements specification (DOORS, ITZ-Bund methodology)
+* Analysis of functional requirements, business processes, and use cases
+* UML Use Case diagrams and BPMN process specifications
+
+2019 – ING DiBa
+Project: GDPR / Cookie Consent
+Role: Domain Architect
+
+* Requirements engineering and management
+* Interface and application architecture design
+* Technical sub-project leadership in agile setup
+* Coordination of testing and QA activities
+
+2018 – IT.Niedersachsen
+Project: Service Account (OZG)
+Role: Requirements Engineer
+
+* Analysis of legal and technical frameworks
+* Multi-stakeholder requirements management
+* Solution architecture concepts and IAM design
+* Wireframes and click dummies
+
+2018 – Vorwerk Elektrowerke GmbH
+Role: Requirements Engineer
+
+* System requirements engineering
+* Change request management
+* Architecture support and system testing definitions
+
+2017 – DB Cargo AG
+Role: Business Engineer / Solution Architect
+
+* Functional application architecture
+* Stakeholder management and QA
+
+2016 – Adam Opel AG
+Role: Program Management / Business Analyst / Solution Designer
+
+* Sub-project leadership and reporting
+* Business requirements and process modeling
+
+2016 – Assentis Technologies GmbH
+Role: Project Lead / PMO
+
+* Project leadership, budgeting, and reporting
+* Regulatory implementation (MiFID II)
+
+Earlier roles include:
+
+* Deutsche Vermögensberatung AG – Requirements Engineer
+* Capgemini – Solution Architect / Requirements Engineer
+* Universum Group – ITIL Service Manager
+* TFG Transfracht – Interim Manager E-Business
+* Dell / Perot Systems – Senior Business Consultant
+* freenet AG – Project Manager / Software Architect
+* Splendid Internet – Software Developer
+
+EDUCATION
+
+* B.Sc. Technical Computer Science, University of Applied Sciences Kiel
+* Vocational Training: IT Systems Electronics Technician (Deutsche Telekom AG)
+* Abitur (High School Diploma)
+
+---
