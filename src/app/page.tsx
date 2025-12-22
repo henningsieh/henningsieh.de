@@ -3,12 +3,12 @@ import { basicData, description, jsonLd, keywords } from "@/data"
 
 import { Metadata } from "next"
 
-import PortfolioOneSheet from "@/components/Portfolio"
+import DicosPortfolio from "@/components/DicosPortfolio"
 
 export default function Home() {
   return (
     <main>
-      <PortfolioOneSheet />
+      <DicosPortfolio />
     </main>
   )
 }
