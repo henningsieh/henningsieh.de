@@ -78,7 +78,7 @@ export function Navigation() {
       {/* Mobile menu */}
       {menuOpen && (
         <div className="fixed inset-0 z-40 bg-background/95 backdrop-blur-sm md:hidden">
-          <div className="space-y-1 px-2 pb-3 pt-20 sm:px-3">
+          <div className="flex flex-col items-center space-y-4 p-6 pt-20">
             {navItems.map((item) => (
               <Link
                 key={item}
@@ -87,7 +87,7 @@ export function Navigation() {
                   setActiveHash(item)
                   setMenuOpen(false)
                 }}
-                className={`nav-link block w-full px-3 py-2 text-left text-base font-semibold transition-colors ${
+                className={`nav-link w-fit flex px-4 py-3 text-center text-lg font-semibold transition-colors ${
                   isActive(item) ? "text-primary" : "text-muted-foreground hover:text-primary"
                 }`}
               >

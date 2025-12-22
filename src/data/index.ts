@@ -151,7 +151,7 @@ export const experiences = [
     year: "2022",
     company: "LDI Rheinland-Pfalz",
     role: "Requirements Engineer / Sub-Project Lead",
-    project: "OZG (Online Access Act)",
+    project: "Onlinezugangsgesetz, OZG (Online Access Act, EU)",
     highlights: [
       "Requirements-Spezifikation und Stakeholder-Analyse",
       "Technische Teilprojektleitung",

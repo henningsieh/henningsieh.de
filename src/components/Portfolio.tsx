@@ -309,7 +309,7 @@ export default function PortfolioOneSheet() {
                         transition={{ duration: 0.5, delay: index * 0.05 }}
                         className="relative"
                       >
-                        <div className="timeline-dot z-50 absolute -left-1.5 top-[17px] -translate-x-[22.5px]" />
+                        <div className="timeline-dot z-50 absolute -left-1.5 top-[18px] -translate-x-[22.5px]" />
 
                         <div className="space-y-2">
                           <div className="pt-2 pr-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
@@ -385,59 +385,6 @@ export default function PortfolioOneSheet() {
           </motion.div>
         </div>
       </section>
-
-      {/* Footer */}
-      <footer className="py-12 px-4 bg-secondary text-secondary-foreground">
-        <div className="container max-w-6xl mx-auto">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-            <div className="text-center md:text-left">
-              <p className="font-semibold text-lg">{basicData.name}</p>
-              <p className="text-sm text-secondary-foreground/80">{basicData.jobTitle}</p>
-            </div>
-
-            <div className="flex flex-col sm:flex-row gap-4 text-sm">
-              <Link href={`mailto:${basicData.email}`} className="nav-link hover:text-accent">
-                {basicData.email}
-              </Link>
-              <Link href={`tel:${basicData.mobile}`} className="nav-link hover:text-accent">
-                {basicData.mobile}
-              </Link>
-            </div>
-
-            <div className="flex gap-4">
-              <Button asChild size="icon" variant="ghost" className="hover:bg-accent/20">
-                <Link
-                  href="https://www.linkedin.com/in/henningsieh/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="LinkedIn"
-                >
-                  <Image src="/LinkedIn_icon.original.svg" width={20} height={20} alt="LinkedIn" />
-                </Link>
-              </Button>
-              <Button asChild size="icon" variant="ghost" className="hover:bg-accent/20">
-                <Link
-                  href="https://bsky.app/profile/henningsieh.de"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Bluesky"
-                >
-                  <Image src="/Bluesky-Logo.original.svg" width={20} height={20} alt="Bluesky" />
-                </Link>
-              </Button>
-            </div>
-          </div>
-
-          <div className="mt-8 pt-8 border-t border-secondary-foreground/20 text-center text-sm text-secondary-foreground/70">
-            <p>
-              © {new Date().getFullYear()} {basicData.name}. Alle Rechte vorbehalten.
-            </p>
-            <Link href="/impressum" className="nav-link hover:text-accent inline-block mt-2">
-              Impressum
-            </Link>
-          </div>
-        </div>
-      </footer>
     </div>
   )
 }
