@@ -39,8 +39,6 @@
     /* Status colors */
     --destructive: 0 75% 55%;
     --destructive-foreground: 0 0% 100%;
-    --success: 145 65% 45%;
-    --success-foreground: 0 0% 100%;
     
     --radius: 0.5rem;
   }
@@ -81,8 +79,6 @@
     /* Status colors */
     --destructive: 0 80% 60%;
     --destructive-foreground: 0 0% 100%;
-    --success: 145 70% 50%;
-    --success-foreground: 0 0% 100%;
   }
 }
 

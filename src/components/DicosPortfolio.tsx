@@ -423,7 +423,7 @@ export default function DicosPortfolio() {
                   rel="noopener noreferrer"
                   aria-label="LinkedIn"
                 >
-                  <Image src="/LinkedIn_icon.original.svg" width={20} height={20} className="h-5 w-5" alt="LinkedIn" />
+                  <Image src="/LinkedIn_icon.original.svg" width={20} height={20} alt="LinkedIn" />
                 </Link>
               </Button>
               <Button asChild size="icon" variant="ghost" className="hover:bg-accent/20">
@@ -433,7 +433,7 @@ export default function DicosPortfolio() {
                   rel="noopener noreferrer"
                   aria-label="Bluesky"
                 >
-                  <Image src="/Bluesky-Logo.original.svg" width={20} height={20} className="h-5 w-5" alt="Bluesky" />
+                  <Image src="/Bluesky-Logo.original.svg" width={20} height={20} alt="Bluesky" />
                 </Link>
               </Button>
             </div>
