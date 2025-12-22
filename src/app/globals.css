@@ -209,6 +209,6 @@
   }
 
   .timeline-line {
-    @apply absolute left-1.5 top-0 w-0.5 h-full bg-border;
+    @apply absolute left-2 top-0 w-0.5 h-full bg-border;
   }
 }

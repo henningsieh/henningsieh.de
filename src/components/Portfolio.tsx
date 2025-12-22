@@ -309,7 +309,7 @@ export default function PortfolioOneSheet() {
                         transition={{ duration: 0.5, delay: index * 0.05 }}
                         className="relative"
                       >
-                        <div className="timeline-dot absolute left-0 top-2 -translate-x-[21px]" />
+                        <div className="timeline-dot z-50 absolute -left-1.5 top-[17px] -translate-x-[22.5px]" />
 
                         <div className="space-y-2">
                           <div className="pt-2 pr-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
