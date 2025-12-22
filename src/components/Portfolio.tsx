@@ -1,163 +1,390 @@
 "use client"
 
-// src/components/Portfolio.tsx:
-import { SkillCard } from "./SkillCard"
-import { Card, CardContent, CardHeader, CardTitle } from "./ui/card"
-
-import { basicData, experiences, skillsData } from "@/data"
-import { ChevronDown, ChevronUp, Mail, Phone } from "lucide-react"
+import { basicData, relevantTechnologies, experiences, skillsData } from "@/data"
+import { motion } from "framer-motion"
+import { ArrowRight, CheckCircle2, ExternalLink, Mail, MapPin, Phone } from "lucide-react"
 
 import Image from "next/image"
 import Link from "next/link"
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { ScrollArea } from "@/components/ui/scroll-area"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
 import { useState } from "react"
 
-export default function Component() {
+const fadeInUp = {
+  initial: { opacity: 0, y: 20 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.5 },
+}
+
+const staggerContainer = {
+  animate: {
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+}
+
+export default function PortfolioOneSheet() {
   const [showAllExperience, setShowAllExperience] = useState(false)
 
   return (
-    <>
-      {/* Hero Section */}
-      <section id="home" className="gradient-bg flex min-h-screen items-center justify-center px-2 pb-12 pt-20">
-        <Card className="w-full max-w-4xl bg-background/80 p-4 shadow-lg shadow-accent/10">
-          <CardContent className="flex flex-col items-center p-0 text-center md:p-4">
-            <Avatar className="card-hover mb-8 h-48 w-48 border-4 border-accent md:h-64 md:w-64">
-              <AvatarImage src="/avatar_Henning-Sieh_315x315.jpg" alt="Profile" className="object-cover" />
-              <AvatarFallback>HS</AvatarFallback>
-            </Avatar>
-            <h1 className="bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text pb-4 text-4xl font-bold leading-relaxed text-transparent md:text-6xl">
+    <div className="min-h-screen">
+      {/* Hero Section - Professional Introduction */}
+      <section id="home" className="gradient-bg-hero relative min-h-screen flex items-center justify-center px-4 py-20 scroll-mt-16">
+        <div className="gradient-overlay" />
+        <div className="container max-w-6xl relative z-10">
+          <motion.div initial="initial" animate="animate" variants={staggerContainer} className="text-center">
+            {/* Avatar */}
+            <motion.div variants={fadeInUp} className="flex justify-center mb-8">
+              <Avatar className="w-40 h-40 md:w-48 md:h-48 border-4 border-primary shadow-2xl">
+                <AvatarImage src="/avatar_Henning-Sieh_315x315.jpg" alt={basicData.name} className="object-cover" />
+                <AvatarFallback>HS</AvatarFallback>
+              </Avatar>
+            </motion.div>
+
+            {/* Name & Title */}
+            <motion.h1 variants={fadeInUp} className="text-4xl md:text-6xl font-bold text-foreground mb-4">
               {basicData.name}
-            </h1>
-            <p className="mb-8 text-sm font-bold text-foreground sm:text-2xl md:text-3xl">{basicData.jobTitle}</p>
+            </motion.h1>
 
-            <div className="flex w-full flex-col justify-center gap-2 sm:flex-row">
-              <Button
-                asChild
-                variant="outline"
-                size="lg"
-                className="w-full border-primary bg-primary/10 font-bold hover:bg-primary/30 hover:text-foreground"
-              >
-                <Link href="tel:+491702786754">
-                  <Phone className="mr-2 h-4 w-4" /> {basicData.mobile}
-                </Link>
-              </Button>
-              <Button
-                asChild
-                variant="outline"
-                size="lg"
-                className="w-full border-accent bg-accent/10 font-bold hover:bg-accent/30 hover:text-foreground"
-              >
-                <Link
-                  className="flex items-center gap-2"
-                  href={`mailto:${basicData.email}?subject=Kontaktanfrage Website`}
-                >
-                  <Mail /> {basicData.email}
-                </Link>
-              </Button>
-            </div>
+            <motion.p variants={fadeInUp} className="text-xl md:text-2xl text-primary font-semibold mb-2">
+              {basicData.jobTitle}
+            </motion.p>
 
-            {/* Social Links */}
-            <div className="mt-4 flex justify-center space-x-4">
-              <Button asChild size="icon" variant="outline" className="bg-transparent hover:bg-accent/70">
-                <Link href="https://www.linkedin.com/in/henningsieh/" target="_blank" rel="noopener noreferrer">
-                  <Image src="/LinkedIn_icon.original.svg" width={20} height={20} className="h-5 w-5" alt={""} />
-                  <span className="sr-only">LinkedIn Profile</span>
+            <motion.p variants={fadeInUp} className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
+              {basicData.tagline}
+            </motion.p>
+
+            {/* Contact Buttons */}
+            <motion.div
+              variants={fadeInUp}
+              className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8"
+            >
+              <Button asChild size="lg" className="btn-primary min-w-[200px]">
+                <Link href={`mailto:${basicData.email}`}>
+                  <Mail className="mr-2 h-5 w-5" />
+                  Kontakt aufnehmen
                 </Link>
               </Button>
-              <Button asChild variant="outline" size="icon" className="bg-transparent hover:bg-accent/70">
-                <Link href="https://bsky.app/profile/henningsieh.de" target="_blank" rel="noopener noreferrer">
-                  <Image src="/Bluesky-Logo.original.svg" width={20} height={20} className="h-5 w-5" alt={""} />
-                  <span className="sr-only">BlueSky Profile</span>
+              <Button asChild size="lg" variant="outline" className="btn-outline min-w-[200px]">
+                <Link href={`tel:${basicData.mobile}`}>
+                  <Phone className="mr-2 h-5 w-5" />
+                  {basicData.mobile}
                 </Link>
               </Button>
-            </div>
-          </CardContent>
-        </Card>
+            </motion.div>
+
+            {/* Location */}
+            <motion.div variants={fadeInUp} className="flex items-center justify-center gap-2 text-muted-foreground">
+              <MapPin className="h-4 w-4" />
+              <span>{basicData.location}</span>
+            </motion.div>
+          </motion.div>
+        </div>
       </section>
 
       {/* About Section */}
-      <section id="about" className="flex min-h-screen items-center justify-center bg-secondary/5 px-2 pb-12 pt-20">
-        <Card className="mx-auto max-w-4xl shadow-lg shadow-primary/10">
-          <CardHeader>
-            <CardTitle className="section-title">Über mich</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p className="text-lg leading-relaxed text-foreground">
-              Als Senior IT Consultant und Full-Stack Entwickler bringe ich tiefgreifendes technisches Know-how und 20
-              Jahre praktische Erfahrung in der Softwarearchitektur und -entwicklung mit.
-              <br />
-              <br />
-              Mein Fokus liegt auf der Implementierung moderner Webtechnologien und der Entwicklung skalierbarer,
-              effizienter Lösungen. Mit meinem Hintergrund in Requirements Engineering und Softwarearchitektur kann ich
-              komplexe Projekte von der Konzeption bis zur Umsetzung erfolgreich begleiten und dabei stets die Balance
-              zwischen technischer Exzellenz und geschäftlichen Anforderungen wahren.
+      <section id="about" className="py-20 px-4 bg-background scroll-mt-16">
+        <div className="container max-w-6xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-center mb-12"
+          >
+            <h2 className="section-title">Über mich</h2>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="prose prose-lg dark:prose-invert max-w-none"
+          >
+            <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+              Als Senior IT Consultant und Solution Architect bringe ich über 20 Jahre branchenübergreifende Erfahrung 
+              in der Konzeption und Umsetzung komplexer IT-Infrastrukturlösungen mit. Mein Schwerpunkt liegt auf 
+              Requirements Engineering, Systemintegration und der Automatisierung von Enterprise-Prozessen.
             </p>
-          </CardContent>
-        </Card>
+            <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+              Ich agiere als Schnittstelle zwischen Management, Business-Stakeholdern und Entwicklungsteams. 
+              Dabei kombiniere ich fundiertes technisches Know-how in API-Management, Middleware-Integration und 
+              Cloud-Technologien mit meiner Fähigkeit, Kundenanforderungen präzise zu analysieren und in 
+              maßgeschneiderte Lösungskonzepte zu übersetzen.
+            </p>
+            <p className="text-lg text-muted-foreground leading-relaxed">
+              Mit Erfahrung aus Projekten bei Netzbetreibern, Finanzdienstleistern, der öffentlichen Verwaltung 
+              und der Industrie verstehe ich die spezifischen Herausforderungen unterschiedlicher Branchen. 
+              Mein Ziel ist es, komplexe IT-Projekte von der ersten Idee bis zur erfolgreichen Umsetzung zu begleiten 
+              und dabei stets die Balance zwischen technischer Exzellenz und geschäftlichen Anforderungen zu wahren.
+            </p>
+          </motion.div>
+        </div>
       </section>
 
       {/* Skills Section */}
-      <section id="skills" className="flex min-h-screen items-center justify-center bg-primary/10 px-2 pb-12 pt-20">
-        <Card className="mx-auto max-w-4xl shadow-lg shadow-primary/10">
-          <CardHeader>
-            <CardTitle className="section-title">Fähigkeiten</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-              {skillsData.map((category) => (
-                <SkillCard key={category.title} {...category} />
-              ))}
-            </div>
-          </CardContent>
-        </Card>
+      <section id="skills" className="gradient-bg-section py-20 px-4 scroll-mt-16">
+        <div className="container max-w-6xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-center mb-12"
+          >
+            <h2 className="section-title">Kernkompetenzen</h2>
+            <p className="section-subtitle mx-auto">
+              Fundierte Expertise an der Schnittstelle zwischen Business und Technologie
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {skillsData.map((category, index) => {
+              const Icon = category.icon
+              return (
+                <motion.div
+                  key={category.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                >
+                  <Card className="professional-card h-full">
+                    <CardHeader>
+                      <div className="flex items-center gap-3 mb-4">
+                        <div className="p-2 rounded-lg bg-accent/10">
+                          <Icon className="h-5 w-5 text-accent" />
+                        </div>
+                        <CardTitle className="text-xl">{category.title}</CardTitle>
+                      </div>
+                    </CardHeader>
+                    <CardContent>
+                      <ul className="space-y-2">
+                        {category.skills.map((skill) => (
+                          <li key={skill} className="flex items-start gap-2">
+                            <CheckCircle2 className="h-4 w-4 text-primary mt-1 flex-shrink-0" />
+                            <span className="text-sm text-foreground">{skill}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              )
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Technologies Section */}
+      <section id="technologies" className="py-20 px-4 bg-background scroll-mt-16">
+        <div className="container max-w-6xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-center mb-12"
+          >
+            <h2 className="section-title">Technologie-Stack</h2>
+            <p className="section-subtitle mx-auto">Relevante Technologien und Methoden für moderne IT-Projekte</p>
+          </motion.div>
+
+          <Tabs defaultValue="infrastructure" className="w-full">
+            <TabsList className="h-fit grid w-full grid-cols-2 lg:grid-cols-5">
+              <TabsTrigger value="infrastructure">Infrastructure</TabsTrigger>
+              <TabsTrigger value="automation">Automation</TabsTrigger>
+              <TabsTrigger value="integration">Integration</TabsTrigger>
+              <TabsTrigger value="development">Development</TabsTrigger>
+              <TabsTrigger value="methodologies">Methodologies</TabsTrigger>
+            </TabsList>
+
+            <TabsContent value="infrastructure">
+              <Card className="professional-card">
+                <CardContent className="pt-6">
+                  <div className="flex flex-wrap gap-2">
+                    {relevantTechnologies.infrastructure.map((tech) => (
+                      <Badge key={tech} className="tech-badge text-sm py-2 px-4">
+                        {tech}
+                      </Badge>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            </TabsContent>
+
+            <TabsContent value="automation">
+              <Card className="professional-card">
+                <CardContent className="pt-6">
+                  <div className="flex flex-wrap gap-2">
+                    {relevantTechnologies.automation.map((tech) => (
+                      <Badge key={tech} className="tech-badge text-sm py-2 px-4">
+                        {tech}
+                      </Badge>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            </TabsContent>
+
+            <TabsContent value="integration">
+              <Card className="professional-card">
+                <CardContent className="pt-6">
+                  <div className="flex flex-wrap gap-2">
+                    {relevantTechnologies.integration.map((tech) => (
+                      <Badge key={tech} className="tech-badge text-sm py-2 px-4">
+                        {tech}
+                      </Badge>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            </TabsContent>
+
+            <TabsContent value="development">
+              <Card className="professional-card">
+                <CardContent className="pt-6">
+                  <div className="flex flex-wrap gap-2">
+                    {relevantTechnologies.development.map((tech) => (
+                      <Badge key={tech} className="tech-badge text-sm py-2 px-4">
+                        {tech}
+                      </Badge>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            </TabsContent>
+
+            <TabsContent value="methodologies">
+              <Card className="professional-card">
+                <CardContent className="pt-6">
+                  <div className="flex flex-wrap gap-2">
+                    {relevantTechnologies.methodologies.map((tech) => (
+                      <Badge key={tech} className="tech-badge text-sm py-2 px-4">
+                        {tech}
+                      </Badge>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            </TabsContent>
+          </Tabs>
+        </div>
       </section>
 
       {/* Experience Section */}
-      <section
-        id="experience"
-        className="flex min-h-screen items-center justify-center bg-secondary/5 px-2 pb-12 pt-20"
-      >
-        <Card className="w-[896px] shadow-lg shadow-primary/10">
-          <CardHeader>
-            <CardTitle className="section-title">Berufserfahrung</CardTitle>
-          </CardHeader>
-          <div className="rounded-lg border border-border bg-background/50 p-6 backdrop-blur-sm">
-            <ScrollArea className="h-[600px] pr-4">
-              <div className="pl-48space-y-8 w-full">
-                {experiences.slice(0, showAllExperience ? experiences.length : 5).map((exp, index) => (
-                  <div key={index} className="relative border-l-2 border-accent pb-8 pl-8 last:border-l-0">
-                    <div className="absolute left-0 top-0 h-4 w-4 -translate-x-[9px] rounded-full bg-accent" />
-                    <h3 className="text-xl font-semibold text-accent">{exp.company}</h3>
-                    <p className="mb-2 text-sm text-muted-foreground">{exp.year}</p>
-                    <p className="text-foreground">{exp.role}</p>
+      <section id="experience" className="gradient-bg-section py-20 px-4 scroll-mt-16">
+        <div className="container max-w-6xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-center mb-12"
+          >
+            <h2 className="section-title">Berufserfahrung</h2>
+            <p className="section-subtitle mx-auto">20+ Jahre Erfahrung in anspruchsvollen IT-Projekten</p>
+          </motion.div>
+
+          <Card className="professional-card">
+            <CardContent className="p-6">
+              <ScrollArea className="h-[600px] pr-4">
+                <div className={`relative ${showAllExperience ? 'bg-muted/20 rounded-lg p-4 -m-4' : ''}`}>
+                  <div className="timeline-line" />
+                  <div className="space-y-8 pl-8">
+                    {experiences.slice(0, showAllExperience ? experiences.length : 6).map((exp, index) => (
+                      <motion.div
+                        key={index}
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.5, delay: index * 0.05 }}
+                        className="relative"
+                      >
+                        <div className="timeline-dot z-50 absolute -left-1.5 top-[18px] -translate-x-[22.5px]" />
+
+                        <div className="space-y-2">
+                          <div className="pt-2 pr-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+                            <h3 className="text-xl font-semibold text-foreground">{exp.company}</h3>
+                            <Badge className="w-fit text-xs bg-primary/20 border-primary hover:text-primary-foreground text-primary px-3 py-2">
+                              {exp.year}
+                            </Badge>
+                          </div>
+
+                          <p className="text-primary font-medium">{exp.role}</p>
+
+                          {exp.project && (
+                            <p className="text-sm text-muted-foreground italic">Projekt: {exp.project}</p>
+                          )}
+
+                          {exp.highlights && (
+                            <ul className="mt-3 space-y-1.5 text-sm text-muted-foreground">
+                              {exp.highlights.map((highlight, idx) => (
+                                <li key={idx} className="flex items-start gap-2">
+                                  <ArrowRight className="h-4 w-4 text-accent mt-0.5 flex-shrink-0" />
+                                  <span>{highlight}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          )}
+                        </div>
+                      </motion.div>
+                    ))}
                   </div>
-                ))}
-              </div>
-            </ScrollArea>
-            {experiences.length > 5 && (
-              <Button
-                variant="outline"
-                onClick={() => setShowAllExperience(!showAllExperience)}
-                className="nav-link mt-8"
-              >
-                {showAllExperience ? (
-                  <>
-                    <ChevronUp className="mr-2 h-4 w-4" /> Weniger anzeigen
-                  </>
-                ) : (
-                  <>
-                    <ChevronDown className="mr-2 h-4 w-4" /> Mehr anzeigen
-                  </>
-                )}
-              </Button>
-            )}
-          </div>
-        </Card>
+                </div>
+              </ScrollArea>
+
+              {experiences.length > 6 && (
+                <div className="mt-6 text-center">
+                  <Button variant="outline" onClick={() => setShowAllExperience(!showAllExperience)}>
+                    {showAllExperience ? "Weniger anzeigen" : "Mehr Erfahrung anzeigen"}
+                  </Button>
+                </div>
+              )}
+            </CardContent>
+          </Card>
+        </div>
       </section>
-    </>
+
+      {/* CTA Section */}
+      <section className="py-20 px-4 bg-primary/5">
+        <div className="container max-w-4xl mx-auto text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">Bereit für den nächsten Schritt?</h2>
+            <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
+              Lassen Sie uns gemeinsam besprechen, wie meine Expertise Ihr Unternehmen bei der Entwicklung und Integration
+              komplexer IT-Infrastrukturlösungen unterstützen kann.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button asChild size="lg" className="btn-primary">
+                <Link href={`mailto:${basicData.email}`}>
+                  <Mail className="mr-2 h-5 w-5" />
+                  E-Mail senden
+                </Link>
+              </Button>
+              <Button asChild size="lg" variant="outline" className="btn-outline">
+                <Link href="https://www.linkedin.com/in/henningsieh/" target="_blank">
+                  <ExternalLink className="mr-2 h-5 w-5" />
+                  LinkedIn Profil
+                </Link>
+              </Button>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+    </div>
   )
 }
