@@ -4,77 +4,80 @@
 
 @layer base {
   :root {
-    /* Light mode */
-    --background: 220 25% 97%;
-    --foreground: 220 45% 10%;
+    /* Professional Business Theme - Light Mode */
+    /* Clean, modern background with subtle warmth */
+    --background: 210 20% 98%;
+    --foreground: 215 25% 15%;
 
-    /* Refined card design */
+    /* Card with subtle elevation */
     --card: 0 0% 100%;
-    --card-foreground: 220 45% 10%;
+    --card-foreground: 215 25% 15%;
 
-    /* Vibrant primary - Electric Blue */
-    --primary: 210 100% 50%;
+    /* Primary: Professional Blue - Trust & Technology */
+    --primary: 215 85% 50%;
     --primary-foreground: 0 0% 100%;
 
-    /* Rich secondary - Neon Teal */
-    --secondary: 175 100% 38%;
+    /* Secondary: Deep Charcoal - Sophistication */
+    --secondary: 215 20% 25%;
     --secondary-foreground: 0 0% 100%;
 
-    /* Dynamic accent - Vivid Magenta */
-    --accent: 320 100% 55%;
+    /* Accent: Intelligent Cyan - Innovation & Clarity */
+    --accent: 195 85% 45%;
     --accent-foreground: 0 0% 100%;
 
-    /* Subtle muted tones */
-    --muted: 220 15% 85%;
-    --muted-foreground: 220 20% 40%;
+    /* Subtle grays for hierarchy */
+    --muted: 210 15% 90%;
+    --muted-foreground: 215 15% 45%;
 
-    /* Supporting colors */
+    /* UI Elements */
     --popover: 0 0% 100%;
-    --popover-foreground: 220 45% 10%;
-    --border: 220 15% 85%;
-    --input: 210 100% 50%;
-    --ring: 210 100% 50%;
+    --popover-foreground: 215 25% 15%;
+    --border: 210 20% 88%;
+    --input: 210 20% 88%;
+    --ring: 215 85% 50%;
 
-    /* Alerts */
-    --destructive: 0 100% 60%;
+    /* Status colors */
+    --destructive: 0 75% 55%;
     --destructive-foreground: 0 0% 100%;
+    
     --radius: 0.5rem;
   }
 
   .dark {
-    /* Dark mode - sleek and professional */
-    --background: 220 45% 10%;
-    --foreground: 0 0% 100%;
+    /* Professional Business Theme - Dark Mode */
+    /* Rich, deep background for focus and elegance */
+    --background: 220 25% 8%;
+    --foreground: 210 20% 98%;
 
-    /* Refined dark surfaces */
-    --card: 220 40% 13%;
-    --card-foreground: 0 0% 100%;
+    /* Elevated card surface */
+    --card: 220 20% 12%;
+    --card-foreground: 210 20% 98%;
 
-    /* Vibrant primary - Electric Blue */
-    --primary: 210 100% 60%;
-    --primary-foreground: 0 0% 100%;
+    /* Primary: Bright Professional Blue */
+    --primary: 215 95% 58%;
+    --primary-foreground: 220 25% 8%;
 
-    /* Rich secondary - Neon Teal */
-    --secondary: 175 100% 50%;
-    --secondary-foreground: 0 0% 100%;
+    /* Secondary: Sophisticated Gray */
+    --secondary: 215 15% 30%;
+    --secondary-foreground: 210 20% 98%;
 
-    /* Dynamic accent - Vivid Magenta */
-    --accent: 320 100% 65%;
-    --accent-foreground: 0 0% 100%;
+    /* Accent: Vibrant Cyan for highlights */
+    --accent: 195 90% 55%;
+    --accent-foreground: 220 25% 8%;
 
-    /* Subtle dark tones */
-    --muted: 220 25% 20%;
-    --muted-foreground: 220 15% 65%;
+    /* Dark mode grays */
+    --muted: 220 15% 18%;
+    --muted-foreground: 210 15% 60%;
 
-    /* Supporting colors */
-    --popover: 220 45% 10%;
-    --popover-foreground: 0 0% 100%;
-    --border: 220 25% 20%;
-    --input: 210 100% 60%;
-    --ring: 210 100% 60%;
+    /* UI Elements */
+    --popover: 220 20% 12%;
+    --popover-foreground: 210 20% 98%;
+    --border: 220 20% 20%;
+    --input: 220 20% 20%;
+    --ring: 215 95% 58%;
 
-    /* Alerts */
-    --destructive: 0 100% 65%;
+    /* Status colors */
+    --destructive: 0 80% 60%;
     --destructive-foreground: 0 0% 100%;
   }
 }
@@ -83,22 +86,129 @@
   * {
     @apply border-border;
   }
+  
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
   }
 }
 
 @layer components {
-  .gradient-bg {
-    @apply bg-gradient-to-br from-primary via-secondary to-accent opacity-90 backdrop-blur-sm;
+  /* Professional gradient backgrounds */
+  .gradient-bg-hero {
+    @apply bg-gradient-to-br from-primary/5 via-accent/5 to-primary/10;
   }
+  
+  .gradient-bg-section {
+    @apply bg-gradient-to-b from-background via-muted/30 to-background;
+  }
+
+  .gradient-overlay {
+    @apply absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-accent/10 pointer-events-none;
+  }
+
+  /* Professional card with subtle elevation */
+  .professional-card {
+    @apply bg-card border border-border rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300;
+  }
+
+  /* Smooth hover effects */
   .card-hover {
-    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/20;
+    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/10;
   }
+
+  /* Navigation and interactive elements */
   .nav-link {
-    @apply transition-colors duration-200 hover:text-primary;
+    @apply transition-colors duration-200 hover:text-primary relative;
   }
+
+  .nav-link::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300;
+  }
+
+  .nav-link:hover::after {
+    @apply w-full;
+  }
+
+  /* Professional section titles */
   .section-title {
-    @apply bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text py-1 pb-4 text-4xl font-bold leading-relaxed text-transparent md:text-5xl lg:text-7xl;
+    @apply text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4;
+    letter-spacing: -0.02em;
+  }
+
+  .section-subtitle {
+    @apply text-lg md:text-xl text-muted-foreground max-w-2xl;
+  }
+
+  /* Gradient text for emphasis */
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent;
+    background-size: 200% auto;
+    animation: gradient-shift 3s ease infinite;
+  }
+
+  @keyframes gradient-shift {
+    0%, 100% {
+      background-position: 0% center;
+    }
+    50% {
+      background-position: 100% center;
+    }
+  }
+
+  /* Professional badges and tags */
+  .tech-badge {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-sm font-medium
+           bg-primary/10 text-primary border border-primary/20
+           hover:bg-primary/20 transition-colors duration-200;
+  }
+
+  /* Subtle animations */
+  .fade-in {
+    animation: fadeIn 0.6s ease-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Professional button styles */
+  .btn-primary {
+    @apply bg-primary text-primary-foreground hover:bg-primary/90 
+           shadow-sm hover:shadow-md transition-all duration-200;
+  }
+
+  .btn-outline {
+    @apply border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground
+           transition-all duration-200;
+  }
+
+  /* Skill cards and feature boxes */
+  .feature-box {
+    @apply p-6 rounded-lg bg-card border border-border
+           hover:border-primary/50 transition-all duration-300
+           hover:shadow-lg hover:shadow-primary/5;
+  }
+
+  /* Timeline elements */
+  .timeline-dot {
+    @apply w-3 h-3 rounded-full bg-primary ring-4 ring-background;
+  }
+
+  .timeline-line {
+    @apply absolute left-1.5 top-0 w-0.5 h-full bg-border;
   }
 }
