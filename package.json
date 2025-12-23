@@ -6,7 +6,7 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start -p 3000 -H 0.0.0.0",
-    "code:lint": "next lint",
+    "code:lint": "eslint .",
     "code:format": "prettier --write \"./**/*.{js,jsx,mjs,cjs,ts,tsx,json,css,md}\""
   },
   "dependencies": {

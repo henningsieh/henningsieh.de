@@ -11,12 +11,14 @@ const navItems = ["home", "about", "skills", "technologies", "experience"]
 
 export function Navigation() {
   const [menuOpen, setMenuOpen] = useState(false)
-  const [activeHash, setActiveHash] = useState("")
+  const [activeHash, setActiveHash] = useState(() => {
+    if (typeof window !== "undefined") {
+      return window.location.hash.slice(1) || "home"
+    }
+    return "home"
+  })
 
   useEffect(() => {
-    // Set initial hash
-    setActiveHash(window.location.hash.slice(1) || "home")
-
     // Listen for hash changes
     const handleHashChange = () => {
       setActiveHash(window.location.hash.slice(1) || "home")
