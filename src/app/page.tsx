@@ -1,9 +1,8 @@
 // src/app/page.tsx:
-import { basicData, description, jsonLd, keywords } from "@/data"
-
 import { Metadata } from "next"
 
 import PortfolioOneSheet from "@/components/Portfolio"
+import { basicData, description, jsonLd, keywords } from "@/data"
 
 export default function Home() {
   return (

@@ -2,7 +2,7 @@
 
 import { Menu, X } from "lucide-react"
 import Link from "next/link"
-import { useState, useEffect } from "react"
+import { useEffect, useState } from "react"
 
 import { ModeToggle } from "@/components/ModeToggle"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
@@ -11,12 +11,14 @@ const navItems = ["home", "about", "skills", "technologies", "experience"]
 
 export function Navigation() {
   const [menuOpen, setMenuOpen] = useState(false)
-  const [activeHash, setActiveHash] = useState("")
+  const [activeHash, setActiveHash] = useState(() => {
+    if (typeof window !== "undefined") {
+      return window.location.hash.slice(1) || "home"
+    }
+    return "home"
+  })
 
   useEffect(() => {
-    // Set initial hash
-    setActiveHash(window.location.hash.slice(1) || "home")
-
     // Listen for hash changes
     const handleHashChange = () => {
       setActiveHash(window.location.hash.slice(1) || "home")
@@ -41,7 +43,7 @@ export function Navigation() {
                 <AvatarImage src="/avatar_Henning-Sieh_315x315.jpg" alt="Profile" />
                 <AvatarFallback>HS</AvatarFallback>
               </Avatar>
-              <div className="ml-2 pb-2 text-2xl font-bold leading-relaxed text-muted-foreground lg:text-4xl xl:text-5xl text-nowrap ">
+              <div className="ml-2 text-nowrap pb-2 text-2xl font-bold leading-relaxed text-muted-foreground lg:text-4xl xl:text-5xl">
                 Henning Sieh
               </div>
             </Link>
@@ -65,7 +67,7 @@ export function Navigation() {
             <div className="flex gap-2 md:hidden">
               <ModeToggle />
               <button
-                className="p-2 text-foreground hover:text-primary transition-colors duration-200"
+                className="p-2 text-foreground transition-colors duration-200 hover:text-primary"
                 onClick={() => setMenuOpen(!menuOpen)}
               >
                 {menuOpen ? <X size={20} /> : <Menu size={20} />}
@@ -87,7 +89,7 @@ export function Navigation() {
                   setActiveHash(item)
                   setMenuOpen(false)
                 }}
-                className={`nav-link w-fit flex px-4 py-3 text-center text-lg font-semibold transition-colors ${
+                className={`nav-link flex w-fit px-4 py-3 text-center text-lg font-semibold transition-colors ${
                   isActive(item) ? "text-primary" : "text-muted-foreground hover:text-primary"
                 }`}
               >

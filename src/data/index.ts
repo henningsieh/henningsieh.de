@@ -1,18 +1,5 @@
 // src/data/index.ts:
-import {
-  Boxes,
-  Cloud,
-  Code,
-  Database,
-  FileText,
-  GitBranch,
-  Network,
-  Server,
-  Settings,
-  Shield,
-  Users,
-  Workflow,
-} from "lucide-react"
+import { Boxes, Code, FileText, GitBranch, Server, Users, Workflow } from "lucide-react"
 
 import type { SkillCategory } from "@/types"
 

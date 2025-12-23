@@ -1,8 +1,7 @@
-import { Card, CardContent, CardHeader, CardTitle } from "./ui/card"
-
 import { Badge } from "@/components/ui/badge"
-
 import { SkillCategory } from "@/types"
+
+import { Card, CardContent, CardHeader, CardTitle } from "./ui/card"
 
 export const SkillCard = ({ title, icon: Icon, color, skills }: SkillCategory) => {
   const colorClasses = {

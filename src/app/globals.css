@@ -39,7 +39,6 @@
     /* Status colors */
     --destructive: 0 75% 55%;
     --destructive-foreground: 0 0% 100%;
-    
     --radius: 0.5rem;
   }
 
@@ -86,7 +85,6 @@
   * {
     @apply border-border;
   }
-  
   body {
     @apply bg-background text-foreground antialiased;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
@@ -103,18 +101,17 @@
   .gradient-bg-hero {
     @apply bg-gradient-to-br from-primary/5 via-accent/5 to-primary/10;
   }
-  
   .gradient-bg-section {
     @apply bg-gradient-to-b from-background via-muted/30 to-background;
   }
 
   .gradient-overlay {
-    @apply absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-accent/10 pointer-events-none;
+    @apply pointer-events-none absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-accent/10;
   }
 
   /* Professional card with subtle elevation */
   .professional-card {
-    @apply bg-card border border-border rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300;
+    @apply rounded-lg border border-border bg-card shadow-sm transition-shadow duration-300 hover:shadow-md;
   }
 
   /* Smooth hover effects */
@@ -124,12 +121,12 @@
 
   /* Navigation and interactive elements */
   .nav-link {
-    @apply transition-colors duration-200 hover:text-primary relative;
+    @apply relative transition-colors duration-200 hover:text-primary;
   }
 
   .nav-link::after {
-    content: '';
-    @apply absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300;
+    content: "";
+    @apply absolute bottom-0 left-0 h-0.5 w-0 bg-primary transition-all duration-300;
   }
 
   .nav-link:hover::after {
@@ -138,12 +135,12 @@
 
   /* Professional section titles */
   .section-title {
-    @apply text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4;
+    @apply mb-4 text-3xl font-bold text-foreground md:text-4xl lg:text-5xl;
     letter-spacing: -0.02em;
   }
 
   .section-subtitle {
-    @apply text-lg md:text-xl text-muted-foreground max-w-2xl;
+    @apply max-w-2xl text-lg text-muted-foreground md:text-xl;
   }
 
   /* Gradient text for emphasis */
@@ -154,7 +151,8 @@
   }
 
   @keyframes gradient-shift {
-    0%, 100% {
+    0%,
+    100% {
       background-position: 0% center;
     }
     50% {
@@ -164,9 +162,7 @@
 
   /* Professional badges and tags */
   .tech-badge {
-    @apply inline-flex items-center px-3 py-1 rounded-full text-sm font-medium
-           bg-primary/10 text-primary border border-primary/20
-           hover:bg-primary/20 transition-colors duration-200;
+    @apply inline-flex items-center rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-sm font-medium text-primary transition-colors duration-200 hover:bg-primary/20;
   }
 
   /* Subtle animations */
@@ -187,28 +183,24 @@
 
   /* Professional button styles */
   .btn-primary {
-    @apply bg-primary text-primary-foreground hover:bg-primary/90 
-           shadow-sm hover:shadow-md transition-all duration-200;
+    @apply bg-primary text-primary-foreground shadow-sm transition-all duration-200 hover:bg-primary/90 hover:shadow-md;
   }
 
   .btn-outline {
-    @apply border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground
-           transition-all duration-200;
+    @apply border-2 border-primary text-primary transition-all duration-200 hover:bg-primary hover:text-primary-foreground;
   }
 
   /* Skill cards and feature boxes */
   .feature-box {
-    @apply p-6 rounded-lg bg-card border border-border
-           hover:border-primary/50 transition-all duration-300
-           hover:shadow-lg hover:shadow-primary/5;
+    @apply rounded-lg border border-border bg-card p-6 transition-all duration-300 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/5;
   }
 
   /* Timeline elements */
   .timeline-dot {
-    @apply w-3 h-3 rounded-full bg-primary ring-4 ring-background;
+    @apply h-3 w-3 rounded-full bg-primary ring-4 ring-background;
   }
 
   .timeline-line {
-    @apply absolute left-2 top-0 w-0.5 h-full bg-border;
+    @apply absolute left-2 top-0 h-full w-0.5 bg-border;
   }
 }
