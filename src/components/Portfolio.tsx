@@ -1,9 +1,9 @@
 "use client"
 
-import { motion } from "framer-motion"
-import { ArrowRight, CheckCircle2, ExternalLink, Mail, MapPin, Phone } from "lucide-react"
+import { AnimatePresence, motion } from "framer-motion"
+import { ArrowRight, ArrowUp, CheckCircle2, ChevronDown, ExternalLink, Mail, MapPin, Phone } from "lucide-react"
 import Link from "next/link"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Badge } from "@/components/ui/badge"
@@ -29,6 +29,35 @@ const staggerContainer = {
 
 export default function PortfolioOneSheet() {
   const [showAllExperience, setShowAllExperience] = useState(false)
+  const [showBackToTop, setShowBackToTop] = useState(false)
+
+  useEffect(() => {
+    let ticking = false
+
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const scrollY = window.scrollY
+          // Hysteresis: show at 100px, hide only when back at 50px
+          setShowBackToTop((prev) => {
+            if (prev && scrollY < 50) return false
+            if (!prev && scrollY > 100) return true
+            return prev
+          })
+          ticking = false
+        })
+        ticking = true
+      }
+    }
+
+    window.addEventListener("scroll", handleScroll, { passive: true })
+    handleScroll() // Check initial scroll position
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" })
+  }
 
   return (
     <div className="min-h-screen">
@@ -87,6 +116,24 @@ export default function PortfolioOneSheet() {
             </motion.div>
           </motion.div>
         </div>
+
+        {/* Scroll Down Indicator */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1, duration: 0.5 }}
+          className="absolute bottom-8 left-1/2 z-10 -translate-x-1/2"
+        >
+          <motion.div
+            animate={{ y: [0, 8, 0] }}
+            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+            className="flex cursor-pointer flex-col items-center gap-2 text-muted-foreground transition-colors hover:text-primary"
+            onClick={() => document.getElementById("about")?.scrollIntoView({ behavior: "smooth" })}
+          >
+            <span className="text-sm font-medium">Scroll</span>
+            <ChevronDown className="h-6 w-6" />
+          </motion.div>
+        </motion.div>
       </section>
 
       {/* About Section */}
@@ -385,6 +432,15 @@ export default function PortfolioOneSheet() {
           </motion.div>
         </div>
       </section>
+
+      {/* Back to Top Button */}
+      <button
+        onClick={scrollToTop}
+        className={`fixed bottom-8 right-8 z-50 flex h-12 w-12 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-lg transition-all duration-300 ease-out hover:scale-110 hover:bg-primary/90 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 ${showBackToTop ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-4 opacity-0"}`}
+        aria-label="Back to top"
+      >
+        <ArrowUp className="h-5 w-5" />
+      </button>
     </div>
   )
 }

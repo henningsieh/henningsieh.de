@@ -1,5 +1,5 @@
 // src/data/index.ts:
-import { Boxes, Code, FileText, GitBranch, Server, Users, Workflow } from "lucide-react"
+import { Boxes, Code, FileText, GitBranch, Layers, Monitor, Server, Users, Workflow } from "lucide-react"
 
 import type { SkillCategory } from "@/types"
 
@@ -86,11 +86,11 @@ export const valueProposition = {
 // relevant Technologies
 export const relevantTechnologies = {
   infrastructure: [
+    "Cloud Platforms: Hetzner Cloud, Vercel Infrastructure and CDN",
+    "Docker & Container Orchestration",
+    "S3 / MinIO Object Storage",
     "Network Management",
     "IT Monitoring",
-    "Infrastructure as Code",
-    "Docker & Container Orchestration",
-    "Cloud Platforms",
   ],
   automation: [
     "Workflow Automation",
@@ -108,13 +108,21 @@ export const relevantTechnologies = {
   ],
   development: [
     "TypeScript/JavaScript",
+    "React & Next.js (App Router, Server-side Rendering (SSR))",
     "Node.js & Express",
-    "React & Next.js",
+    "Better Auth, Auth.js (previously NextAuth.js)",
+    "WebSocket (socket.io)",
+    "Drizzle ORM & Prisma",
+    "Type-safe APIs: tRPC, oRPC",
+    "TanStack Query",
+    "Zod Schema Validation",
     "SQL & NoSQL Databases",
     "Git & Version Control",
   ],
   methodologies: [
     "Requirements Engineering (IREB)",
+    "Playwright E2E & Vitest Unit Testing",
+    "Turborepo Monorepo Architecture",
     "Solution Architecture",
     "UML & BPMN Modeling",
     "Agile/Scrum/SAFe",
@@ -300,6 +308,32 @@ export const skillsData: SkillCategory[] = [
       "UML & BPMN",
       "DevOps Practices",
       "Test-Driven Development",
+    ],
+  },
+  {
+    title: "Modern Web Stack & APIs",
+    icon: Layers,
+    color: "primary",
+    skills: [
+      "Next.js App Router & Server-First Architecture",
+      "Auth.js / Better Auth (Multi-tenant Auth)",
+      "tRPC & Type-safe API Layers",
+      "Drizzle ORM & Prisma (Type-safe Database)",
+      "WebSocket & Real-time Communication (Socket.IO)",
+      "TanStack Query / React Query",
+    ],
+  },
+  {
+    title: "UI Engineering & Performance",
+    icon: Monitor,
+    color: "accent",
+    skills: [
+      "Tailwind CSS v4 & shadcn/ui Components",
+      "Figma Design-to-Code Implementation",
+      "Performance Optimization (Lazy Loading, Caching)",
+      "Playwright E2E & Vitest Unit Testing",
+      "Turborepo Monorepo Architecture",
+      "next-intl Internationalization (i18n)",
     ],
   },
 ]
