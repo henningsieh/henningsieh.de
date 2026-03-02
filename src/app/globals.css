@@ -18,7 +18,7 @@
     --primary-foreground: 0 0% 100%;
 
     /* Secondary: Deep Charcoal - Sophistication */
-    --secondary: 215 20% 25%;
+    --secondary: 215 20% 50%;
     --secondary-foreground: 0 0% 100%;
 
     /* Accent: Intelligent Cyan - Innovation & Clarity */
@@ -57,7 +57,7 @@
     --primary-foreground: 220 25% 8%;
 
     /* Secondary: Sophisticated Gray */
-    --secondary: 215 15% 30%;
+    --secondary: 215 30% 50%;
     --secondary-foreground: 210 20% 98%;
 
     /* Accent: Vibrant Cyan for highlights */
@@ -86,7 +86,7 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground antialiased;
+    @apply bg-background font-sans text-foreground antialiased;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   }
 
@@ -107,16 +107,6 @@
 
   .gradient-overlay {
     @apply pointer-events-none absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-accent/10;
-  }
-
-  /* Professional card with subtle elevation */
-  .professional-card {
-    @apply rounded-lg border border-border bg-card shadow-sm transition-shadow duration-300 hover:shadow-md;
-  }
-
-  /* Smooth hover effects */
-  .card-hover {
-    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/10;
   }
 
   /* Navigation and interactive elements */

@@ -1,17 +1,39 @@
 "use client"
 
-import { AnimatePresence, motion } from "framer-motion"
-import { ArrowRight, ArrowUp, CheckCircle2, ChevronDown, ExternalLink, Mail, MapPin, Phone } from "lucide-react"
+import { motion } from "framer-motion"
+import {
+  ArrowRightIcon,
+  ArrowUpIcon,
+  ChevronDownIcon,
+  ExternalLinkIcon,
+  MailIcon,
+  MapPinIcon,
+  PhoneIcon,
+} from "lucide-react"
 import Link from "next/link"
 import { useEffect, useState } from "react"
 
+import { SkillCard } from "@/components/SkillCard"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent } from "@/components/ui/card"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { basicData, experiences, relevantTechnologies, skillsData } from "@/data"
+import { ValueCard } from "@/components/ValueCard"
+import {
+  aboutData,
+  basicData,
+  ctaSection,
+  experiences,
+  experienceSection,
+  performancePromises,
+  skills,
+  skillsSection,
+  technologies,
+  technologiesSection,
+  uiStrings,
+} from "@/data"
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
@@ -71,39 +93,48 @@ export default function PortfolioOneSheet() {
           <motion.div initial="initial" animate="animate" variants={staggerContainer} className="text-center">
             {/* Avatar */}
             <motion.div variants={fadeInUp} className="mb-8 flex justify-center">
-              <Avatar className="h-40 w-40 border-4 border-primary shadow-2xl md:h-48 md:w-48">
+              <Avatar className="size-36 border-4 border-primary shadow-2xl md:size-48">
                 <AvatarImage src="/avatar_Henning-Sieh_315x315.jpg" alt={basicData.name} className="object-cover" />
                 <AvatarFallback>HS</AvatarFallback>
               </Avatar>
             </motion.div>
 
             {/* Name & Title */}
-            <motion.h1 variants={fadeInUp} className="mb-4 text-4xl font-bold text-foreground md:text-6xl">
+            <motion.h1
+              variants={fadeInUp}
+              className="mb-6 text-4xl font-bold text-foreground md:mb-8 md:text-5xl lg:mb-10 lg:text-6xl"
+            >
               {basicData.name}
             </motion.h1>
 
-            <motion.p variants={fadeInUp} className="mb-2 text-xl font-semibold text-primary md:text-2xl">
+            <motion.p
+              variants={fadeInUp}
+              className="mb-4 font-mono text-xl font-semibold uppercase tracking-tighter text-primary md:text-2xl lg:text-3xl"
+            >
               {basicData.jobTitle}
             </motion.p>
 
-            <motion.p variants={fadeInUp} className="mx-auto mb-8 max-w-3xl text-lg text-muted-foreground md:text-xl">
+            <motion.p
+              variants={fadeInUp}
+              className="mx-auto text-lg font-semibold text-muted-foreground md:text-xl lg:text-2xl"
+            >
               {basicData.tagline}
             </motion.p>
 
             {/* Contact Buttons */}
             <motion.div
               variants={fadeInUp}
-              className="mb-8 flex flex-col items-center justify-center gap-4 sm:flex-row"
+              className="my-6 flex flex-col items-center justify-center gap-4 sm:flex-row md:my-8 lg:my-12"
             >
               <Button asChild size="lg" className="btn-primary min-w-[200px]">
                 <Link href={`mailto:${basicData.email}`}>
-                  <Mail className="mr-2 h-5 w-5" />
-                  Kontakt aufnehmen
+                  <MailIcon className="mr-2 h-5 w-5" />
+                  {uiStrings.contactButton}
                 </Link>
               </Button>
               <Button asChild size="lg" variant="outline" className="btn-outline min-w-[200px]">
                 <Link href={`tel:${basicData.mobile}`}>
-                  <Phone className="mr-2 h-5 w-5" />
+                  <PhoneIcon className="mr-2 h-5 w-5" />
                   {basicData.mobile}
                 </Link>
               </Button>
@@ -111,7 +142,7 @@ export default function PortfolioOneSheet() {
 
             {/* Location */}
             <motion.div variants={fadeInUp} className="flex items-center justify-center gap-2 text-muted-foreground">
-              <MapPin className="h-4 w-4" />
+              <MapPinIcon className="h-4 w-4" />
               <span>{basicData.location}</span>
             </motion.div>
           </motion.div>
@@ -130,8 +161,8 @@ export default function PortfolioOneSheet() {
             className="flex cursor-pointer flex-col items-center gap-2 text-muted-foreground transition-colors hover:text-primary"
             onClick={() => document.getElementById("about")?.scrollIntoView({ behavior: "smooth" })}
           >
-            <span className="text-sm font-medium">Scroll</span>
-            <ChevronDown className="h-6 w-6" />
+            <span className="text-sm font-medium">{uiStrings.scrollIndicator}</span>
+            <ChevronDownIcon className="h-6 w-6" />
           </motion.div>
         </motion.div>
       </section>
@@ -146,7 +177,7 @@ export default function PortfolioOneSheet() {
             transition={{ duration: 0.5 }}
             className="mb-12 text-center"
           >
-            <h2 className="section-title">Über mich</h2>
+            <h2 className="section-title">{aboutData.title}</h2>
           </motion.div>
 
           <motion.div
@@ -156,29 +187,20 @@ export default function PortfolioOneSheet() {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="prose prose-lg dark:prose-invert max-w-none"
           >
-            <p className="mb-6 text-lg leading-relaxed text-muted-foreground">
-              Als Senior IT Consultant und Solution Architect bringe ich über 20 Jahre branchenübergreifende Erfahrung
-              in der Konzeption und Umsetzung komplexer IT-Infrastrukturlösungen mit. Mein Schwerpunkt liegt auf
-              Requirements Engineering, Systemintegration und der Automatisierung von Enterprise-Prozessen.
-            </p>
-            <p className="mb-6 text-lg leading-relaxed text-muted-foreground">
-              Ich agiere als Schnittstelle zwischen Management, Business-Stakeholdern und Entwicklungsteams. Dabei
-              kombiniere ich fundiertes technisches Know-how in API-Management, Middleware-Integration und
-              Cloud-Technologien mit meiner Fähigkeit, Kundenanforderungen präzise zu analysieren und in
-              maßgeschneiderte Lösungskonzepte zu übersetzen.
-            </p>
-            <p className="text-lg leading-relaxed text-muted-foreground">
-              Mit Erfahrung aus Projekten bei Netzbetreibern, Finanzdienstleistern, der öffentlichen Verwaltung und der
-              Industrie verstehe ich die spezifischen Herausforderungen unterschiedlicher Branchen. Mein Ziel ist es,
-              komplexe IT-Projekte von der ersten Idee bis zur erfolgreichen Umsetzung zu begleiten und dabei stets die
-              Balance zwischen technischer Exzellenz und geschäftlichen Anforderungen zu wahren.
-            </p>
+            {aboutData.paragraphs.map((paragraph, index) => (
+              <p
+                key={index}
+                className={`text-lg leading-relaxed text-muted-foreground ${index < aboutData.paragraphs.length - 1 ? "mb-6" : ""}`}
+              >
+                {paragraph}
+              </p>
+            ))}
           </motion.div>
         </div>
       </section>
 
-      {/* Skills Section */}
-      <section id="skills" className="gradient-bg-section scroll-mt-16 px-4 py-20">
+      {/* Value Proposition Section */}
+      <section id="values" className="gradient-bg-section scroll-mt-16 px-4 py-20">
         <div className="container mx-auto max-w-6xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -187,46 +209,52 @@ export default function PortfolioOneSheet() {
             transition={{ duration: 0.5 }}
             className="mb-12 text-center"
           >
-            <h2 className="section-title">Kernkompetenzen</h2>
-            <p className="section-subtitle mx-auto">
-              Fundierte Expertise an der Schnittstelle zwischen Business und Technologie
-            </p>
+            <h2 className="section-title">{performancePromises.title}</h2>
+            <p className="section-subtitle mx-auto">{performancePromises.subtitle}</p>
           </motion.div>
 
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {skillsData.map((category, index) => {
-              const Icon = category.icon
-              return (
-                <motion.div
-                  key={category.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                >
-                  <Card className="professional-card h-full">
-                    <CardHeader>
-                      <div className="mb-4 flex items-center gap-3">
-                        <div className="rounded-lg bg-accent/10 p-2">
-                          <Icon className="h-5 w-5 text-accent" />
-                        </div>
-                        <CardTitle className="text-xl">{category.title}</CardTitle>
-                      </div>
-                    </CardHeader>
-                    <CardContent>
-                      <ul className="space-y-2">
-                        {category.skills.map((skill) => (
-                          <li key={skill} className="flex items-start gap-2">
-                            <CheckCircle2 className="mt-1 h-4 w-4 flex-shrink-0 text-primary" />
-                            <span className="text-sm text-foreground">{skill}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              )
-            })}
+            {performancePromises.points.map((point, index) => (
+              <motion.div
+                key={point.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+              >
+                <ValueCard {...point} />
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Skills Section */}
+      <section id="skills" className="scroll-mt-16 bg-background px-4 py-20">
+        <div className="container mx-auto max-w-6xl">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="mb-12 text-center"
+          >
+            <h2 className="section-title">{skillsSection.title}</h2>
+            <p className="section-subtitle mx-auto">{skillsSection.subtitle}</p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {skills.map((category, index) => (
+              <motion.div
+                key={category.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+              >
+                <SkillCard {...category} />
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
@@ -241,8 +269,8 @@ export default function PortfolioOneSheet() {
             transition={{ duration: 0.5 }}
             className="mb-12 text-center"
           >
-            <h2 className="section-title">Technologie-Stack</h2>
-            <p className="section-subtitle mx-auto">Relevante Technologien und Methoden für moderne IT-Projekte</p>
+            <h2 className="section-title">{technologiesSection.title}</h2>
+            <p className="section-subtitle mx-auto">{technologiesSection.subtitle}</p>
           </motion.div>
 
           <Tabs defaultValue="infrastructure" className="w-full">
@@ -255,10 +283,10 @@ export default function PortfolioOneSheet() {
             </TabsList>
 
             <TabsContent value="infrastructure">
-              <Card className="professional-card">
+              <Card className="rounded-lg border border-border bg-card shadow-sm transition-shadow duration-300 hover:shadow-md">
                 <CardContent className="pt-6">
                   <div className="flex flex-wrap gap-2">
-                    {relevantTechnologies.infrastructure.map((tech) => (
+                    {technologies.infrastructure.map((tech) => (
                       <Badge key={tech} className="tech-badge px-4 py-2 text-sm">
                         {tech}
                       </Badge>
@@ -269,10 +297,10 @@ export default function PortfolioOneSheet() {
             </TabsContent>
 
             <TabsContent value="automation">
-              <Card className="professional-card">
+              <Card className="rounded-lg border border-border bg-card shadow-sm transition-shadow duration-300 hover:shadow-md">
                 <CardContent className="pt-6">
                   <div className="flex flex-wrap gap-2">
-                    {relevantTechnologies.automation.map((tech) => (
+                    {technologies.automation.map((tech) => (
                       <Badge key={tech} className="tech-badge px-4 py-2 text-sm">
                         {tech}
                       </Badge>
@@ -283,10 +311,10 @@ export default function PortfolioOneSheet() {
             </TabsContent>
 
             <TabsContent value="integration">
-              <Card className="professional-card">
+              <Card className="rounded-lg border border-border bg-card shadow-sm transition-shadow duration-300 hover:shadow-md">
                 <CardContent className="pt-6">
                   <div className="flex flex-wrap gap-2">
-                    {relevantTechnologies.integration.map((tech) => (
+                    {technologies.integration.map((tech) => (
                       <Badge key={tech} className="tech-badge px-4 py-2 text-sm">
                         {tech}
                       </Badge>
@@ -297,10 +325,10 @@ export default function PortfolioOneSheet() {
             </TabsContent>
 
             <TabsContent value="development">
-              <Card className="professional-card">
+              <Card className="rounded-lg border border-border bg-card shadow-sm transition-shadow duration-300 hover:shadow-md">
                 <CardContent className="pt-6">
                   <div className="flex flex-wrap gap-2">
-                    {relevantTechnologies.development.map((tech) => (
+                    {technologies.development.map((tech) => (
                       <Badge key={tech} className="tech-badge px-4 py-2 text-sm">
                         {tech}
                       </Badge>
@@ -311,10 +339,10 @@ export default function PortfolioOneSheet() {
             </TabsContent>
 
             <TabsContent value="methodologies">
-              <Card className="professional-card">
+              <Card className="rounded-lg border border-border bg-card shadow-sm transition-shadow duration-300 hover:shadow-md">
                 <CardContent className="pt-6">
                   <div className="flex flex-wrap gap-2">
-                    {relevantTechnologies.methodologies.map((tech) => (
+                    {technologies.methodologies.map((tech) => (
                       <Badge key={tech} className="tech-badge px-4 py-2 text-sm">
                         {tech}
                       </Badge>
@@ -337,11 +365,11 @@ export default function PortfolioOneSheet() {
             transition={{ duration: 0.5 }}
             className="mb-12 text-center"
           >
-            <h2 className="section-title">Berufserfahrung</h2>
-            <p className="section-subtitle mx-auto">20+ Jahre Erfahrung in anspruchsvollen IT-Projekten</p>
+            <h2 className="section-title">{experienceSection.title}</h2>
+            <p className="section-subtitle mx-auto">{experienceSection.subtitle}</p>
           </motion.div>
 
-          <Card className="professional-card">
+          <Card className="rounded-lg border border-border bg-card shadow-sm transition-shadow duration-300 hover:shadow-md">
             <CardContent className="p-6">
               <ScrollArea className="h-[600px] pr-4">
                 <div className={`relative ${showAllExperience ? "-m-4 rounded-lg bg-muted/20 p-4" : ""}`}>
@@ -369,14 +397,17 @@ export default function PortfolioOneSheet() {
                           <p className="font-medium text-primary">{exp.role}</p>
 
                           {exp.project && (
-                            <p className="text-sm italic text-muted-foreground">Projekt: {exp.project}</p>
+                            <p className="text-sm italic text-muted-foreground">
+                              {uiStrings.projectLabel}
+                              {exp.project}
+                            </p>
                           )}
 
                           {exp.highlights && (
                             <ul className="mt-3 space-y-1.5 text-sm text-muted-foreground">
                               {exp.highlights.map((highlight, idx) => (
                                 <li key={idx} className="flex items-start gap-2">
-                                  <ArrowRight className="mt-0.5 h-4 w-4 flex-shrink-0 text-accent" />
+                                  <ArrowRightIcon className="mt-0.5 h-4 w-4 flex-shrink-0 text-accent" />
                                   <span>{highlight}</span>
                                 </li>
                               ))}
@@ -392,7 +423,7 @@ export default function PortfolioOneSheet() {
               {experiences.length > 6 && (
                 <div className="mt-6 text-center">
                   <Button variant="outline" onClick={() => setShowAllExperience(!showAllExperience)}>
-                    {showAllExperience ? "Weniger anzeigen" : "Mehr Erfahrung anzeigen"}
+                    {showAllExperience ? uiStrings.showLess : uiStrings.showMore}
                   </Button>
                 </div>
               )}
@@ -410,22 +441,19 @@ export default function PortfolioOneSheet() {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="mb-6 text-3xl font-bold text-foreground md:text-4xl">Bereit für den nächsten Schritt?</h2>
-            <p className="mx-auto mb-8 max-w-2xl text-lg text-muted-foreground">
-              Lassen Sie uns gemeinsam besprechen, wie meine Expertise Ihr Unternehmen bei der Entwicklung und
-              Integration komplexer IT-Infrastrukturlösungen unterstützen kann.
-            </p>
+            <h2 className="mb-6 text-3xl font-bold text-foreground md:text-4xl">{ctaSection.title}</h2>
+            <p className="mx-auto mb-8 max-w-2xl text-lg text-muted-foreground">{ctaSection.description}</p>
             <div className="flex flex-col justify-center gap-4 sm:flex-row">
               <Button asChild size="lg" className="btn-primary">
                 <Link href={`mailto:${basicData.email}`}>
-                  <Mail className="mr-2 h-5 w-5" />
-                  E-Mail senden
+                  <MailIcon className="mr-2 h-5 w-5" />
+                  {ctaSection.primaryButton}
                 </Link>
               </Button>
               <Button asChild size="lg" variant="outline" className="btn-outline">
                 <Link href="https://www.linkedin.com/in/henningsieh/" target="_blank">
-                  <ExternalLink className="mr-2 h-5 w-5" />
-                  LinkedIn Profil
+                  <ExternalLinkIcon className="mr-2 h-5 w-5" />
+                  {ctaSection.secondaryButton}
                 </Link>
               </Button>
             </div>
@@ -439,7 +467,7 @@ export default function PortfolioOneSheet() {
         className={`fixed bottom-8 right-8 z-50 flex h-12 w-12 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-lg transition-all duration-300 ease-out hover:scale-110 hover:bg-primary/90 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 ${showBackToTop ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-4 opacity-0"}`}
         aria-label="Back to top"
       >
-        <ArrowUp className="h-5 w-5" />
+        <ArrowUpIcon className="h-5 w-5" />
       </button>
     </div>
   )

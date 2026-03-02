@@ -6,14 +6,16 @@ import { useEffect, useState } from "react"
 
 import { ModeToggle } from "@/components/ModeToggle"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { basicData } from "@/data"
 
-const navItems = ["home", "about", "skills", "technologies", "experience"]
+const navItems = ["home", "about", "values", "skills", "technologies", "experiences"] as const
+type NavItem = (typeof navItems)[number]
 
 export function Navigation() {
   const [menuOpen, setMenuOpen] = useState(false)
-  const [activeHash, setActiveHash] = useState(() => {
+  const [activeHash, setActiveHash] = useState<NavItem>(() => {
     if (typeof window !== "undefined") {
-      return window.location.hash.slice(1) || "home"
+      return (window.location.hash.slice(1) as NavItem) || "home"
     }
     return "home"
   })
@@ -21,40 +23,46 @@ export function Navigation() {
   useEffect(() => {
     // Listen for hash changes
     const handleHashChange = () => {
-      setActiveHash(window.location.hash.slice(1) || "home")
+      setActiveHash((window.location.hash.slice(1) as NavItem) || "home")
     }
 
     window.addEventListener("hashchange", handleHashChange)
     return () => window.removeEventListener("hashchange", handleHashChange)
   }, [])
 
-  const isActive = (item: string) => {
+  const isActive = (item: NavItem) => {
     return activeHash === item || (item === "home" && !activeHash)
   }
+
+  const nameInitials = basicData.name
+    .split(" ")
+    .map((part) => part.charAt(0))
+    .join("")
+    .toUpperCase()
 
   return (
     <>
       {/* Navigation */}
-      <nav className="fixed left-0 right-0 top-0 z-50 border-b border-border bg-background/60 backdrop-blur-sm">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <nav className="fixed left-0 right-0 top-0 z-50 border-b border-border bg-background/60 backdrop-blur-sm transition-colors duration-200">
+        <div className="mx-auto max-w-7xl px-4 lg:px-8">
           <div className="flex h-16 items-center justify-between">
             <Link href="/" className="m-0 flex items-center p-0">
-              <Avatar className="size-7 border-2 border-accent md:size-10">
+              <Avatar className="size-7 border-2 border-accent lg:size-8 xl:size-10">
                 <AvatarImage src="/avatar_Henning-Sieh_315x315.jpg" alt="Profile" />
-                <AvatarFallback>HS</AvatarFallback>
+                <AvatarFallback>{nameInitials}</AvatarFallback>
               </Avatar>
-              <div className="ml-2 text-nowrap pb-2 text-2xl font-bold leading-relaxed text-muted-foreground lg:text-4xl xl:text-5xl">
-                Henning Sieh
+              <div className="ml-2 text-nowrap pb-1 text-3xl font-bold text-muted-foreground lg:text-4xl xl:text-5xl">
+                {basicData.name}
               </div>
             </Link>
             <div className="hidden md:flex">
-              <div className="ml-10 flex items-start space-x-4">
+              <div className="ml-6 flex items-start gap-0 md:gap-2 lg:gap-4 xl:gap-6">
                 {navItems.map((item) => (
                   <Link
                     key={item}
                     href={`/#${item}`}
                     onClick={() => setActiveHash(item)}
-                    className={`nav-link px-3 py-2 text-sm font-semibold transition-colors ${
+                    className={`nav-link px-2 py-2 text-sm font-semibold transition-colors ${
                       isActive(item) ? "text-primary" : "text-foreground hover:text-primary"
                     }`}
                   >
