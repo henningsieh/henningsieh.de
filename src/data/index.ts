@@ -98,58 +98,14 @@ export const performancePromises: PerformancePromises = {
 // Skills
 export const skills: Skill[] = [
   {
-    title: "Requirements Engineering",
-    icon: FileText,
-    color: "primary",
-    skills: [
-      "Anforderungsanalyse nach IREB",
-      "Requirements-Spezifikationen",
-      "Use-Case & User-Story Modellierung",
-      "Stakeholder-Management",
-      "Business Process Analysis (BPMN)",
-      "Funktionales Design",
-    ],
-  },
-  {
-    title: "Solution Architecture",
-    icon: Boxes,
-    color: "accent",
-    skills: [
-      "Enterprise System Design",
-      "API Architecture & Integration",
-      "Microservices & SOA",
-      "Domain-Driven Design (DDD)",
-      "Interface Design & Middleware",
-      "Cloud Architecture Patterns",
-    ],
-  },
-  {
-    title: "Software Development",
+    title: "Frontend & Full-Stack Development",
     icon: Code,
     color: "primary",
     skills: [
-      "TypeScript & JavaScript (ES6+)",
-      "Node.js & Express.js",
-      "React & Next.js",
-      "RESTful API Development",
-      "SQL & NoSQL Databases",
-      "Git Version Control",
-    ],
-  },
-  {
-    title: "IT Consulting & Project Management",
-    icon: Users,
-    color: "accent",
-    skills: [
-      "Technische Teil-Projektleitung",
-      "Kundenberatung & Workshops",
-      "Technische Dokumentation",
-      "Incident Management",
-      "Service Request Management",
-      "Problem Management",
-      "Release Management",
-      "Change Enablement",
-      "Quality Assurance",
+      "TypeScript-first development & modern JavaScript (ESNext)",
+      "React & Next.js framework (App Router, Server Components, SSR/SSG, performance optimization)",
+      "API design & implementation (REST)",
+      "Relational databases: PostgreSQL, SQLite • ORMs: Prisma, Drizzle",
     ],
   },
   {
@@ -158,9 +114,9 @@ export const skills: Skill[] = [
     color: "primary",
     skills: [
       "Next.js App Router & Server-First Architecture",
-      "Better Auth & Auth.js (previously NextAuth.js)",
+      "Authentication & Authorization Patterns (session, token, role-based access)",
       "tRPC / oRPC & Type-safe API Layers",
-      "Drizzle ORM & Prisma (Type-safe Database)",
+      "Drizzle ORM & Prisma (Type-safe Database Access)",
       "WebSocket & Real-time Communication (Socket.IO)",
       "TanStack Query / React Query",
     ],
@@ -168,28 +124,58 @@ export const skills: Skill[] = [
   {
     title: "UI Engineering & Performance",
     icon: Monitor,
-    color: "accent",
+    color: "primary",
     skills: [
-      "Tailwind CSS v4 & shadcn/ui Components",
-      "Figma Design-to-Code Implementation",
       "Performance Optimization (Lazy Loading, Caching)",
+      "Figma Design-to-Code Implementation",
       "Playwright E2E & Vitest Unit Testing",
+      "Core Web Vitals & Observability",
+      "Vercel Deployments & Edge Functions",
+      "Tailwind CSS v4 & shadcn/ui Components",
       "Turborepo Monorepo Architecture",
       "next-intl Internationalization (i18n)",
     ],
   },
   {
-    title: "Methodologies & Frameworks",
+    title: "Requirements Engineering",
+    icon: FileText,
+    color: "accent",
+    skills: [
+      "Anforderungsanalyse nach IREB",
+      "User-Story & Use-Case Modellierung",
+      "Stakeholder-Management",
+      "Requirements-Spezifikationen",
+    ],
+  },
+  {
+    title: "Solution Architecture",
+    icon: Boxes,
+    color: "accent",
+    skills: [
+      "Visual System Architecture",
+      "API Architecture & Integration",
+      "Microservices & SOA",
+      "Domain-Driven Design (DDD)",
+      "Interface Design & Middleware",
+      "Cloud Architecture Patterns",
+    ],
+  },
+  {
+    title: "IT Consulting & Project Management",
+    icon: Users,
+    color: "accent",
+    skills: [
+      "Technische Teil-Projektleitung",
+      "Kundenberatung & Agile Coaching",
+      "Technische Dokumentation",
+      "Quality Assurance",
+    ],
+  },
+  {
+    title: "Methodologies & Delivery Practices",
     icon: GitBranch,
     color: "secondary",
-    skills: [
-      "Agile / Scrum/SAFe",
-      "PRINCE2 Foundation",
-      "ITIL v3 Foundation",
-      "UML & BPMN",
-      "DevOps Practices",
-      "Test-Driven Development",
-    ],
+    skills: ["Test-Driven Development", "Agile & Scrum", "UML & BPMN", "DevOps Practices"],
   },
   {
     title: "IT Infrastructure & Operations",
@@ -225,7 +211,7 @@ export const technologies: Technologies = {
   integration: [
     "API Management & Design",
     "RESTful APIs (Senior Level, OpenAPI Specification)",
-    "GraphQL APIs (Beginner Experience)",
+    "GraphQL APIs (Basic Knowledge)",
     "Middleware Integration",
     "Enterprise Service Bus (ESB)",
     "Microservices Architecture",
@@ -234,8 +220,8 @@ export const technologies: Technologies = {
     "TypeScript/JavaScript",
     "React & Next.js (App Router, Server-side Rendering (SSR))",
     "Node.js & Express",
-    "Better Auth, Auth.js (previously NextAuth.js)",
-    "WebSocket (socket.io)",
+    "Better Auth, Auth.js (previously NextAuth.js v4)",
+    "WebSocket (socket.IO)",
     "Drizzle ORM & Prisma",
     "Type-safe APIs: tRPC, oRPC",
     "TanStack Query / Form / Table",
@@ -248,8 +234,8 @@ export const technologies: Technologies = {
     "Turborepo Monorepo Architecture",
     "Solution Architecture",
     "UML & BPMN Modeling",
-    "Agile / Scrum / SAFe",
-    "PRINCE2 & ITIL",
+    "SAFe Delivery Model",
+    "PRINCE2, ITIL",
   ],
 }
 
@@ -266,9 +252,9 @@ export const aboutData: AboutData = {
 
 // Skills Section
 export const skillsSection: SectionData = {
-  title: "Kernkompetenzen",
+  title: "Fachliche Expertise",
   subtitle:
-    "Fundierte Fachkenntnisse in der Entwicklung moderner Webanwendungen und an der Schnittstelle zwischen Anforderungen und technischer Umsetzung",
+    "Full-Stack Web-Entwicklung mit Next.js, TypeScript und Performance-Optimierung – von der Anforderung bis zum produktiven Einsatz",
 }
 
 // Technologies Section
