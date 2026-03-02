@@ -283,7 +283,7 @@ export default function PortfolioOneSheet() {
             </TabsList>
 
             <TabsContent value="infrastructure">
-              <Card className="rounded-lg border border-border bg-card shadow-sm transition-shadow duration-300 hover:shadow-md">
+              <Card className="rounded-lg border border-border bg-card shadow-xs transition-shadow duration-300 hover:shadow-md">
                 <CardContent className="pt-6">
                   <div className="flex flex-wrap gap-2">
                     {technologies.infrastructure.map((tech) => (
@@ -297,7 +297,7 @@ export default function PortfolioOneSheet() {
             </TabsContent>
 
             <TabsContent value="automation">
-              <Card className="rounded-lg border border-border bg-card shadow-sm transition-shadow duration-300 hover:shadow-md">
+              <Card className="rounded-lg border border-border bg-card shadow-xs transition-shadow duration-300 hover:shadow-md">
                 <CardContent className="pt-6">
                   <div className="flex flex-wrap gap-2">
                     {technologies.automation.map((tech) => (
@@ -311,7 +311,7 @@ export default function PortfolioOneSheet() {
             </TabsContent>
 
             <TabsContent value="integration">
-              <Card className="rounded-lg border border-border bg-card shadow-sm transition-shadow duration-300 hover:shadow-md">
+              <Card className="rounded-lg border border-border bg-card shadow-xs transition-shadow duration-300 hover:shadow-md">
                 <CardContent className="pt-6">
                   <div className="flex flex-wrap gap-2">
                     {technologies.integration.map((tech) => (
@@ -325,7 +325,7 @@ export default function PortfolioOneSheet() {
             </TabsContent>
 
             <TabsContent value="development">
-              <Card className="rounded-lg border border-border bg-card shadow-sm transition-shadow duration-300 hover:shadow-md">
+              <Card className="rounded-lg border border-border bg-card shadow-xs transition-shadow duration-300 hover:shadow-md">
                 <CardContent className="pt-6">
                   <div className="flex flex-wrap gap-2">
                     {technologies.development.map((tech) => (
@@ -339,7 +339,7 @@ export default function PortfolioOneSheet() {
             </TabsContent>
 
             <TabsContent value="methodologies">
-              <Card className="rounded-lg border border-border bg-card shadow-sm transition-shadow duration-300 hover:shadow-md">
+              <Card className="rounded-lg border border-border bg-card shadow-xs transition-shadow duration-300 hover:shadow-md">
                 <CardContent className="pt-6">
                   <div className="flex flex-wrap gap-2">
                     {technologies.methodologies.map((tech) => (
@@ -369,7 +369,7 @@ export default function PortfolioOneSheet() {
             <p className="section-subtitle mx-auto">{experienceSection.subtitle}</p>
           </motion.div>
 
-          <Card className="rounded-lg border border-border bg-card shadow-sm transition-shadow duration-300 hover:shadow-md">
+          <Card className="rounded-lg border border-border bg-card shadow-xs transition-shadow duration-300 hover:shadow-md">
             <CardContent className="p-6">
               <ScrollArea className="h-[600px] pr-4">
                 <div className={`relative ${showAllExperience ? "-m-4 rounded-lg bg-muted/20 p-4" : ""}`}>
@@ -407,7 +407,7 @@ export default function PortfolioOneSheet() {
                             <ul className="mt-3 space-y-1.5 text-sm text-muted-foreground">
                               {exp.highlights.map((highlight, idx) => (
                                 <li key={idx} className="flex items-start gap-2">
-                                  <ArrowRightIcon className="mt-0.5 h-4 w-4 flex-shrink-0 text-accent" />
+                                  <ArrowRightIcon className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
                                   <span>{highlight}</span>
                                 </li>
                               ))}
@@ -464,7 +464,7 @@ export default function PortfolioOneSheet() {
       {/* Back to Top Button */}
       <button
         onClick={scrollToTop}
-        className={`fixed bottom-8 right-8 z-50 flex h-12 w-12 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-lg transition-all duration-300 ease-out hover:scale-110 hover:bg-primary/90 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 ${showBackToTop ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-4 opacity-0"}`}
+        className={`fixed bottom-8 right-8 z-50 flex h-12 w-12 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-lg transition-all duration-300 ease-out hover:scale-110 hover:bg-primary/90 hover:shadow-xl focus:outline-hidden focus:ring-2 focus:ring-primary focus:ring-offset-2 ${showBackToTop ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-4 opacity-0"}`}
         aria-label="Back to top"
       >
         <ArrowUpIcon className="h-5 w-5" />

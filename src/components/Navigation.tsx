@@ -35,7 +35,7 @@ export function Navigation() {
   return (
     <>
       {/* Navigation */}
-      <nav className="fixed left-0 right-0 top-0 z-50 border-b border-border bg-background/60 backdrop-blur-sm transition-colors duration-200">
+      <nav className="fixed left-0 right-0 top-0 z-50 border-b border-border bg-background/60 backdrop-blur-xs transition-colors duration-200">
         <div className="mx-auto max-w-7xl px-4 lg:px-8">
           <div className="flex h-16 items-center justify-between">
             <Link href="/" className="m-0 flex items-center p-0">
@@ -78,7 +78,7 @@ export function Navigation() {
 
       {/* Mobile menu */}
       {menuOpen && (
-        <div className="fixed inset-0 z-40 bg-background/95 backdrop-blur-sm md:hidden">
+        <div className="fixed inset-0 z-40 bg-background/95 backdrop-blur-xs md:hidden">
           <div className="flex flex-col items-center space-y-4 p-6 pt-20">
             {navItems.map((item) => (
               <Link

@@ -23,7 +23,7 @@ export const SkillCard = ({ title, icon: Icon, color, skills }: Skill) => {
   }
 
   return (
-    <Card className="h-full rounded-lg border border-border bg-card/50 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
+    <Card className="h-full rounded-lg border border-border bg-card/50 shadow-xs transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
       <CardHeader className="flex flex-row items-center gap-4 space-y-0 pb-4">
         <div
           className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-lg ${iconBgClasses[color as keyof typeof iconBgClasses]}`}

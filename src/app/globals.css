@@ -1,6 +1,146 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+@plugin 'tailwindcss-animate';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+
+  --color-chart-1: hsl(var(--chart-1));
+  --color-chart-2: hsl(var(--chart-2));
+  --color-chart-3: hsl(var(--chart-3));
+  --color-chart-4: hsl(var(--chart-4));
+  --color-chart-5: hsl(var(--chart-5));
+
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+
+  --font-sans: var(--font-geist-sans), system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), monospace;
+}
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
+
+@utility gradient-bg-hero {
+  /* Professional gradient backgrounds */
+  @apply bg-linear-to-br from-primary/5 via-accent/5 to-primary/10;
+}
+
+@utility gradient-bg-section {
+  @apply bg-linear-to-b from-background via-muted/30 to-background;
+}
+
+@utility gradient-overlay {
+  @apply pointer-events-none absolute inset-0 bg-linear-to-br from-primary/10 via-transparent to-accent/10;
+}
+
+@utility nav-link {
+  /* Navigation and interactive elements */
+  @apply relative transition-colors duration-200 hover:text-primary;
+
+  &::after {
+    content: '';
+    @apply absolute bottom-0 left-0 h-0.5 w-0 bg-primary transition-all duration-300;
+  }
+
+  &:hover::after {
+    @apply w-full;
+  }
+}
+
+@utility section-title {
+  /* Professional section titles */
+  @apply mb-4 text-3xl font-bold text-foreground md:text-4xl lg:text-5xl;
+  letter-spacing: -0.02em;
+}
+
+@utility section-subtitle {
+  @apply max-w-2xl text-lg text-muted-foreground md:text-xl;
+}
+
+@utility gradient-text {
+  /* Gradient text for emphasis */
+  @apply bg-linear-to-r from-primary via-accent to-primary bg-clip-text text-transparent;
+  background-size: 200% auto;
+  animation: gradient-shift 3s ease infinite;
+}
+
+@utility tech-badge {
+  /* Professional badges and tags */
+  @apply inline-flex items-center rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-sm font-medium text-primary transition-colors duration-200 hover:bg-primary/20;
+}
+
+@utility fade-in {
+  /* Subtle animations */
+  animation: fadeIn 0.6s ease-out;
+}
+
+@utility btn-primary {
+  /* Professional button styles */
+  @apply bg-primary text-primary-foreground shadow-xs transition-all duration-200 hover:bg-primary/90 hover:shadow-md;
+}
+
+@utility btn-outline {
+  @apply border-2 border-primary text-primary transition-all duration-200 hover:bg-primary hover:text-primary-foreground;
+}
+
+@utility feature-box {
+  /* Skill cards and feature boxes */
+  @apply rounded-lg border border-border bg-card p-6 transition-all duration-300 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/5;
+}
+
+@utility timeline-dot {
+  /* Timeline elements */
+  @apply h-3 w-3 rounded-full bg-primary ring-4 ring-background;
+}
+
+@utility timeline-line {
+  @apply absolute left-2 top-0 h-full w-0.5 bg-border;
+}
 
 @layer base {
   :root {
@@ -97,48 +237,6 @@
 }
 
 @layer components {
-  /* Professional gradient backgrounds */
-  .gradient-bg-hero {
-    @apply bg-gradient-to-br from-primary/5 via-accent/5 to-primary/10;
-  }
-  .gradient-bg-section {
-    @apply bg-gradient-to-b from-background via-muted/30 to-background;
-  }
-
-  .gradient-overlay {
-    @apply pointer-events-none absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-accent/10;
-  }
-
-  /* Navigation and interactive elements */
-  .nav-link {
-    @apply relative transition-colors duration-200 hover:text-primary;
-  }
-
-  .nav-link::after {
-    content: "";
-    @apply absolute bottom-0 left-0 h-0.5 w-0 bg-primary transition-all duration-300;
-  }
-
-  .nav-link:hover::after {
-    @apply w-full;
-  }
-
-  /* Professional section titles */
-  .section-title {
-    @apply mb-4 text-3xl font-bold text-foreground md:text-4xl lg:text-5xl;
-    letter-spacing: -0.02em;
-  }
-
-  .section-subtitle {
-    @apply max-w-2xl text-lg text-muted-foreground md:text-xl;
-  }
-
-  /* Gradient text for emphasis */
-  .gradient-text {
-    @apply bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent;
-    background-size: 200% auto;
-    animation: gradient-shift 3s ease infinite;
-  }
 
   @keyframes gradient-shift {
     0%,
@@ -150,16 +248,6 @@
     }
   }
 
-  /* Professional badges and tags */
-  .tech-badge {
-    @apply inline-flex items-center rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-sm font-medium text-primary transition-colors duration-200 hover:bg-primary/20;
-  }
-
-  /* Subtle animations */
-  .fade-in {
-    animation: fadeIn 0.6s ease-out;
-  }
-
   @keyframes fadeIn {
     from {
       opacity: 0;
@@ -169,28 +257,5 @@
       opacity: 1;
       transform: translateY(0);
     }
-  }
-
-  /* Professional button styles */
-  .btn-primary {
-    @apply bg-primary text-primary-foreground shadow-sm transition-all duration-200 hover:bg-primary/90 hover:shadow-md;
-  }
-
-  .btn-outline {
-    @apply border-2 border-primary text-primary transition-all duration-200 hover:bg-primary hover:text-primary-foreground;
-  }
-
-  /* Skill cards and feature boxes */
-  .feature-box {
-    @apply rounded-lg border border-border bg-card p-6 transition-all duration-300 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/5;
-  }
-
-  /* Timeline elements */
-  .timeline-dot {
-    @apply h-3 w-3 rounded-full bg-primary ring-4 ring-background;
-  }
-
-  .timeline-line {
-    @apply absolute left-2 top-0 h-full w-0.5 bg-border;
   }
 }
