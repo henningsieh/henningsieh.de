@@ -2,7 +2,7 @@
 
 import { Menu, X } from "lucide-react"
 import Link from "next/link"
-import { useEffect, useState } from "react"
+import { useState, useSyncExternalStore } from "react"
 
 import { ModeToggle } from "@/components/ModeToggle"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
@@ -13,22 +13,14 @@ type NavItem = (typeof navItems)[number]
 
 export function Navigation() {
   const [menuOpen, setMenuOpen] = useState(false)
-  const [activeHash, setActiveHash] = useState<NavItem>(() => {
-    if (typeof window !== "undefined") {
-      return (window.location.hash.slice(1) as NavItem) || "home"
-    }
-    return "home"
-  })
-
-  useEffect(() => {
-    // Listen for hash changes
-    const handleHashChange = () => {
-      setActiveHash((window.location.hash.slice(1) as NavItem) || "home")
-    }
-
-    window.addEventListener("hashchange", handleHashChange)
-    return () => window.removeEventListener("hashchange", handleHashChange)
-  }, [])
+  const activeHash = useSyncExternalStore(
+    (callback) => {
+      window.addEventListener("hashchange", callback)
+      return () => window.removeEventListener("hashchange", callback)
+    },
+    () => (window.location.hash.slice(1) as NavItem) || "home",
+    () => "home" as NavItem
+  )
 
   const isActive = (item: NavItem) => {
     return activeHash === item || (item === "home" && !activeHash)
@@ -61,7 +53,6 @@ export function Navigation() {
                   <Link
                     key={item}
                     href={`/#${item}`}
-                    onClick={() => setActiveHash(item)}
                     className={`nav-link px-2 py-2 text-sm font-semibold transition-colors ${
                       isActive(item) ? "text-primary" : "text-foreground hover:text-primary"
                     }`}
@@ -93,10 +84,7 @@ export function Navigation() {
               <Link
                 key={item}
                 href={`#${item}`}
-                onClick={() => {
-                  setActiveHash(item)
-                  setMenuOpen(false)
-                }}
+                onClick={() => setMenuOpen(false)}
                 className={`nav-link flex w-fit px-4 py-3 text-center text-lg font-semibold transition-colors ${
                   isActive(item) ? "text-primary" : "text-muted-foreground hover:text-primary"
                 }`}
