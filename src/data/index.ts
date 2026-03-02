@@ -1,16 +1,27 @@
 // src/data/index.ts:
-import { Boxes, Code, FileText, GitBranch, Server, Users, Workflow } from "lucide-react"
+import { Boxes, Code, FileText, GitBranch, Layers, Monitor, Server, Users, Workflow } from "lucide-react"
 
-import type { SkillCategory } from "@/types"
+import { getKeywords, getSkills } from "@/lib/utils"
+import type {
+  AboutData,
+  CTASection,
+  Experience,
+  PerformancePromises,
+  SectionData,
+  Skill,
+  Technologies,
+  UIStrings,
+  Value,
+} from "@/types"
 
 export const basicData = {
   name: "Henning Sieh",
-  jobTitle: "Senior IT Consultant & Requirements Engineer",
-  tagline: "Solution Architect für Enterprise IT-Infrastrukturen & Integrationslösungen",
+  jobTitle: "IT Consultant | Full-Stack Developer | Requirements Engineer",
+  tagline: "Solution Architect für Software-Projekte, Solution-Designs und Web-Anwendungen.",
   mobile: "+49 170 2786754",
   url: "https://henningsieh.de",
   email: "kontakt@henningsieh.de",
-  location: "Maintal, Germany",
+  location: "Maintal (Frankfurt), Germany",
   address: {
     street: "Espenpfad 6",
     zipCode: "63477",
@@ -40,15 +51,16 @@ export const basicData = {
   },
 }
 
-// Value proposition
-export const valueProposition = {
-  title: "Value Proposition",
+// Values
+export const performancePromises: PerformancePromises = {
+  title: "Leistungsversprechen",
+  subtitle: "Was Sie von meiner Arbeit erwarten können",
   points: [
     {
       icon: FileText,
       title: "Requirements Engineering Excellence",
       description:
-        "IREB-fundierte Anforderungsanalyse für komplexe IT-Infrastrukturprojekte. Strukturierung von Kundenanforderungen und Erstellung präziser Spezifikationen.",
+        "Anforderungsanalyse nach IREB für komplexe Software-Projekte. Strukturierung von Kundenanforderungen und Erstellung präziser Spezifikationen.",
     },
     {
       icon: Boxes,
@@ -80,17 +92,114 @@ export const valueProposition = {
       description:
         "Praktische Erfahrung mit Cloud-Deployments, Docker-Containerisierung und CI/CD-Pipelines. Betrieb von Enterprise-Systemen und Monitoring.",
     },
-  ],
+  ] satisfies Value[],
 }
 
-// relevant Technologies
-export const relevantTechnologies = {
+// Skills
+export const skills: Skill[] = [
+  {
+    title: "Frontend & Full-Stack Development",
+    icon: Code,
+    color: "primary",
+    skills: [
+      "TypeScript-first development & modern JavaScript (ESNext)",
+      "React & Next.js framework (App Router, Server Components, SSR/SSG, performance optimization)",
+      "API design & implementation (REST)",
+      "Relational databases: PostgreSQL, SQLite • ORMs: Prisma, Drizzle",
+    ],
+  },
+  {
+    title: "Modern Web Stack & APIs",
+    icon: Layers,
+    color: "primary",
+    skills: [
+      "Next.js App Router & Server-First Architecture",
+      "Authentication & Authorization Patterns (session, token, role-based access)",
+      "tRPC / oRPC & Type-safe API Layers",
+      "Drizzle ORM & Prisma (Type-safe Database Access)",
+      "WebSocket & Real-time Communication (Socket.IO)",
+      "TanStack Query / React Query",
+    ],
+  },
+  {
+    title: "UI Engineering & Performance",
+    icon: Monitor,
+    color: "primary",
+    skills: [
+      "Performance Optimization (Lazy Loading, Caching)",
+      "Figma Design-to-Code Implementation",
+      "Playwright E2E & Vitest Unit Testing",
+      "Core Web Vitals & Observability",
+      "Vercel Deployments & Edge Functions",
+      "Tailwind CSS v4 & shadcn/ui Components",
+      "Turborepo Monorepo Architecture",
+      "next-intl Internationalization (i18n)",
+    ],
+  },
+  {
+    title: "Requirements Engineering",
+    icon: FileText,
+    color: "accent",
+    skills: [
+      "Anforderungsanalyse nach IREB",
+      "User-Story & Use-Case Modellierung",
+      "Stakeholder-Management",
+      "Requirements-Spezifikationen",
+    ],
+  },
+  {
+    title: "Solution Architecture",
+    icon: Boxes,
+    color: "accent",
+    skills: [
+      "Visual System Architecture",
+      "API Architecture & Integration",
+      "Microservices & SOA",
+      "Domain-Driven Design (DDD)",
+      "Interface Design & Middleware",
+      "Cloud Architecture Patterns",
+    ],
+  },
+  {
+    title: "IT Consulting & Project Management",
+    icon: Users,
+    color: "accent",
+    skills: [
+      "Technische Teil-Projektleitung",
+      "Kundenberatung & Agile Coaching",
+      "Technische Dokumentation",
+      "Quality Assurance",
+    ],
+  },
+  {
+    title: "Methodologies & Delivery Practices",
+    icon: GitBranch,
+    color: "secondary",
+    skills: ["Test-Driven Development", "Agile & Scrum", "UML & BPMN", "DevOps Practices"],
+  },
+  {
+    title: "IT Infrastructure & Operations",
+    icon: Server,
+    color: "secondary",
+    skills: [
+      "Docker & Container-Orchestrierung",
+      "Cloud Deployments",
+      "CI/CD Pipeline Design",
+      "System Monitoring & Observability",
+      "Network Configuration & Security",
+      "Linux Server Administration",
+    ],
+  },
+]
+
+// Technologies
+export const technologies: Technologies = {
   infrastructure: [
+    "Cloud Platforms: Hetzner Cloud, Vercel Infrastructure and CDN",
+    "Docker & Container Orchestration",
+    "S3 / MinIO Object Storage",
     "Network Management",
     "IT Monitoring",
-    "Infrastructure as Code",
-    "Docker & Container Orchestration",
-    "Cloud Platforms",
   ],
   automation: [
     "Workflow Automation",
@@ -101,28 +210,85 @@ export const relevantTechnologies = {
   ],
   integration: [
     "API Management & Design",
-    "REST/SOAP Services",
+    "RESTful APIs (Senior Level, OpenAPI Specification)",
+    "GraphQL APIs (Basic Knowledge)",
     "Middleware Integration",
     "Enterprise Service Bus (ESB)",
     "Microservices Architecture",
   ],
   development: [
     "TypeScript/JavaScript",
+    "React & Next.js (App Router, Server-side Rendering (SSR))",
     "Node.js & Express",
-    "React & Next.js",
+    "Better Auth, Auth.js (previously NextAuth.js v4)",
+    "WebSocket (socket.IO)",
+    "Drizzle ORM & Prisma",
+    "Type-safe APIs: tRPC, oRPC",
+    "TanStack Query / Form / Table",
     "SQL & NoSQL Databases",
     "Git & Version Control",
   ],
   methodologies: [
     "Requirements Engineering (IREB)",
+    "Playwright E2E & Vitest Unit Testing",
+    "Turborepo Monorepo Architecture",
     "Solution Architecture",
     "UML & BPMN Modeling",
-    "Agile/Scrum/SAFe",
-    "PRINCE2 & ITIL",
+    "SAFe Delivery Model",
+    "PRINCE2, ITIL",
   ],
 }
 
-export const experiences = [
+// About Section
+export const aboutData: AboutData = {
+  title: "Über mich",
+  paragraphs: [
+    "Als Senior IT Consultant und Solution Architect bringe ich über 20 Jahre branchenübergreifende Erfahrung in der Konzeption und Umsetzung komplexer IT-Infrastrukturlösungen mit. Mein Schwerpunkt liegt auf Requirements Engineering, Systemintegration und der Automatisierung von Enterprise-Prozessen.",
+    "In den vergangenen 5 Jahren habe ich umfangreiche praktische Erfahrung mit Next.js Full-Stack Development gesammelt. Dabei habe ich signifikanten Mehrwert durch den intensiven Einsatz moderner KI-Agenten geschaffen, die Entwicklung beschleunigt und die Codequalität verbessert. (fundierte Erfahrungen mit: GitHub Copilot, Anthropic Claude Code, OpenAI Codex, Google Gemini CLI)",
+    "Ich agiere als Schnittstelle zwischen Management, Business-Stakeholdern und Entwicklungsteams. Dabei kombiniere ich fundiertes technisches Know-how in API-Management, Middleware-Integration und Cloud-Technologien mit meiner Fähigkeit, Kundenanforderungen präzise zu analysieren und in maßgeschneiderte Lösungskonzepte zu übersetzen.",
+    "Mit Erfahrung aus Projekten bei Netzbetreibern, Finanzdienstleistern, der öffentlichen Verwaltung und der Industrie verstehe ich die spezifischen Herausforderungen unterschiedlicher Branchen. Mein Ziel ist es, komplexe IT-Projekte von der ersten Idee bis zur erfolgreichen Umsetzung zu begleiten und dabei stets die Balance zwischen technischer Exzellenz und geschäftlichen Anforderungen zu wahren.",
+  ],
+}
+
+// Skills Section
+export const skillsSection: SectionData = {
+  title: "Fachliche Expertise",
+  subtitle:
+    "Full-Stack Web-Entwicklung mit Next.js, TypeScript und Performance-Optimierung – von der Anforderung bis zum produktiven Einsatz",
+}
+
+// Technologies Section
+export const technologiesSection: SectionData = {
+  title: "Technologie-Stack",
+  subtitle: "Relevante Technologien und Methoden für moderne IT-Projekte",
+}
+
+// Experience Section
+export const experienceSection: SectionData = {
+  title: "Berufserfahrung",
+  subtitle: "20+ Jahre Erfahrung in diesen IT-Projekten",
+}
+
+// CTA Section
+export const ctaSection: CTASection = {
+  title: "Bereit für den nächsten Schritt?",
+  description:
+    "Lassen Sie uns gemeinsam besprechen, wie meine Expertise Ihr Unternehmen bei der Entwicklung und Integration komplexer IT-Infrastrukturlösungen unterstützen kann.",
+  primaryButton: "E-Mail senden",
+  secondaryButton: "LinkedIn Profil",
+}
+
+// UI Strings
+export const uiStrings: UIStrings = {
+  contactButton: "Kontakt aufnehmen",
+  scrollIndicator: "Scroll",
+  projectLabel: "Projekt: ",
+  showMore: "Mehr Erfahrung anzeigen",
+  showLess: "Weniger anzeigen",
+}
+
+// Experiences
+export const experiences: Experience[] = [
   {
     year: "2023 - 2025",
     company: "SMEs & Non-Profit Organizations",
@@ -223,87 +389,6 @@ export const experiences = [
   },
 ]
 
-export const skillsData: SkillCategory[] = [
-  {
-    title: "Requirements Engineering",
-    icon: FileText,
-    color: "primary",
-    skills: [
-      "IREB-fundierte Anforderungsanalyse",
-      "Requirements-Spezifikationen",
-      "Use-Case & User-Story Modellierung",
-      "Stakeholder-Management",
-      "Business Process Analysis (BPMN)",
-      "Funktionales Design",
-    ],
-  },
-  {
-    title: "Solution Architecture",
-    icon: Boxes,
-    color: "accent",
-    skills: [
-      "Enterprise System Design",
-      "API Architecture & Integration",
-      "Microservices & SOA",
-      "Domain-Driven Design (DDD)",
-      "Interface Design & Middleware",
-      "Cloud Architecture Patterns",
-    ],
-  },
-  {
-    title: "IT Infrastructure & Operations",
-    icon: Server,
-    color: "secondary",
-    skills: [
-      "Docker & Container-Orchestrierung",
-      "Cloud Deployments",
-      "CI/CD Pipeline Design",
-      "System Monitoring & Observability",
-      "Network Configuration & Security",
-      "Linux Server Administration",
-    ],
-  },
-  {
-    title: "Software Development",
-    icon: Code,
-    color: "primary",
-    skills: [
-      "TypeScript & JavaScript (ES6+)",
-      "Node.js & Express.js",
-      "React & Next.js",
-      "RESTful API Development",
-      "SQL & NoSQL Databases",
-      "Git Version Control",
-    ],
-  },
-  {
-    title: "IT Consulting & Project Leadership",
-    icon: Users,
-    color: "accent",
-    skills: [
-      "Technische Projektleitung",
-      "Kundenberatung & Workshops",
-      "Team Coordination",
-      "Change Management",
-      "Technical Documentation",
-      "Quality Assurance",
-    ],
-  },
-  {
-    title: "Methodologies & Frameworks",
-    icon: GitBranch,
-    color: "secondary",
-    skills: [
-      "Agile/Scrum/SAFe",
-      "PRINCE2 Foundation",
-      "ITIL v3 Foundation",
-      "UML & BPMN",
-      "DevOps Practices",
-      "Test-Driven Development",
-    ],
-  },
-]
-
 const commonKeywords = [
   "Senior IT Consulting",
   "Software Architecture",
@@ -317,23 +402,12 @@ const commonKeywords = [
   "German IT Consultant",
 ]
 
-const getAllSkills = () => {
-  return skillsData.reduce((acc, category) => {
-    return [...acc, ...category.skills]
-  }, [] as string[])
-}
-export const allSkills = getAllSkills()
+export const userSkills = getSkills(skills)
 
-const getKeywords = () => {
-  const roles = experiences.map((exp) => exp.role)
-  return Array.from(new Set([...commonKeywords, ...allSkills, ...roles]))
-}
-export const keywords = getKeywords()
+export const metaDataKeywords = getKeywords(experiences, commonKeywords, userSkills)
 
-const getDescription = () => {
-  return `Senior IT Consultant mit 20+ Jahren Erfahrung in Requirements Engineering, Solution Architecture und IT-Infrastruktur. Spezialisiert auf die Schnittstelle zwischen Business-Anforderungen und technischer Umsetzung. Expertise in Enterprise-Systemintegration, API Management und Automatisierung.`
-}
-export const description = getDescription()
+export const metaDataDescription =
+  "Senior IT Consultant mit 20+ Jahren Erfahrung in Requirements Engineering, Solution Architecture und IT-Infrastruktur. Spezialisiert auf die Schnittstelle zwischen Business-Anforderungen und technischer Umsetzung. Expertise in Enterprise-Systemintegration, API Management und Automatisierung."
 
 export const jsonLd = [
   {
@@ -342,7 +416,7 @@ export const jsonLd = [
     "@id": `${basicData.url}/#home`, // Refers to the section where name, email, and phone are listed
     name: basicData.name,
     jobTitle: basicData.jobTitle,
-    description: description,
+    description: metaDataDescription,
     image: `${basicData.url}/avatar_Henning-Sieh_315x315.jpg`,
     url: basicData.url,
     telephone: basicData.mobile,
@@ -355,13 +429,13 @@ export const jsonLd = [
       addressRegion: basicData.address.region,
       addressCountry: basicData.address.country_code,
     },
-    knowsAbout: allSkills,
+    knowsAbout: userSkills,
     knowsLanguage: ["de", "en"],
     hasOccupation: {
       "@type": "Occupation",
       name: basicData.jobTitle,
       occupationalCategory: basicData.occupationalCategory,
-      skills: allSkills,
+      skills: userSkills,
     },
     workExperience: experiences.map((exp) => ({
       "@type": "WorkPosition",
@@ -376,7 +450,7 @@ export const jsonLd = [
     "@id": `${basicData.url}/#about`, // Align this with your about section
     url: basicData.url,
     name: `${basicData.name} - ${basicData.occupationalCategory}`,
-    description: description,
+    description: metaDataDescription,
     publisher: { "@id": `${basicData.url}/#home` }, // Refers to the person entity on #home
   },
   {

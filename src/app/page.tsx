@@ -2,7 +2,7 @@
 import { Metadata } from "next"
 
 import PortfolioOneSheet from "@/components/Portfolio"
-import { basicData, description, jsonLd, keywords } from "@/data"
+import { basicData, jsonLd, metaDataDescription, metaDataKeywords } from "@/data"
 
 export default function Home() {
   return (
@@ -18,8 +18,8 @@ export const metadata: Metadata = {
     default: `${basicData.name} - ${basicData.occupationalCategory}`,
     template: `%s | ${basicData.name}`,
   },
-  description: description,
-  keywords: keywords,
+  description: metaDataDescription,
+  keywords: metaDataKeywords,
   authors: [{ name: basicData.name }],
   creator: basicData.name,
   publisher: basicData.name,
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     locale: "de_DE",
     url: basicData.url,
     title: basicData.jobTitle,
-    description: description,
+    description: metaDataDescription,
     siteName: `${basicData.name} - ${basicData.occupationalCategory}`,
     images: [
       {
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: basicData.jobTitle,
-    description: description,
+    description: metaDataDescription,
     images: ["/avatar_Henning-Sieh_315x315.jpg"],
   },
   alternates: {
