@@ -1,6 +1,6 @@
 "use client"
 
-import { Menu, X } from "lucide-react"
+import { MenuIcon, XIcon } from "lucide-react"
 import Link from "next/link"
 import { useState, useSyncExternalStore } from "react"
 
@@ -35,15 +35,15 @@ export function Navigation() {
   return (
     <>
       {/* Navigation */}
-      <nav className="fixed left-0 right-0 top-0 z-50 border-b border-border bg-background/60 backdrop-blur-xs transition-colors duration-200">
+      <nav className="border-border bg-background/60 fixed top-0 right-0 left-0 z-50 border-b backdrop-blur-xs transition-colors duration-200">
         <div className="mx-auto max-w-7xl px-4 lg:px-8">
           <div className="flex h-16 items-center justify-between">
             <Link href="/" className="m-0 flex items-center p-0">
-              <Avatar className="size-7 border-2 border-accent lg:size-8 xl:size-10">
+              <Avatar className="border-accent size-7 border-2 lg:size-8 xl:size-10">
                 <AvatarImage src="/avatar_Henning-Sieh_315x315.jpg" alt="Profile" />
                 <AvatarFallback>{nameInitials}</AvatarFallback>
               </Avatar>
-              <div className="ml-2 text-nowrap pb-1 text-3xl font-bold text-muted-foreground lg:text-4xl xl:text-5xl">
+              <div className="text-muted-foreground ml-2 pb-1 text-3xl font-bold text-nowrap lg:text-4xl xl:text-5xl">
                 {basicData.name}
               </div>
             </Link>
@@ -66,10 +66,10 @@ export function Navigation() {
             <div className="flex gap-2 md:hidden">
               <ModeToggle />
               <button
-                className="p-2 text-foreground transition-colors duration-200 hover:text-primary"
+                className="text-foreground hover:text-primary p-2 transition-colors duration-200"
                 onClick={() => setMenuOpen(!menuOpen)}
               >
-                {menuOpen ? <X size={20} /> : <Menu size={20} />}
+                {menuOpen ? <XIcon size={20} /> : <MenuIcon size={20} />}
               </button>
             </div>
           </div>
@@ -78,7 +78,7 @@ export function Navigation() {
 
       {/* Mobile menu */}
       {menuOpen && (
-        <div className="fixed inset-0 z-40 bg-background/95 backdrop-blur-xs md:hidden">
+        <div className="bg-background/95 fixed inset-0 z-40 backdrop-blur-xs md:hidden">
           <div className="flex flex-col items-center space-y-4 p-6 pt-20">
             {navItems.map((item) => (
               <Link

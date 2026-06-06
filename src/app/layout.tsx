@@ -1,8 +1,7 @@
 "use client"
 
 // src/app/layout.tsx:
-import { Mail, MapPinHouse } from "lucide-react"
-import localFont from "next/font/local"
+import { MailIcon, MapPinHouseIcon } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import Script from "next/script"
@@ -13,6 +12,8 @@ import { Button } from "@/components/ui/button"
 import { basicData } from "@/data"
 
 import "./globals.css"
+
+import localFont from "next/font/local"
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -40,22 +41,22 @@ export default function RootLayout({
             {children}
 
             {/* Footer */}
-            <footer className="border-t border-primary/10 bg-background px-4 py-12 text-foreground">
+            <footer className="border-primary/10 bg-background text-foreground border-t px-4 py-12">
               <div className="container mx-auto max-w-6xl">
                 <div className="grid grid-cols-1 items-center gap-8 md:grid-cols-3">
                   {/* Name and Title */}
                   <div className="text-center md:text-left">
                     <h3 className="mb-1 text-xl font-bold">{basicData.name}</h3>
-                    <p className="text-sm text-muted-foreground">{basicData.jobTitle}</p>
+                    <p className="text-muted-foreground text-sm">{basicData.jobTitle}</p>
                   </div>
 
                   {/* Contact Links */}
                   <div className="text-center">
                     <div className="flex flex-col gap-2 text-sm">
-                      <Link href={`mailto:${basicData.email}`} className="transition-colors hover:text-accent">
+                      <Link href={`mailto:${basicData.email}`} className="hover:text-accent transition-colors">
                         {basicData.email}
                       </Link>
-                      <Link href={`tel:${basicData.mobile}`} className="transition-colors hover:text-accent">
+                      <Link href={`tel:${basicData.mobile}`} className="hover:text-accent transition-colors">
                         {basicData.mobile}
                       </Link>
                     </div>
@@ -63,7 +64,7 @@ export default function RootLayout({
 
                   {/* Social Links */}
                   <div className="flex justify-center gap-4 md:justify-end">
-                    <Button asChild size="icon" variant="ghost" className="transition-colors hover:bg-accent/20">
+                    <Button asChild size="icon" variant="ghost" className="hover:bg-accent/20 transition-colors">
                       <Link
                         href="https://www.linkedin.com/in/henningsieh/"
                         target="_blank"
@@ -73,23 +74,23 @@ export default function RootLayout({
                         <Image src="/LinkedIn_icon.original.svg" width={24} height={24} alt="LinkedIn" />
                       </Link>
                     </Button>
-                    <Button asChild size="icon" variant="ghost" className="transition-colors hover:bg-accent/20">
+                    <Button asChild size="icon" variant="ghost" className="hover:bg-accent/20 transition-colors">
                       <Link
                         href="https://bsky.app/profile/henningsieh.de"
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label="Bluesky"
                       >
-                        <Image src="/Bluesky-Logo.original.svg" width={24} height={24} alt="Bluesky" />
+                        <Image src="/Bluesky-Logo.original.svg" width={24} height={24} unoptimized alt="Bluesky" />
                       </Link>
                     </Button>
                   </div>
                 </div>
 
                 {/* Bottom Section */}
-                <div className="mt-8 border-t border-primary/10 pt-8">
+                <div className="border-primary/10 mt-8 border-t pt-8">
                   <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
-                    <p className="text-sm text-muted-foreground">
+                    <p className="text-muted-foreground text-sm">
                       © {new Date().getFullYear()} {basicData.name}. Alle Rechte vorbehalten.
                     </p>
                     <div className="flex gap-6">
@@ -97,19 +98,19 @@ export default function RootLayout({
                         asChild
                         variant="link"
                         size="sm"
-                        className="h-auto p-0 font-normal text-muted-foreground hover:text-accent"
+                        className="text-muted-foreground hover:text-accent h-auto p-0 font-normal"
                       >
                         <Link href="/#home" className="flex items-center gap-1">
-                          <Mail className="h-4 w-4" /> Kontakt
+                          <MailIcon className="h-4 w-4" /> Kontakt
                         </Link>
                       </Button>
                       <Button
                         asChild
                         variant="link"
-                        className="h-auto p-0 font-normal text-muted-foreground hover:text-accent"
+                        className="text-muted-foreground hover:text-accent h-auto p-0 font-normal"
                       >
                         <Link href="/impressum" className="flex items-center gap-1">
-                          <MapPinHouse className="h-4 w-4" /> Impressum
+                          <MapPinHouseIcon className="h-4 w-4" /> Impressum
                         </Link>
                       </Button>
                     </div>

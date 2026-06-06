@@ -356,7 +356,7 @@ export default function PortfolioOneSheet() {
       </section>
 
       {/* Experience Section */}
-      <section id="experience" className="gradient-bg-section scroll-mt-16 px-4 py-20">
+      <section id="experiences" className="gradient-bg-section scroll-mt-16 px-4 py-20">
         <div className="container mx-auto max-w-6xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
