@@ -1,7 +1,7 @@
 "use client"
 
 // src/components/Portfolio.tsx:
-import { Mail, Phone } from "lucide-react"
+import { MailIcon, PhoneIcon } from "lucide-react"
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { basicData } from "@/data"
@@ -10,19 +10,19 @@ export default function Component() {
   return (
     <>
       {/* Imprint Section */}
-      <section id="imprint" className="flex min-h-screen items-center justify-center bg-primary/10 px-2 pb-12 pt-20">
-        <Card className="w-[896px] shadow-lg shadow-primary/10">
+      <section id="imprint" className="bg-primary/10 flex min-h-screen items-center justify-center px-2 pt-20 pb-12">
+        <Card className="shadow-primary/10 w-[896px] shadow-lg">
           <CardHeader>
             <CardTitle className="section-title">
               <h1>Impressum</h1>
             </CardTitle>
           </CardHeader>
           <CardContent className="pl-8">
-            <div className="space-y-6 text-foreground">
+            <div className="text-foreground space-y-6">
               {/*Kontakt*/}
               <div className="space-y-2">
                 <div>
-                  <h2 className="text-xl font-semibold text-accent">Kontakt</h2>
+                  <h2 className="text-accent text-xl font-semibold">Kontakt</h2>
                   <p className="text-muted-foreground">Angaben gemäß § 5 TMG / Redaktionell verantwortlich</p>
                   <p className="mt-2">
                     {basicData.name} - {basicData.occupationalCategory}
@@ -34,11 +34,11 @@ export default function Component() {
                 </div>
                 <div>
                   <div className="flex items-center gap-2">
-                    <Phone className="h-4 w-4 text-accent" />
+                    <PhoneIcon className="text-accent h-4 w-4" />
                     <span>{basicData.address.landlinePhoneNumber}</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Mail className="h-4 w-4 text-accent" />
+                    <MailIcon className="text-accent h-4 w-4" />
                     <span>{basicData.email}</span>
                   </div>
                 </div>
@@ -46,7 +46,7 @@ export default function Component() {
 
               {/*Umsatzsteuer-ID*/}
               <div>
-                <h2 className="text-xl font-semibold text-accent">Umsatzsteuer-ID</h2>
+                <h2 className="text-accent text-xl font-semibold">Umsatzsteuer-ID</h2>
                 <p className="text-muted-foreground">
                   Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz
                 </p>
@@ -59,7 +59,7 @@ export default function Component() {
 
               {/*Bankverbindung*/}
               <div>
-                <h3 className="text-xl font-semibold text-accent">Bankverbindung</h3>
+                <h3 className="text-accent text-xl font-semibold">Bankverbindung</h3>
                 <p className="mt-2">
                   Inhaber: {basicData.bank_info.account.holder}
                   <br />

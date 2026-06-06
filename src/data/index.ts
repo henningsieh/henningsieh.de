@@ -1,5 +1,15 @@
 // src/data/index.ts:
-import { Boxes, Code, FileText, GitBranch, Layers, Monitor, Server, Users, Workflow } from "lucide-react"
+import {
+  BoxesIcon,
+  CodeIcon,
+  FileTextIcon,
+  GitBranchIcon,
+  LayersIcon,
+  MonitorIcon,
+  ServerIcon,
+  UsersIcon,
+  WorkflowIcon,
+} from "lucide-react"
 
 import { getKeywords, getSkills } from "@/lib/utils"
 import type {
@@ -57,37 +67,37 @@ export const performancePromises: PerformancePromises = {
   subtitle: "Was Sie von meiner Arbeit erwarten können",
   points: [
     {
-      icon: FileText,
+      icon: FileTextIcon,
       title: "Requirements Engineering Excellence",
       description:
         "Anforderungsanalyse nach IREB für komplexe Software-Projekte. Strukturierung von Kundenanforderungen und Erstellung präziser Spezifikationen.",
     },
     {
-      icon: Boxes,
+      icon: BoxesIcon,
       title: "Solution Architecture & Integration",
       description:
         "Erfahrung in Systemarchitektur, API-Design und Integration heterogener Systeme. Fundiertes Verständnis für Middleware, Schnittstellen und Enterprise-Lösungen.",
     },
     {
-      icon: Users,
+      icon: UsersIcon,
       title: "Stakeholder Management",
       description:
         "Bewährte Fähigkeit, zwischen Management, Business und Entwicklungsteams zu vermitteln. Technische Lösungen verständlich erklären und Kunden fachlich abholen.",
     },
     {
-      icon: Code,
+      icon: CodeIcon,
       title: "Full-Stack Development",
       description:
         "Hands-on Entwicklungskompetenz in modernen Technologien (TypeScript, Node.js, React). API-Entwicklung und technische Prototypen für Proof-of-Concepts.",
     },
     {
-      icon: Workflow,
+      icon: WorkflowIcon,
       title: "Prozessanalyse & Automation",
       description:
         "Business Process Modeling (BPMN) und Erfahrung mit Automatisierungskonzepten. Verständnis für Workflow-Optimierung und DevOps-Praktiken.",
     },
     {
-      icon: Server,
+      icon: ServerIcon,
       title: "IT Infrastructure Know-how",
       description:
         "Praktische Erfahrung mit Cloud-Deployments, Docker-Containerisierung und CI/CD-Pipelines. Betrieb von Enterprise-Systemen und Monitoring.",
@@ -99,7 +109,7 @@ export const performancePromises: PerformancePromises = {
 export const skills: Skill[] = [
   {
     title: "Frontend & Full-Stack Development",
-    icon: Code,
+    icon: CodeIcon,
     color: "primary",
     skills: [
       "TypeScript-first development & modern JavaScript (ESNext)",
@@ -110,7 +120,7 @@ export const skills: Skill[] = [
   },
   {
     title: "Modern Web Stack & APIs",
-    icon: Layers,
+    icon: LayersIcon,
     color: "primary",
     skills: [
       "Next.js App Router & Server-First Architecture",
@@ -123,7 +133,7 @@ export const skills: Skill[] = [
   },
   {
     title: "UI Engineering & Performance",
-    icon: Monitor,
+    icon: MonitorIcon,
     color: "primary",
     skills: [
       "Performance Optimization (Lazy Loading, Caching)",
@@ -138,7 +148,7 @@ export const skills: Skill[] = [
   },
   {
     title: "Requirements Engineering",
-    icon: FileText,
+    icon: FileTextIcon,
     color: "accent",
     skills: [
       "Anforderungsanalyse nach IREB",
@@ -149,7 +159,7 @@ export const skills: Skill[] = [
   },
   {
     title: "Solution Architecture",
-    icon: Boxes,
+    icon: BoxesIcon,
     color: "accent",
     skills: [
       "Visual System Architecture",
@@ -162,7 +172,7 @@ export const skills: Skill[] = [
   },
   {
     title: "IT Consulting & Project Management",
-    icon: Users,
+    icon: UsersIcon,
     color: "accent",
     skills: [
       "Technische Teil-Projektleitung",
@@ -173,13 +183,13 @@ export const skills: Skill[] = [
   },
   {
     title: "Methodologies & Delivery Practices",
-    icon: GitBranch,
+    icon: GitBranchIcon,
     color: "secondary",
     skills: ["Test-Driven Development", "Agile & Scrum", "UML & BPMN", "DevOps Practices"],
   },
   {
     title: "IT Infrastructure & Operations",
-    icon: Server,
+    icon: ServerIcon,
     color: "secondary",
     skills: [
       "Docker & Container-Orchestrierung",
