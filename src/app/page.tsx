@@ -7,6 +7,13 @@ import { basicData, jsonLd, metaDataDescription, metaDataKeywords } from "@/data
 export default function Home() {
   return (
     <main>
+      {jsonLd.map((entry, i) => (
+        <script
+          key={i}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(entry) }}
+        />
+      ))}
       <PortfolioOneSheet />
     </main>
   )
@@ -63,10 +70,7 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  // verification: {
-  //   google: "YOUR_GOOGLE_VERIFICATION_CODE",
-  // },
-  other: {
-    "json-ld": JSON.stringify(jsonLd),
+  verification: {
+    google: "FU9DT5Molpovnd8eyACjQlF82aPvPehn7gD47A0kwbk",
   },
 }
