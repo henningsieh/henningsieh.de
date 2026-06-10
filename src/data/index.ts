@@ -466,12 +466,12 @@ export const jsonLd = [
   {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "@id": "${basicData.url}/impressum",
-    url: "${basicData.url}/impressum",
+    "@id": `${basicData.url}/impressum`,
+    url: `${basicData.url}/impressum`,
     name: "Impressum",
     description: "Legal disclosure in accordance with German law (Telemediengesetz §5).",
     provider: {
-      "@id": "${basicData.url}/#home",
+      "@id": `${basicData.url}/#home`,
     },
   },
 ]
