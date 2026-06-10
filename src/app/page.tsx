@@ -70,7 +70,7 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  // verification: {
-  //   google: "YOUR_GOOGLE_VERIFICATION_CODE",
-  // },
+  verification: {
+    google: "FU9DT5Molpovnd8eyACjQlF82aPvPehn7gD47A0kwbk",
+  },
 }
