@@ -7,6 +7,13 @@ import { basicData, jsonLd, metaDataDescription, metaDataKeywords } from "@/data
 export default function Home() {
   return (
     <main>
+      {jsonLd.map((entry, i) => (
+        <script
+          key={i}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(entry) }}
+        />
+      ))}
       <PortfolioOneSheet />
     </main>
   )
@@ -66,7 +73,4 @@ export const metadata: Metadata = {
   // verification: {
   //   google: "YOUR_GOOGLE_VERIFICATION_CODE",
   // },
-  other: {
-    "json-ld": JSON.stringify(jsonLd),
-  },
 }
