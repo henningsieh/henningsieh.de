@@ -423,7 +423,7 @@ export const jsonLd = [
   {
     "@context": "https://schema.org",
     "@type": "Person",
-    "@id": `${basicData.url}/#home`, // Refers to the section where name, email, and phone are listed
+    "@id": `${basicData.url}/#person`, // Refers to the section where name, email, and phone are listed
     name: basicData.name,
     jobTitle: basicData.jobTitle,
     description: metaDataDescription,
@@ -457,11 +457,11 @@ export const jsonLd = [
   {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "@id": `${basicData.url}/#about`, // Align this with your about section
+    "@id": `${basicData.url}/#website`, // Align this with your about section
     url: basicData.url,
     name: `${basicData.name} - ${basicData.occupationalCategory}`,
     description: metaDataDescription,
-    publisher: { "@id": `${basicData.url}/#home` }, // Refers to the person entity on #home
+    publisher: { "@id": `${basicData.url}/#person` }, // Refers to the person entity on #person
   },
   {
     "@context": "https://schema.org",
@@ -471,7 +471,7 @@ export const jsonLd = [
     name: "Impressum",
     description: "Legal disclosure in accordance with German law (Telemediengesetz §5).",
     provider: {
-      "@id": `${basicData.url}/#home`,
+      "@id": `${basicData.url}/#person`,
     },
   },
 ]
