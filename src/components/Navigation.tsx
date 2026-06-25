@@ -62,8 +62,9 @@ export function Navigation() {
                   <Link
                     key={item}
                     href={`/#${item}`}
-                    className={`nav-link px-2 py-2 text-sm font-semibold transition-colors ${isActive(item) ? "text-primary" : "text-foreground hover:text-primary"
-                      }`}
+                    className={`nav-link px-2 py-2 text-sm font-semibold transition-colors ${
+                      isActive(item) ? "text-primary" : "text-foreground hover:text-primary"
+                    }`}
                   >
                     {item.charAt(0).toUpperCase() + item.slice(1)}
                   </Link>
@@ -74,6 +75,7 @@ export function Navigation() {
             <div className="flex gap-2 md:hidden">
               <ModeToggle />
               <button
+                aria-label={menuOpen ? "Close menu" : "Open menu"}
                 className="text-foreground hover:text-primary p-2 transition-colors duration-200"
                 onClick={() => setMenuOpen(!menuOpen)}
               >
@@ -93,8 +95,9 @@ export function Navigation() {
                 key={item}
                 href={`#${item}`}
                 onClick={() => setMenuOpen(false)}
-                className={`nav-link flex w-fit px-4 py-3 text-center text-lg font-semibold transition-colors ${isActive(item) ? "text-primary" : "text-muted-foreground hover:text-primary"
-                  }`}
+                className={`nav-link flex w-fit px-4 py-3 text-center text-lg font-semibold transition-colors ${
+                  isActive(item) ? "text-primary" : "text-muted-foreground hover:text-primary"
+                }`}
               >
                 {item.charAt(0).toUpperCase() + item.slice(1)}
               </Link>

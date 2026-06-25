@@ -167,7 +167,7 @@
 
     /* Subtle grays for hierarchy */
     --muted: 210 15% 90%;
-    --muted-foreground: 215 15% 45%;
+    --muted-foreground: 215 15% 35%;
 
     /* UI Elements */
     --popover: 0 0% 100%;
@@ -206,7 +206,7 @@
 
     /* Dark mode grays */
     --muted: 220 15% 18%;
-    --muted-foreground: 210 15% 60%;
+    --muted-foreground: 210 18% 65%;
 
     /* UI Elements */
     --popover: 220 20% 12%;
