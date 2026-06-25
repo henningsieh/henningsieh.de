@@ -39,10 +39,9 @@ export default function PortfolioOneSheet() {
       >
         <div className="gradient-overlay" />
         <div className="relative z-10 container max-w-6xl">
-          <FadeIn>
-            <div className="text-center">
-              {/* Avatar */}
-              <div className="mb-8 flex justify-center">
+          <div className="text-center">
+            {/* Avatar */}
+            <div className="mb-8 flex justify-center">
                 <Avatar className="border-primary size-36 border-4 shadow-2xl md:size-48">
                   <img
                     className="rounded-full object-cover"
@@ -89,13 +88,12 @@ export default function PortfolioOneSheet() {
                 </Button>
               </div>
 
-              {/* Location */}
-              <div className="text-muted-foreground flex items-center justify-center gap-2">
-                <MapPinIcon className="h-4 w-4" />
-                <span>{basicData.location}</span>
-              </div>
+            {/* Location */}
+            <div className="text-muted-foreground flex items-center justify-center gap-2">
+              <MapPinIcon className="h-4 w-4" />
+              <span>{basicData.location}</span>
             </div>
-          </FadeIn>
+          </div>
         </div>
 
         <ScrollIndicator label={uiStrings.scrollIndicator} />
