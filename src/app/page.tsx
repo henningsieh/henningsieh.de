@@ -8,11 +8,7 @@ export default function Home() {
   return (
     <main>
       {jsonLd.map((entry, i) => (
-        <script
-          key={i}
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(entry) }}
-        />
+        <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(entry) }} />
       ))}
       <PortfolioOneSheet />
     </main>
@@ -43,7 +39,7 @@ export const metadata: Metadata = {
     siteName: `${basicData.name} - ${basicData.occupationalCategory}`,
     images: [
       {
-        url: "/avatar_Henning-Sieh_315x315.jpg",
+        url: "/avatar-315.jpg",
         width: 315,
         height: 315,
         alt: `${basicData.name}'s Profile Picture`,
@@ -54,7 +50,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: basicData.jobTitle,
     description: metaDataDescription,
-    images: ["/avatar_Henning-Sieh_315x315.jpg"],
+    images: ["/avatar-315.jpg"],
   },
   alternates: {
     canonical: basicData.url,
