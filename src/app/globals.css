@@ -263,7 +263,7 @@
 /* Performance-optimized scroll-driven animations (CSS only, no JS runtime cost) */
 @keyframes fadeInUp {
   from {
-    opacity: 0;
+    opacity: 0.01;
     transform: translateY(16px);
   }
   to {
