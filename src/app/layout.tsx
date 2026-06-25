@@ -1,5 +1,3 @@
-"use client"
-
 // src/app/layout.tsx:
 import { MailIcon, MapPinHouseIcon } from "lucide-react"
 import Image from "next/image"
@@ -33,6 +31,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="de" className="scroll-smooth" suppressHydrationWarning>
+      <link rel="preconnect" href="https://cdn.sieh.org" />
+      <link rel="dns-prefetch" href="https://cdn.sieh.org" />
+      <link
+        rel="preload"
+        as="image"
+        href="/avatar-192.jpg"
+        imageSrcSet="/avatar-144.jpg 144w, /avatar-192.jpg 192w"
+        imageSizes="(max-width: 768px) 144px, 192px"
+      />
       <body className={`${geistSans.variable} ${geistMono.variable} scroll-smooth antialiased`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           <div className="min-h-screen scroll-smooth">
@@ -123,8 +130,6 @@ export default function RootLayout({
 
         {/* Plausible Analytics Script */}
         <Script src="https://cdn.sieh.org/js/script.js" data-domain="henningsieh.de" strategy="afterInteractive" />
-
-
       </body>
     </html>
   )
