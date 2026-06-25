@@ -74,6 +74,7 @@ export function Navigation() {
             <div className="flex gap-2 md:hidden">
               <ModeToggle />
               <button
+                aria-label={menuOpen ? "Close menu" : "Open menu"}
                 className="text-foreground hover:text-primary p-2 transition-colors duration-200"
                 onClick={() => setMenuOpen(!menuOpen)}
               >

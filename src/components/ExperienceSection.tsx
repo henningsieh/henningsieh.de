@@ -44,7 +44,7 @@ export function ExperienceSection({
                         <div className="space-y-2">
                           <div className="flex flex-col gap-2 pt-2 pr-4 sm:flex-row sm:items-center sm:justify-between">
                             <h3 className="text-foreground text-xl font-semibold">{exp.company}</h3>
-                            <Badge className="border-primary bg-primary/20 text-primary hover:text-primary-foreground w-fit px-3 py-2 text-xs">
+                            <Badge variant="outline" className="border-primary/30 text-foreground w-fit px-3 py-2 text-xs">
                               {exp.year}
                             </Badge>
                           </div>

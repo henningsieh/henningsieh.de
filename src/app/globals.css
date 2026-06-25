@@ -167,7 +167,7 @@
 
     /* Subtle grays for hierarchy */
     --muted: 210 15% 90%;
-    --muted-foreground: 215 15% 45%;
+    --muted-foreground: 215 15% 35%;
 
     /* UI Elements */
     --popover: 0 0% 100%;
@@ -206,7 +206,7 @@
 
     /* Dark mode grays */
     --muted: 220 15% 18%;
-    --muted-foreground: 210 15% 60%;
+    --muted-foreground: 210 18% 65%;
 
     /* UI Elements */
     --popover: 220 20% 12%;
@@ -263,13 +263,23 @@
 /* Performance-optimized scroll-driven animations (CSS only, no JS runtime cost) */
 @keyframes fadeInUp {
   from {
-    opacity: 0.01;
     transform: translateY(16px);
   }
   to {
-    opacity: 1;
     transform: translateY(0);
   }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.5s ease-out;
+  animation-timeline: view();
+  animation-range: entry 0% entry 40%;
+}
+
+.stagger-children > * {
+  animation: fadeInUp 0.5s ease-out;
+  animation-timeline: view();
+  animation-range: entry 0% entry 40%;
 }
 
 @keyframes bounceIndicator {
@@ -281,22 +291,11 @@
   }
 }
 
-.animate-fade-in-up {
-  animation: fadeInUp 0.5s ease-out both;
-  animation-timeline: view();
-  animation-range: entry 0% entry 40%;
-}
-
 .animate-bounce-indicator {
   animation: bounceIndicator 1.5s ease-in-out infinite;
 }
 
 /* Stagger children naturally via animation-delay on view-timeline animations */
-.stagger-children > * {
-  animation: fadeInUp 0.5s ease-out both;
-  animation-timeline: view();
-  animation-range: entry 0% entry 40%;
-}
 
 .stagger-children > *:nth-child(1) { animation-delay: 0ms; }
 .stagger-children > *:nth-child(2) { animation-delay: 80ms; }
