@@ -2,7 +2,6 @@ import { ExternalLinkIcon, MailIcon, MapPinIcon, PhoneIcon } from "lucide-react"
 import Link from "next/link"
 import dynamic from "next/dynamic"
 
-import { BackToTopButton } from "@/components/BackToTopButton"
 import { FadeIn } from "@/components/motion/FadeIn"
 import { Stagger } from "@/components/motion/Stagger"
 import { ScrollIndicator } from "@/components/ScrollIndicator"
@@ -28,6 +27,7 @@ import {
 } from "@/data"
 
 const ExperienceSection = dynamic(() => import("@/components/ExperienceSection").then((mod) => mod.ExperienceSection))
+const BackToTopButton = dynamic(() => import("@/components/BackToTopButton").then((mod) => mod.BackToTopButton))
 
 export default function PortfolioOneSheet() {
   return (
