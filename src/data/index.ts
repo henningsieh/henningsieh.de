@@ -427,7 +427,7 @@ export const jsonLd = [
     name: basicData.name,
     jobTitle: basicData.jobTitle,
     description: metaDataDescription,
-    image: `${basicData.url}/avatar_Henning-Sieh_315x315.jpg`,
+    image: `${basicData.url}/avatar-315.jpg`,
     url: basicData.url,
     telephone: basicData.mobile,
     email: basicData.email,
