@@ -2,6 +2,7 @@ import { ExternalLinkIcon, MailIcon, MapPinIcon, PhoneIcon } from "lucide-react"
 import Link from "next/link"
 import dynamic from "next/dynamic"
 
+import { BackToTopButton } from "@/components/BackToTopButton"
 import { FadeIn } from "@/components/motion/FadeIn"
 import { Stagger } from "@/components/motion/Stagger"
 import { ScrollIndicator } from "@/components/ScrollIndicator"
@@ -27,7 +28,6 @@ import {
 } from "@/data"
 
 const ExperienceSection = dynamic(() => import("@/components/ExperienceSection").then((mod) => mod.ExperienceSection))
-const BackToTopButton = dynamic(() => import("@/components/BackToTopButton").then((mod) => mod.BackToTopButton))
 
 export default function PortfolioOneSheet() {
   return (
@@ -39,75 +39,63 @@ export default function PortfolioOneSheet() {
       >
         <div className="gradient-overlay" />
         <div className="relative z-10 container max-w-6xl">
-          <Stagger>
+          <FadeIn>
             <div className="text-center">
               {/* Avatar */}
-              <FadeIn>
-                <div className="mb-8 flex justify-center">
-                  <Avatar className="border-primary size-36 border-4 shadow-2xl md:size-48">
-                    <img
-                      className="rounded-full object-cover"
-                      src="/avatar-192.jpg"
-                      srcSet="/avatar-144.jpg 144w, /avatar-192.jpg 192w"
-                      sizes="(max-width: 768px) 144px, 192px"
-                      width={192}
-                      height={192}
-                      alt={`${basicData.name} – Senior IT Consultant und Solution Architect`}
-                      fetchPriority="high"
-                      decoding="async"
-                      draggable="false"
-                    />
-                    <AvatarFallback>HS</AvatarFallback>
-                  </Avatar>
-                </div>
-              </FadeIn>
+              <div className="mb-8 flex justify-center">
+                <Avatar className="border-primary size-36 border-4 shadow-2xl md:size-48">
+                  <img
+                    className="rounded-full object-cover"
+                    src="/avatar-192.jpg"
+                    srcSet="/avatar-144.jpg 144w, /avatar-192.jpg 192w"
+                    sizes="(max-width: 768px) 144px, 192px"
+                    width={192}
+                    height={192}
+                    alt={`${basicData.name} – Senior IT Consultant und Solution Architect`}
+                    fetchPriority="high"
+                    decoding="async"
+                    draggable="false"
+                  />
+                  <AvatarFallback>HS</AvatarFallback>
+                </Avatar>
+              </div>
 
               {/* Name & Title */}
-              <FadeIn>
-                <h1 className="text-foreground mb-6 text-4xl font-bold md:mb-8 md:text-5xl lg:mb-10 lg:text-6xl">
-                  {basicData.name}
-                </h1>
-              </FadeIn>
+              <h1 className="text-foreground mb-6 text-4xl font-bold md:mb-8 md:text-5xl lg:mb-10 lg:text-6xl">
+                {basicData.name}
+              </h1>
 
-              <FadeIn>
-                <p className="text-primary mb-4 font-mono text-xl font-semibold tracking-tighter uppercase md:text-2xl lg:text-3xl">
-                  {basicData.jobTitle}
-                </p>
-              </FadeIn>
+              <p className="text-primary mb-4 font-mono text-xl font-semibold tracking-tighter uppercase md:text-2xl lg:text-3xl">
+                {basicData.jobTitle}
+              </p>
 
-              <FadeIn>
-                <p className="text-muted-foreground mx-auto text-lg font-semibold md:text-xl lg:text-2xl">
-                  {basicData.tagline}
-                </p>
-              </FadeIn>
+              <p className="text-muted-foreground mx-auto text-lg font-semibold md:text-xl lg:text-2xl">
+                {basicData.tagline}
+              </p>
 
               {/* Contact Buttons */}
-              <FadeIn>
-                <div className="my-6 flex flex-col items-center justify-center gap-4 sm:flex-row md:my-8 lg:my-12">
-                  <Button asChild size="lg" className="btn-primary min-w-50">
-                    <Link href={`mailto:${basicData.email}`}>
-                      <MailIcon className="mr-2 h-5 w-5" />
-                      {uiStrings.contactButton}
-                    </Link>
-                  </Button>
-                  <Button asChild size="lg" variant="outline" className="btn-outline min-w-50">
-                    <Link href={`tel:${basicData.mobile}`}>
-                      <PhoneIcon className="mr-2 h-5 w-5" />
-                      {basicData.mobile}
-                    </Link>
-                  </Button>
-                </div>
-              </FadeIn>
+              <div className="my-6 flex flex-col items-center justify-center gap-4 sm:flex-row md:my-8 lg:my-12">
+                <Button asChild size="lg" className="btn-primary min-w-50">
+                  <Link href={`mailto:${basicData.email}`}>
+                    <MailIcon className="mr-2 h-5 w-5" />
+                    {uiStrings.contactButton}
+                  </Link>
+                </Button>
+                <Button asChild size="lg" variant="outline" className="btn-outline min-w-50">
+                  <Link href={`tel:${basicData.mobile}`}>
+                    <PhoneIcon className="mr-2 h-5 w-5" />
+                    {basicData.mobile}
+                  </Link>
+                </Button>
+              </div>
 
               {/* Location */}
-              <FadeIn>
-                <div className="text-muted-foreground flex items-center justify-center gap-2">
-                  <MapPinIcon className="h-4 w-4" />
-                  <span>{basicData.location}</span>
-                </div>
-              </FadeIn>
+              <div className="text-muted-foreground flex items-center justify-center gap-2">
+                <MapPinIcon className="h-4 w-4" />
+                <span>{basicData.location}</span>
+              </div>
             </div>
-          </Stagger>
+          </FadeIn>
         </div>
 
         <ScrollIndicator label={uiStrings.scrollIndicator} />
