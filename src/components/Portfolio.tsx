@@ -1,10 +1,10 @@
 import { ExternalLinkIcon, MailIcon, MapPinIcon, PhoneIcon } from "lucide-react"
-import Link from "next/link"
 import dynamic from "next/dynamic"
+import Image from "next/image"
+import Link from "next/link"
 
 import { BackToTopButton } from "@/components/BackToTopButton"
 import { FadeIn } from "@/components/motion/FadeIn"
-import { Stagger } from "@/components/motion/Stagger"
 import { ScrollIndicator } from "@/components/ScrollIndicator"
 import { SkillCard } from "@/components/SkillCard"
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
@@ -44,17 +44,15 @@ export default function PortfolioOneSheet() {
               {/* Avatar */}
               <div className="mb-8 flex justify-center">
                 <Avatar className="border-primary size-36 border-4 shadow-2xl md:size-48">
-                  <img
+                  <Image
                     className="rounded-full object-cover"
                     src="/avatar-192.jpg"
-                    srcSet="/avatar-144.jpg 144w, /avatar-192.jpg 192w"
-                    sizes="(max-width: 768px) 144px, 192px"
                     width={192}
                     height={192}
+                    sizes="(max-width: 768px) 144px, 192px"
                     alt={`${basicData.name} – Senior IT Consultant und Solution Architect`}
                     fetchPriority="high"
-                    decoding="async"
-                    draggable="false"
+                    unoptimized
                   />
                   <AvatarFallback>HS</AvatarFallback>
                 </Avatar>

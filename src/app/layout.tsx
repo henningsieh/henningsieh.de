@@ -24,6 +24,9 @@ const geistMono = localFont({
   weight: "100 900",
 })
 
+// Build-time year (static export bakes this in at build).
+const CURRENT_YEAR = new Date().getFullYear()
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -98,7 +101,7 @@ export default function RootLayout({
                 <div className="border-primary/10 mt-8 border-t pt-8">
                   <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
                     <p className="text-muted-foreground text-sm">
-                      © {new Date().getFullYear()} {basicData.name}. Alle Rechte vorbehalten.
+                      © {CURRENT_YEAR} {basicData.name}. Alle Rechte vorbehalten.
                     </p>
                     <div className="flex gap-6">
                       <Button

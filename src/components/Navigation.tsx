@@ -1,6 +1,7 @@
 "use client"
 
 import { MenuIcon, XIcon } from "lucide-react"
+import Image from "next/image"
 import Link from "next/link"
 import { useState, useSyncExternalStore } from "react"
 
@@ -40,15 +41,14 @@ export function Navigation() {
           <div className="flex h-16 items-center justify-between">
             <Link href="/" className="m-0 flex items-center p-0">
               <Avatar className="border-accent size-7 border-2 lg:size-8 xl:size-10">
-                <img
+                <Image
                   className="rounded-full object-cover"
                   src="/avatar-144.jpg"
                   width={32}
                   height={32}
                   alt="Profile"
                   loading="eager"
-                  decoding="async"
-                  draggable="false"
+                  unoptimized
                 />
                 <AvatarFallback>{nameInitials}</AvatarFallback>
               </Avatar>
@@ -62,8 +62,9 @@ export function Navigation() {
                   <Link
                     key={item}
                     href={`/#${item}`}
-                    className={`nav-link px-2 py-2 text-sm font-semibold transition-colors ${isActive(item) ? "text-primary" : "text-foreground hover:text-primary"
-                      }`}
+                    className={`nav-link px-2 py-2 text-sm font-semibold transition-colors ${
+                      isActive(item) ? "text-primary" : "text-foreground hover:text-primary"
+                    }`}
                   >
                     {item.charAt(0).toUpperCase() + item.slice(1)}
                   </Link>
@@ -94,8 +95,9 @@ export function Navigation() {
                 key={item}
                 href={`#${item}`}
                 onClick={() => setMenuOpen(false)}
-                className={`nav-link flex w-fit px-4 py-3 text-center text-lg font-semibold transition-colors ${isActive(item) ? "text-primary" : "text-muted-foreground hover:text-primary"
-                  }`}
+                className={`nav-link flex w-fit px-4 py-3 text-center text-lg font-semibold transition-colors ${
+                  isActive(item) ? "text-primary" : "text-muted-foreground hover:text-primary"
+                }`}
               >
                 {item.charAt(0).toUpperCase() + item.slice(1)}
               </Link>

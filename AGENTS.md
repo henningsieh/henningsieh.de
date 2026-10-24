@@ -482,7 +482,7 @@ All scripts are defined in `package.json`:
 - `dev` — `next dev --turbopack` — starts the development server with Turbopack on `http://localhost:3000`
 - `build` — `next build` — builds the static export into `out/`
 - `start` — `next start -p 3000 -H 0.0.0.0` — starts the production Next.js server (primarily for preview; production is served as static files)
-- `code:lint` — `eslint .` — runs ESLint using the Next.js core-web-vitals + TypeScript configs
+- `code:lint` — `oxlint` — runs oxlint using `.oxlintrc.json` (nextjs + typescript + react rules, migrated from `eslint-config-next`)
 - `code:format` — `prettier --write "./**/*.{js,jsx,mjs,cjs,ts,tsx,json,css,md}"` — formats all project files
 
 Use Bun to run scripts:
